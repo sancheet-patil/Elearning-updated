@@ -52,16 +52,14 @@
                             <div class="form-group col-md-4">
                                 <label>Document Upload  </label>
                                 <br>
-                                <a href="#" download="{{asset($teacher->doc_file)}}">
-
+                                <a href="{{asset($teacher->doc_file)}}" download="">
                                     <button type="button" class="btn btn-success">Download</button>
                                 </a>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Demo Video </label>
                                 <br>
-                                <a href="#" download="{{asset($teacher->video_file)}}">
-
+                                <a href="{{asset($teacher->video_file)}}" download="">
                                     <button type="button" class="btn btn-success">Download</button>
                                 </a>
                             </div>

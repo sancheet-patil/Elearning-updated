@@ -15,12 +15,22 @@ class AdminsubCoursesController extends Controller
 
     public function subcourse_save(Request $request)
     {
-        $new_course = new subcourses();
-        $new_course->course_id=$request->course_name;
-        $new_course->subCourses_name = $request->subcourse_name;
-        $new_course->save();
+        $subcourse_exist = subcourses::where('subCourses_name',$request->subcourse_name)->first();
 
-        return back()->with('success','subcourses Successfully Created');
+        if($subcourse_exist == null)
+        {
+            $new_course = new subcourses();
+            $new_course->course_id=$request->course_name;
+            $new_course->subCourses_name = $request->subcourse_name;
+            $new_course->save();
+            return back()->with('success','subcourses Successfully Created');
+        }
+        else
+        {
+            return back()->with('alert','subcourse already exist');
+        }
+        
+
     }
 
     public function subcourse_update(Request $request)

@@ -32,6 +32,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::prefix('admin')->group(function() {
         Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
 
+        //free-videos        
+        Route::get('/teacher-free-videos','Admin\FreevideosController@view')->name('admin.free_videos.view');
+        Route::get('/teacher-playfree-videos/{id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
+        Route::delete('/teacher-playerfree-videos-delete','Admin\FreevideosController@delete')->name('admin.free_videos.delete');
+
         //Assiging Sub-courses to teacher
         Route::get('/teacher-subCourses','Admin\AdminTeacherSubCourses@viewApproved')->name('admin.teacher_assign_subCourses.view');
         Route::get('/teacher-subCoursesRequest','Admin\AdminTeacherSubCourses@viewRequest')->name('admin.teacher_assign_subCourses.viewRequest');
@@ -88,7 +93,9 @@ Route::prefix('teacher')->group(function (){
     Route::get('/video-verification', 'TeacherVedioVerificationController@video_verification')->name('teacher.video.verification');
     Route::post('/video-verification-file-save', 'TeacherVedioVerificationController@video_verification_file_save')->name('teacher.video.file.upload');
 
-
+    //posting free_videos
+    Route::post('/Upload-free_videos','Teacher\uploadVideoController@save')->name('teacher.free_videos.save');
+    Route::get('/free_videos','Teacher\uploadVideoController@view')->name('teacher.free_videos.view');
     //Request sub-courses
     Route::get('/Request-subcourses','Teacher\TeachersubCourseRequest@view')->name('teacher.subcourses.view');
     Route::post('/Request-subcourses-approve','Teacher\TeachersubCourseRequest@request')->name('teacher.subcourses.request');

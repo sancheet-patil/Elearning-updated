@@ -38,7 +38,7 @@ class TeacherVedioVerificationController extends Controller
             @unlink($teacher->video_file);
             $image = $request->file('video_file');
             $imageName = Auth::user()->id.time().'.'.$image->getClientOriginalName('video_file');
-            $directory = 'assets/admin/teacher/docfile/';
+            $directory = 'assets/admin/teacher/videofile/';
             $imgUrl1  = $directory.$imageName;
             $image->move($directory,$imageName);
             $teacher->video_file = $imgUrl1;

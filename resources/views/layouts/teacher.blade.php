@@ -183,11 +183,14 @@
                     <li>
                         <a href="{{route('teacher.subcourses.view')}}"><span>Request SubCourse</span></a>
                     </li>
-                    <li class="submenu">
+                    <!--<li class="submenu">
                         <a href="#"><span> Reports</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="invoice-report.html">Invoice Reports</a></li>
                         </ul>
+                    </li>-->
+                    <li>
+                        <a href="{{route('teacher.free_videos.view')}}"><span>Upload videos</span></a>
                     </li>
 
 

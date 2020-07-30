@@ -201,6 +201,9 @@
                             <li><a href="{{route('admin.subCourses')}}">sub-Courses</a></li>
                         </ul>
                     </li>
+                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                        <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
+                    </li>
 
 
 
