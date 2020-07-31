@@ -24,6 +24,8 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/style.css">
 
+
+
 <!--[if lt IE 9]>
     <script src="{{asset('assets/admin/')}}/js/html5shiv.min.js"></script>
     <script src="{{asset('assets/admin/')}}/js/respond.min.js"></script>
@@ -156,7 +158,7 @@
                             <p class="text-muted mb-0">Administrator</p>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="{{route('teacher.teacherProfile')}}">My Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
                     <a class="dropdown-item" href="login.html">Logout</a>
                 </div>
@@ -192,6 +194,7 @@
                     <li>
                         <a href="{{route('teacher.free_videos.view')}}"><span>Upload videos</span></a>
                     </li>
+                   
 
 
 
@@ -233,6 +236,9 @@
 <!-- Custom JS -->
 
 <script  src="{{asset('assets/admin/')}}/js/script.js"></script>
+
+
+
 @yield('js')
 
 </body>
