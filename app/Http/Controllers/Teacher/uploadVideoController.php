@@ -22,13 +22,19 @@ class uploadVideoController extends Controller
             $image->move($directory,$imageName);
             $teacher_videos->video_file = $imgUrl1;
             $teacher_videos->teacher_id=Auth::guard('teacher')->user()->id;
+            $teacher_videos->subcourse_id = $request->subcourse_name;
+            $teacher_videos->course_id = $request->course_name;
             $teacher_videos->save();
             return back()->with('success','Video Uploaded');
+        }
+        else{
+            return back()->with('alert','Something Went Wrong');
         }
     }
 
     public function view()
     {
-        return view('teacher.free_videos.uploadVideos');
+        $free_videos=free_videos::where('teacher_id',Auth::guard('teacher')->user()->id)->get();
+        return view('teacher.free_videos.uploadVideos',compact('free_videos'));
     }
 }

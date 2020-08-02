@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('admin')
 <div class="row">
+<?php $i=0;?>
 @foreach($videos as $video)
 
 <div class="col-12 col-md-6 col-lg-4 d-flex">
@@ -10,7 +11,7 @@
     Your browser does not support the video tag.
 </video>
         <div class="card-header">
-            <h5 class="card-title mb-0">By {{$teacher_name->name}}
+            <h5 class="card-title mb-0">By {{$teacher_name[$i++]->name}}
             <button class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#deletecourse{{$video->id}}"><i class="fa fa-trash"></i> </button>
             </h5>
         </div>

@@ -156,9 +156,7 @@
                             <p class="text-muted mb-0">Administrator</p>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="{{url('admin/logout')}}">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->
@@ -175,35 +173,39 @@
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
                     <li class="menu-title">
-                        <span><i class="fe fe-home"></i> Main</span>
+                        <span><i class="fe fe-home"></i> Admin </span>
                     </li>
                     <li class="{{ Request::segment(2) === null ? 'active' : null }}">
                         <a href="{{route('admin.dashboard')}}"><span>Dashboard</span></a>
                     </li>
-                    <li class="{{ Request::segment(2) === 'teacher' ? 'active' : null }}">
-                        <a href="{{route('admin.teacher')}}"><span>Teachers Account</span></a>
-                    </li>
 
                     <li class="submenu {{ Request::segment(2) === 'teacher-subCourses' ? 'active' : null }}">
-                        <a href="#"><span>Assign Sub-Courses</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><span>Request</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="{{route('admin.teacher_assign_subCourses.view')}}">Assign Sub-courses</a></li>
+                            <li><a href="{{route('admin.teacher')}}"><span>Demo Request</span></a></li>
                             <li><a href="{{route('admin.teacher_assign_subCourses.viewRequest')}}">Requested sub-Courses</a></li>
                         </ul>
                     </li>
-                    <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
-                        <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
-                    </li>
+
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                        <a href="#"><span> Courses</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><span>Create Courses</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{route('admin.courses')}}">Courses</a></li>
                             <li><a href="{{route('admin.subCourses')}}">sub-Courses</a></li>
                         </ul>
                     </li>
+
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
                     </li>
+
+                    <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
+                        <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
+                    </li>
+
+                    
+
+                    
 
 
 

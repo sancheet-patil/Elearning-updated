@@ -43,10 +43,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="content-box">
-                        <h2>Login Account</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sedo<br> eiusmod tempor incididunt dolore.</p>
-                    </div>
                     @if (Session::has('teacher_success_reg'))
                         <p class="text-success text-center">{{Session::get('teacher_success_reg')}}</p>
                     @endif

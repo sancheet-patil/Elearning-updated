@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
         //free-videos        
         Route::get('/teacher-free-videos','Admin\FreevideosController@view')->name('admin.free_videos.view');
-        Route::get('/teacher-playfree-videos/{id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
+        Route::get('/teacher-playfree-videos/{course_id}/{subcourse_id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
         Route::delete('/teacher-playerfree-videos-delete','Admin\FreevideosController@delete')->name('admin.free_videos.delete');
 
         //Assiging Sub-courses to teacher
