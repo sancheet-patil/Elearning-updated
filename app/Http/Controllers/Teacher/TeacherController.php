@@ -12,7 +12,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $status=Teacher::select('status')->where('id',Auth::guard('teacher')->user()->id)->first();
+        $status=Teacher::select('status','name')->where('id',Auth::guard('teacher')->user()->id)->first();
         $assigned_course= TeaSubCour::where([['teacher_id','=',Auth::guard('teacher')->user()->id],['status','=','2']])->count();
         $pending_course= TeaSubCour::where([['teacher_id','=',Auth::guard('teacher')->user()->id],['status','=','1']])->count();
         return view('teacher.index',compact('status','assigned_course','pending_course'));

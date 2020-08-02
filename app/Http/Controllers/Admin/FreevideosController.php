@@ -11,14 +11,17 @@ class FreevideosController extends Controller
 {
     public function view()
     {
-        $free_videos = free_videos::select('teacher_id')->distinct()->get();
+        $free_videos = free_videos::select('subcourse_id','course_id')->distinct()->orderBy('id','DESC')->paginate(20);
         return view('admin.freeVideos.view',compact('free_videos'));
     }
 
-    public function getVideo($id)
+    public function getVideo($course_id,$subcourse_id)
     {
-        $videos = free_videos::where('teacher_id',$id)->get();
-        $teacher_name = Teacher::where('id',$id)->first();
+        $videos = free_videos::where('course_id',$course_id)->get();
+        $i=0;
+        $teacher_name=null;
+        foreach($videos as $video)
+        $teacher_name[$i++] = Teacher::select('name')->where('id',$video->teacher_id)->first();
         return view('admin.freeVideos.playvideos',compact('videos','teacher_name'));
     }
 

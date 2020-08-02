@@ -16,12 +16,19 @@ class CreateFreeVideos extends Migration
         Schema::create('free_videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('teacher_id');
+            $table->foreignId('subcourse_id');
+            $table->foreignId('course_id');
             $table->text('video_file');
             $table->timestamps();
 
             $table->foreign('teacher_id')
             ->references('id')
             ->on('teachers')
+            ->onDelete('cascade');
+
+            $table->foreign('subcourse_id')
+            ->references('id')
+            ->on('subcourses')
             ->onDelete('cascade');
 
         });

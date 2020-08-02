@@ -15,16 +15,7 @@
             <!-- Recent Orders -->
             <div class="card card-table">
                 <div class="card-header">
-                
-                    <h4 class="card-title">Booking List</h4>
-                    <div class="col"> 
-                       <div class="top-nav-search">
-            <form>
-                <input type="text" class="form-control" placeholder="Search here">
-                <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div></div>
-                
+                    <h4 class="card-title">Teacher List</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -58,12 +49,10 @@
                                 <td>
                                    @if ($teacher->status == 1)
                                        Deactive
-                                    @elseif ($teacher->status == 2)
+                                    @elseif ($teacher->status > 1 )
                                         Active
                                     @elseif ($teacher->status == 0)
                                         Dis-Approved
-                                    @else
-                                       Not Set
 
                                    @endif
                                 </td>
