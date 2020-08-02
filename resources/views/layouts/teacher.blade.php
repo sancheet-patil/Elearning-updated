@@ -154,13 +154,12 @@
                             <img src="{{asset('assets/admin/')}}/img/profiles/avatar-12.jpg" alt="User Image" class="avatar-img rounded-circle">
                         </div>
                         <div class="user-text">
-                            <h6>Allen Davis</h6>
-                            <p class="text-muted mb-0">Administrator</p>
+                            <h6>{{Auth::guard('teacher')->user()->name}}</h6>
+                            <p class="text-muted mb-0">Free Teacher</p>
                         </div>
                     </div>
                     <a class="dropdown-item" href="{{route('teacher.teacherProfile')}}">My Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="{{url('teacher/logout')}}">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->

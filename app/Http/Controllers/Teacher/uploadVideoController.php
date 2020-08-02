@@ -37,4 +37,12 @@ class uploadVideoController extends Controller
         $free_videos=free_videos::where('teacher_id',Auth::guard('teacher')->user()->id)->get();
         return view('teacher.free_videos.uploadVideos',compact('free_videos'));
     }
+
+    public function delete(Request $request)
+    {
+        $delete = free_videos::where('id',$request->delete_id)->first();
+        @unlink(public_path($delete->video_file));
+        $delete->delete();
+        return back()->with('success','Video Deleted!!!');
+    }
 }

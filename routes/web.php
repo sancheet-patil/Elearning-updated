@@ -93,7 +93,7 @@ Route::prefix('teacher')->group(function (){
     Route::get('/video-verification', 'TeacherVedioVerificationController@video_verification')->name('teacher.video.verification');
     Route::post('/video-verification-file-save', 'TeacherVedioVerificationController@video_verification_file_save')->name('teacher.video.file.upload');
 
-
+    //teacher profile
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
@@ -102,6 +102,7 @@ Route::prefix('teacher')->group(function (){
     //posting free_videos
     Route::post('/Upload-free_videos','Teacher\uploadVideoController@save')->name('teacher.free_videos.save');
     Route::get('/free_videos','Teacher\uploadVideoController@view')->name('teacher.free_videos.view');
+    Route::delete('/teacher-playerfree-videos-delete','Teacher\uploadVideoController@delete')->name('teacher.free_videos.delete');
     //Request sub-courses
     Route::get('/Request-subcourses','Teacher\TeachersubCourseRequest@view')->name('teacher.subcourses.view');
     Route::post('/Request-subcourses-approve','Teacher\TeachersubCourseRequest@request')->name('teacher.subcourses.request');

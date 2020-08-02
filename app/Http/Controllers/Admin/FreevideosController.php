@@ -19,6 +19,7 @@ class FreevideosController extends Controller
     {
         $videos = free_videos::where('course_id',$course_id)->get();
         $i=0;
+        $teacher_name=null;
         foreach($videos as $video)
         $teacher_name[$i++] = Teacher::select('name')->where('id',$video->teacher_id)->first();
         return view('admin.freeVideos.playvideos',compact('videos','teacher_name'));
