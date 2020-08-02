@@ -26,7 +26,7 @@ class AdminTeacherSubCourses extends Controller
         $new_assign = new TeaSubCour();
         $new_assign->subCourse_id = $request->subcourse_id;
         $new_assign->teacher_id = $request->teacher_id;
-        $new_assign->status = 2;
+        $new_assign->status = 3;
         $new_assign->save();
 
         return back()->with('success','subcourse is assigned to Teacher Successfully');

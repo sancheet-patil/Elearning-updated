@@ -137,11 +137,11 @@
         <div class="circle">
     @endif
         <span class="label">2</span>
-        <span class="title"> Demo video review</span>
+        <span class="title"> Demo video under review</span>
       </div>
     </div>
     <div class="bar-grid">
-    @if($status->status > 2)
+    @if($status->status > 1)
       <div class="bar done">
     @else
     <div class="bar">
@@ -150,15 +150,37 @@
       </div>
     </div>
     <div class="step-grid">
-    @if($status->status > 2)
+    @if($status->status > 1)
         <div class="circle done">
     @else
         <div class="circle">
     @endif
         <span class="label">3</span>
+        <span class="title">Demo review approved</span>
+      </div>
+    </div>
+
+
+    <div class="bar-grid">
+    @if($status->status > 2)
+      <div class="bar done">
+    @else
+    <div class="bar">
+    @endif
+        <span class="bar-inner"></span>
+      </div>
+    </div>
+    <div class="step-grid">
+    @if($status->status > 2)
+        <div class="circle done">
+    @else
+        <div class="circle">
+    @endif
+        <span class="label">4</span>
         <span class="title">Course request</span>
       </div>
     </div>
+    
     <div class="bar-grid">
     @if($status->status > 3)
       <div class="bar done">
@@ -174,7 +196,7 @@
     @else
         <div class="circle">
     @endif
-        <span class="label">4</span>
+        <span class="label">5</span>
         <span class="title">Approved course request</span>
       </div>
     </div>
@@ -193,11 +215,15 @@
     @else
         <div class="circle">
     @endif
-        <span class="label">5</span>
+        <span class="label">6</span>
         <span class="title">Paid teacher</span>
       </div>
     </div>
+
+
+
   </div>
+  
 </div><br><br>
 
 <!-- /progress bar -->

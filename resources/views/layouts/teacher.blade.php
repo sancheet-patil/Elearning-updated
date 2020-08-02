@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>LivestudyHub</title>
+    <title>Mentoring - Dashboard</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/favicon.png">
@@ -23,6 +23,8 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/style.css">
+
+
 
 <!--[if lt IE 9]>
     <script src="{{asset('assets/admin/')}}/js/html5shiv.min.js"></script>
@@ -156,9 +158,9 @@
                             <p class="text-muted mb-0">Administrator</p>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <!--<a class="dropdown-item" href="settings.html">Settings</a>-->
-                    <a class="dropdown-item" href="{{url('teacher/logout')}}">Logout</a>
+                    <a class="dropdown-item" href="{{route('teacher.teacherProfile')}}">My Profile</a>
+                    <a class="dropdown-item" href="settings.html">Settings</a>
+                    <a class="dropdown-item" href="login.html">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->
@@ -192,6 +194,7 @@
                     <li>
                         <a href="{{route('teacher.free_videos.view')}}"><span>Upload videos</span></a>
                     </li>
+                   
 
 
 
@@ -233,6 +236,9 @@
 <!-- Custom JS -->
 
 <script  src="{{asset('assets/admin/')}}/js/script.js"></script>
+
+
+
 @yield('js')
 
 </body>
