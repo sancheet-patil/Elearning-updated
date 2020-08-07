@@ -45,13 +45,13 @@
                 <div class="col-md-6">
                     <div class="content-box">
                         <h2>Login Account</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sedo<br> eiusmod tempor incididunt dolore.</p>
                     </div>
+                   
                     @if (Session::has('t_email_error'))
                         <p class="text-danger text-center">{{Session::get('t_email_error')}}</p>
                     @endif
 
-                    <form action="{{route('teacher.register.submit')}}" method="post" class="sl-form">
+                    <form action="{{route('teacher.register.submit')}}" method="post" class="sl-form" >
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
@@ -71,11 +71,16 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="" required>
+                            <input type="password" class="form-control" name="password" placeholder="" required id="password">
+                            <input type="checkbox" onclick="myFunction1()">Show Password
                         </div>
                         <div class="form-group">
                             <label>Confirm Password</label>
-                            <input type="password" class="form-control" name="c_password" placeholder="" required>
+                            <input type="password" class="form-control" name="c_password" placeholder="" required id="confirmpassword">
+                            <input type="checkbox" onclick="myFunction2()">Show Password
+                            @if (Session::has('t_password_error'))
+                             <p class="text-danger text-center">{{Session::get('t_password_error')}}</p>
+                           @endif
                         </div>
                         <button class="btn btn-filled btn-round"><span class="bh"></span> <span>Register</span></button>
                         <p class="notice">Already have an account? <a href="{{route('teacher.login')}}">SignIn Now</a></p>

@@ -48,6 +48,9 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
         //teacher
         Route::get('/teacher', 'Admin\AdminTeacherController@teachers')->name('admin.teacher');
+
+        Route::get('/teacher/search', 'Admin\AdminTeacherController@searchItem');
+
         Route::get('/teacher-view-verification-data/{id}', 'Admin\AdminTeacherController@view_veri_doc_file')->name('teacher.view.doc');
         Route::post('/teacher-view-verification-data-update', 'Admin\AdminTeacherController@view_veri_doc_file_update')->name('admin.teacher.acc.ver.update');
 

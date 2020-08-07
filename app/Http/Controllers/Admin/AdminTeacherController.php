@@ -49,5 +49,13 @@ class AdminTeacherController extends Controller
         }
     }
 
+    public function searchItem(Request $request)
+    {
+        $searchTerm =$request->get('search');
+        $teacher=DB::Table('Teacher')->where('name','like','%'.$searchTerm.'%')->paginate(5);
+    
+        return view('admin.teacher.teacherAccounts', ['teacher'=>$teacher]);
+
+     }
 
 }

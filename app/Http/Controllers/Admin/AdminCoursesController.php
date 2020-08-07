@@ -46,7 +46,7 @@ class AdminCoursesController extends Controller
         $delete_course->delete();
         return back()->with('success','Course Successfully Deleted');
     }
-
+       
 
 
 }

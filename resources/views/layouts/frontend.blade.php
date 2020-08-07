@@ -107,6 +107,25 @@
 <script src="{{asset('assets/frontend/')}}/js/jquery.nice-select.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxYLtelXg0PGjeTiFDtlN7nrH_47buDWo"></script>
 <script src="{{asset('assets/frontend/')}}/js/scripts.js"></script>
+<script>function myFunction1() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+<script>function myFunction2() {
+  var x = document.getElementById("confirmpassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 </body>
 
 <!-- Mirrored from demo.themeies.com/elearning/home-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jul 2020 14:41:32 GMT -->

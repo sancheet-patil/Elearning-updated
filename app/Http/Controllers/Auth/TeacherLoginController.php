@@ -48,6 +48,12 @@ class TeacherLoginController extends Controller
             $teacher->phone = $request->phone;
             $teacher->dob = $request->dob;
             $teacher->password = Hash::make($request->password);
+            $teacher->c_password = Hash::make($request->c_password);
+
+            if ($teacher->password!=$teacher->c_password) {
+                return redirect(route('teacher.register.submit'))->with('t_password_error','password is incorrect Please add proper password');
+  
+            }
             $teacher->status = 1;
             $teacher->save();
 
