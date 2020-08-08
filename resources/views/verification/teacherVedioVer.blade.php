@@ -139,28 +139,46 @@
 
                                     <div class="row">
                                         <div class="form-group col-md-4">
-                                            <label>Private Coaching </label>
-                                            <input type="text" name="private_coaching" class="form-control">
+                                            <label>Private Coaching </label><br>
+                                            Yes <input type="radio" name="private_coaching" id="p1" onclick="myFunction2()">&nbsp
+                                           No <input type="radio" name="private_coaching" id="p2" onclick="myFunction1()"><br>
+                                           <input type="text" placeholder="coaching name" class="form-control" id="coaching_name"><br>
+                                           <input type="text" placeholder="Address" class="form-control" id="coaching_address">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Government Teaching </label>
-                                            <input type="text" name="gov_teaching" class="form-control">
+                                            <label>Government Teaching </label><br>
+                                            Yes <input type="radio" name="Government_Teaching" id="g1" onclick="myFunction3()">&nbsp
+                                           No <input type="radio" name="Government_Teaching" id="g2" onclick="myFunction4()"><br>
+                                            <input type="text" placeholder="Government Teaching centre"  name="gov_teaching" class="form-control" id="gov_teaching" ><br>
+                                           <input type="text" placeholder="Address" class="form-control" id="gov_teaching_address">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>YouTube </label>
-                                            <input type="text" name="youtube" class="form-control">
+                                            <label>YouTube </label><br>
+                                            Yes <input type="radio" name="YouTube" onclick="myFunction6()">&nbsp
+                                           No <input type="radio" name="YouTube" onclick="myFunction5()"><br>
+                                            <input type="text" placeholder="Channel Name" name="youtube" id="youtube" class="form-control"><br>
+                                           <input type="text" placeholder="Channel Link" name="youtubechannel" id="youtubechannel" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Telegram Admin </label>
-                                            <input type="text" name="telegram_admin" class="form-control">
+                                            <label>Telegram Admin </label><br>
+                                            Yes <input type="radio" name="Telegram_Admin" onclick="myFunction7()">&nbsp
+                                           No <input type="radio" name="Telegram_Admin" onclick="myFunction8()"><br>
+                                            <input type="text" placeholder="Channel Name" name="telegram_admin" id="telegram_admin" class="form-control"><br>
+                                           <input type="text" placeholder="Channel Link" name="telegram_admin" id="telegram_channel" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Book Publish </label>
-                                            <input type="text" name="book_publish" class="form-control">
+                                            <label>Book Publish </label><br>
+                                            Yes <input type="radio" name="Book_Publish" onclick="myFunction10()">&nbsp
+                                           No <input type="radio" name="Book_Publish" onclick="myFunction9()"><br>
+                                            <input type="text" placeholder="Book Name" name="book_publish" id="book_publish" class="form-control"><br>
+                                           <input type="text" placeholder="Publisher" name="publishername" id="publishername" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Start New Teaching </label>
-                                            <input type="text" name="stat_new_teaching" class="form-control">
+                                            <label>Start New Teaching </label><br>
+                                            Yes <input type="radio" name="New_Teaching" onclick="myFunction11()">&nbsp
+                                           No <input type="radio" name="New_Teaching" onclick="myFunction12()"><br>
+                                            <input type="text" name="stat_new_teaching" id="stat_new_teaching" class="form-control"><br>
+                                           <input type="text" placeholder="coaching name" name="stat_new_teaching" id="stat_new_teaching_name" class="form-control">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Certification </label>
@@ -173,6 +191,21 @@
                                         <div class="form-group col-md-4">
                                             <label>Demo Video </label>
                                             <input type="file" name="video_file" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Which equipment you are having? </label><br>
+                                            laptop &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
+                                            PC &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
+                                            Projector &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
+                                            Digital Board &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            
+                                       
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            
+                                         
                                         </div>
 
                                         <div class="form-group col-md-2">
@@ -320,6 +353,66 @@
 <!-- Custom JS -->
 <script  src="{{asset('assets/admin/')}}/js/script.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+function myFunction1() {
+    document.getElementById("coaching_name").disabled = true;
+    document.getElementById("coaching_address").disabled = true;
+}
+function myFunction2() {
+    document.getElementById("coaching_name").disabled = false;
+    document.getElementById("coaching_address").disabled = false;
+}
+function myFunction3() {
+    document.getElementById("gov_teaching").disabled = false;
+    document.getElementById("gov_teaching_address").disabled = false;
+    
+}
+function myFunction4() {
+    document.getElementById("gov_teaching").disabled = true;
+    document.getElementById("gov_teaching_address").disabled = true;
+}
+
+</script>
+<script>
+function myFunction5() {
+    document.getElementById("youtube").disabled = true;
+    document.getElementById("youtubechannel").disabled = true;
+}
+function myFunction6() {
+    document.getElementById("youtube").disabled = false;
+    document.getElementById("youtubechannel").disabled = false;
+}
+function myFunction7() {
+    document.getElementById("telegram_admin").disabled = false;
+    document.getElementById("telegram_channel").disabled = false;
+    
+}
+function myFunction8() {
+    document.getElementById("telegram_admin").disabled = true;
+    document.getElementById("telegram_channel").disabled = true;
+}
+
+</script>
+<script>
+function myFunction9() {
+    document.getElementById("book_publish").disabled = true;
+    document.getElementById("publishername").disabled = true;
+}
+function myFunction10() {
+    document.getElementById("book_publish").disabled = false;
+    document.getElementById("publishername").disabled = false;
+}
+function myFunction11() {
+    document.getElementById("stat_new_teaching").disabled = false;
+    document.getElementById("stat_new_teaching_name").disabled = false;
+    
+}
+function myFunction12() {
+    document.getElementById("stat_new_teaching").disabled = true;
+    document.getElementById("stat_new_teaching_name").disabled = true;
+}
+
+</script>
 @include('layouts.message')
 </body>
 
