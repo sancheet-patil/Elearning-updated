@@ -54,6 +54,12 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/teacher-view-verification-data/{id}', 'Admin\AdminTeacherController@view_veri_doc_file')->name('teacher.view.doc');
         Route::post('/teacher-view-verification-data-update', 'Admin\AdminTeacherController@view_veri_doc_file_update')->name('admin.teacher.acc.ver.update');
 
+        //goals
+        Route::get('/goals', 'Admin\AdmingoalsController@goals')->name('admin.goals');
+        Route::post('/goal-save', 'Admin\AdmingoalsController@goal_save')->name('admin.goal.save');
+        Route::post('/goal-update', 'Admin\AdmingoalsController@goal_update')->name('admin.goal.update');
+        Route::post('/goal-delete', 'Admin\AdmingoalsController@goal_delete')->name('admin.goal.delete');
+
         //courses
         Route::get('/courses', 'Admin\AdminCoursesController@courses')->name('admin.courses');
         Route::post('/courses-save', 'Admin\AdminCoursesController@course_save')->name('admin.course.save');

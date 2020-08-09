@@ -186,6 +186,9 @@
                             <li><a href="{{route('admin.teacher_assign_subCourses.viewRequest')}}">Requested sub-Courses</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{route('admin.goals')}}"><span>Create Goal</span></a>
+                    </li>
 
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
                         <a href="#"><span>Create Courses</span> <span class="menu-arrow"></span></a>
