@@ -120,6 +120,7 @@ Route::prefix('teacher')->group(function (){
     Route::post('/Request-subcourses-approve','Teacher\TeachersubCourseRequest@request')->name('teacher.subcourses.request');
     
     Route::get('getSubcourse/{id}','Teacher\TeachersubCourseRequest@getSubcourse');
+    Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
     
 });
 

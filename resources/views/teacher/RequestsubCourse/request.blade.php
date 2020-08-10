@@ -40,7 +40,7 @@
                      ?>
                   <div class="col-md-10">
 
-                     <select name="goal_name" class="form-control">
+                     <select id="goal_id" name="goal_name" class="form-control">
                         <option>-- Select goal name --</option>
                         @foreach($goals as $goal)
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
@@ -74,6 +74,54 @@
 @stop
 
 @section('js')
+
+<script type='text/javascript'>
+   $(document).ready(function(){
+   
+     // Department Change
+     $('#goal_id').change(function(){
+       
+        // Department id
+        var id = $(this).val();
+   
+        // Empty the dropdown
+        $('#course_id').find('option').remove();
+        // AJAX request 
+        $.ajax({
+          url: '{{url('teacher/getcourse/')}}'+'/'+id,
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+   
+            var len = 0;
+            if(response['data'] != null){
+              len = response['data'].length;
+              
+            }
+   
+            if(len > 0){
+              // Read data and create <option >
+              for(var i=0; i<len; i++){
+   
+                var id = response['data'][i].id;
+                var name = response['data'][i].course_name;
+   
+                var option = "<option value='"+id+"'>"+name+"</option>"; 
+   
+                $("#course_id").append(option); 
+              }
+            }
+   
+          }
+       });
+     });
+   
+   });
+   
+</script>
+
+
+
 <script type='text/javascript'>
    $(document).ready(function(){
    
@@ -120,48 +168,4 @@
 </script>
 
 
-<script type='text/javascript'>
-   $(document).ready(function(){
-   
-     // Department Change
-     $('#goal_id').change(function(){
-       
-        // Department id
-        var id = $(this).val();
-   
-        // Empty the dropdown
-        $('#course_id').find('option').remove();
-        // AJAX request 
-        $.ajax({
-          url: '{{url('teacher/getcourse/')}}'+'/'+id,
-          type: 'get',
-          dataType: 'json',
-          success: function(response){
-   
-            var len = 0;
-            if(response['data'] != null){
-              len = response['data'].length;
-              
-            }
-   
-            if(len > 0){
-              // Read data and create <option >
-              for(var i=0; i<len; i++){
-   
-                var id = response['data'][i].id;
-                var name = response['data'][i].course_name;
-   
-                var option = "<option value='"+id+"'>"+name+"</option>"; 
-   
-                $("#course_id").append(option); 
-              }
-            }
-   
-          }
-       });
-     });
-   
-   });
-   
-</script>
 @stop
