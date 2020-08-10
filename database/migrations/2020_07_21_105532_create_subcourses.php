@@ -15,13 +15,19 @@ class CreateSubcourses extends Migration
     {
         Schema::create('subcourses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('goal_id');
+            $table->foreignId('course_id');
             $table->string('subCourses_name',100);
-            $table->bigInteger('course_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('course_id')
             ->references('id')
             ->on('courses')
+            ->onDelete('cascade');
+
+            $table->foreign('goal_id')
+            ->references('id')
+            ->on('goals')
             ->onDelete('cascade');
     
         });

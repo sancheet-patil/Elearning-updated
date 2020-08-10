@@ -15,6 +15,7 @@ class CreateFreeVideos extends Migration
     {
         Schema::create('free_videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('goal_id');
             $table->foreignId('teacher_id');
             $table->foreignId('subcourse_id');
             $table->foreignId('course_id');

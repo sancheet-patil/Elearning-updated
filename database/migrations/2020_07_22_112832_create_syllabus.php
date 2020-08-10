@@ -15,6 +15,7 @@ class CreateSyllabus extends Migration
     {
         Schema::create('syllabus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('goal_id');
             $table->foreignId('course_id');
             $table->foreignId('subCourse_id');
             $table->text('chapterName');
@@ -28,6 +29,11 @@ class CreateSyllabus extends Migration
             $table->foreign('course_id')
             ->references('id')
             ->on('courses')
+            ->onDelete('cascade');
+
+            $table->foreign('goal_id')
+            ->references('id')
+            ->on('goals')
             ->onDelete('cascade');
             
 

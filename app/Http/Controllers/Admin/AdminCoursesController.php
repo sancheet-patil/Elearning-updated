@@ -22,6 +22,7 @@ class AdminCoursesController extends Controller
         {
             $new_course = new course();
             $new_course->course_name = $request->course_name;
+            $new_course->goal_id = $request->goal_name;
             $new_course->save();
             return back()->with('success','Course Successfully Created');
         }
@@ -47,6 +48,11 @@ class AdminCoursesController extends Controller
         return back()->with('success','Course Successfully Deleted');
     }
        
-
+    public function getCourse($goal_id)
+    {
+        $courses_names['data']= course::where('goal_id',$goal_id)->get();
+        echo json_encode($courses_names);
+        exit;
+    }
 
 }

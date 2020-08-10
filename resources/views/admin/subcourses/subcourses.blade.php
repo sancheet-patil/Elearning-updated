@@ -4,7 +4,7 @@
    <div class="row">
       <div class="col-sm-12">
          <h3 class="page-title">Sub-Courses</h3>
-         <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#createnewcourses">Create New Course</button>
+         <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#createnewcourses">Create New Sub-Course</button>
       </div>
    </div>
 </div>
@@ -20,15 +20,19 @@
                <table class="table table-hover table-center mb-0">
                   <thead>
                      <tr>
-                        <th>Sub-Course Name</th>
-                        <th>Course name</th>
+                        <th> Goal Name</th>
+                        <th>Course Name</th>
+                        <th>Sub-Course name</th>
                         <th class="text-right">Action</th>
                      </tr>
                   </thead>
                   <tbody>
                      @foreach($all_subcourse as $course)
                      <tr>
-                         <?php $cour_name= \App\course::find($course->course_id);?>
+                         <?php $cour_name= \App\course::find($course->course_id);
+                              $goal_name = \App\goals::find($course->goal_id)
+                         ?>
+                         <td>{{$goal_name->goal_name}}</td>
                         <td>{{$cour_name->course_name}}</td>
                         <td>{{$course->subCourses_name}}</td>
                         <td class="text-right">
@@ -110,16 +114,23 @@
             <div class="modal-body">
                <div class="form-group row">
                   <?php 
-                     $courses= \App\course::all();
+                     $goals= \App\goals::all();
                      ?>
                   <div class="col-md-10">
 
-                     <select name="course_name" class="form-control">
-                        <option>-- Select Course name --</option>
-                        @foreach($courses as $course)
-                        <option value="{{$course->id}}">{{$course->course_name}}</option>
+                     <select id="goal_id" name="goal_name" class="form-control">
+                        <option>-- Select Goal name --</option>
+                        @foreach($goals as $goal)
+                        <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
                      </select>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-10">
+                     <select id="course_id" name="course_name" class="form-control">
+                        <option value="-1">Course Name</option>
+                     </select>     
                   </div>
                </div>
                <div class="form-group">
@@ -135,4 +146,51 @@
       </div>
    </div>
 </div>
+@stop
+
+@section('js')
+<script type='text/javascript'>
+   $(document).ready(function(){
+   
+     // Department Change
+     $('#goal_id').change(function(){
+       
+        // Department id
+        var id = $(this).val();
+   
+        // Empty the dropdown
+        $('#course_id').find('option').remove();
+        // AJAX request 
+        $.ajax({
+          url: '{{url('admin/getcourse/')}}'+'/'+id,
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+   
+            var len = 0;
+            if(response['data'] != null){
+              len = response['data'].length;
+              
+            }
+   
+            if(len > 0){
+              // Read data and create <option >
+              for(var i=0; i<len; i++){
+   
+                var id = response['data'][i].id;
+                var name = response['data'][i].course_name;
+   
+                var option = "<option value='"+id+"'>"+name+"</option>"; 
+   
+                $("#course_id").append(option); 
+              }
+            }
+   
+          }
+       });
+     });
+   
+   });
+   
+</script>
 @stop
