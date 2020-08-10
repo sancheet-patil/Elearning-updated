@@ -17,6 +17,7 @@ class AdminControllersyllabus extends Controller
     {
 
         $syllabus=new syllabus();
+        $syllabus->goal_id=$request->goal_name;
         $syllabus->course_id=$request->course_name;
         $syllabus->subCourse_id= $request->subcourse_name;
         $syllabus->chapterName =$request->chapterName;

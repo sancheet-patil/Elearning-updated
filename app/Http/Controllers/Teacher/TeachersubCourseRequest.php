@@ -40,4 +40,10 @@ class TeachersubCourseRequest extends Controller
         exit;
     }
 
+    public function getCourse($goal_id)
+    {
+        $course['data'] = \DB::table('courses')->where('goal_id',$goal_id)->get();
+        echo json_encode($course);
+        exit;
+    }
 }

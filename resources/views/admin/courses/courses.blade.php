@@ -23,6 +23,7 @@
                         <table class="table table-hover table-center mb-0">
                             <thead>
                             <tr>
+                                <th> Goal Name </th>
                                 <th>Course Name</th>
                                 <th class="text-right">Action</th>
                             </tr>
@@ -30,6 +31,7 @@
                             <tbody>
                             @foreach($all_course as $course)
                                 <tr>
+                                    <td>{{\App\goals::where('id',$course->goal_id)->first()->goal_name}}</td>
                                     <td>{{$course->course_name}}</td>
                                     <td class="text-right">
                                         <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editcourse{{$course->id}}"><i class="fa fa-edit"></i> </button>
@@ -118,6 +120,20 @@
                 <form action="{{route('admin.course.save')}}" method="post">
                     @csrf
                 <div class="modal-body">
+                <div class="form-group row">
+                  <?php 
+                     $courses= \App\goals::all();
+                     ?>
+                  <div class="col-md-10">
+
+                     <select name="goal_name" class="form-control">
+                        <option>-- Select Course name --</option>
+                        @foreach($courses as $course)
+                        <option value="{{$course->id}}">{{$course->goal_name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
                     <div class="form-group">
                         <label>Course Name</label>
                         <input type="text" class="form-control" name="course_name" required>

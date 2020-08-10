@@ -84,6 +84,9 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::post('/addSubTopic','Admin\AdminControllersyllabus@addSubtopic')->name('admin.syllabus.addSubtopic'); 
         Route::put('/update-syllabus-sub_chapter','Admin\AdminControllersyllabus@updatesubchapter')->name('admin.syllabus.updatesubChapter');
         Route::delete('/update-syllabus-sub_chapter-delete','Admin\AdminControllersyllabus@deleteSubchapter')->name('admin.syllabus.deleteSubchapter');
+
+
+        Route::get('getcourse/{id}','Admin\AdminCoursesController@getCourse');
     });
 });
 
@@ -115,7 +118,9 @@ Route::prefix('teacher')->group(function (){
     //Request sub-courses
     Route::get('/Request-subcourses','Teacher\TeachersubCourseRequest@view')->name('teacher.subcourses.view');
     Route::post('/Request-subcourses-approve','Teacher\TeachersubCourseRequest@request')->name('teacher.subcourses.request');
+    
     Route::get('getSubcourse/{id}','Teacher\TeachersubCourseRequest@getSubcourse');
+    
 });
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {

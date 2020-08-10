@@ -20,6 +20,17 @@ class CreateTeachersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->integer('status')->default(0);
+            $table->text('private_coaching')->nullable();
+            $table->text('gov_teaching')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('telegram_admin')->nullable();
+            $table->text('book_publish')->nullable();
+            $table->text('stat_new_teaching')->nullable();
+            $table->text('certification')->nullable();
+            $table->text('doc_file')->nullable();
+            $table->text('video_file')->nullable();
+            $table->text('profile_image')->nullable();
             $table->timestamps();
         });
     }

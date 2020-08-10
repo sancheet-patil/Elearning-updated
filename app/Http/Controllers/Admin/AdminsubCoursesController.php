@@ -20,6 +20,7 @@ class AdminsubCoursesController extends Controller
         if($subcourse_exist == null)
         {
             $new_course = new subcourses();
+            $new_course->goal_id = $request->goal_name;
             $new_course->course_id=$request->course_name;
             $new_course->subCourses_name = $request->subcourse_name;
             $new_course->save();

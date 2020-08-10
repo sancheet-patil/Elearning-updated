@@ -180,16 +180,24 @@
             @csrf
             @method('POST')
             <div class="modal-body">
-               <div class="form-group row">
+            <div class="form-group row">
                   <div class="col-md-10">
                      <?php 
-                        $courses= \App\course::all();
+                        $goals= \App\goals::all();
                         ?>
+                       
+                     <select id="goal_id" name="goal_name" class="form-control">
+                     <option value="-1">Select Goal</option>
+                        @foreach($goals as $goal)
+                        <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-10">
                      <select id="course_id1" name="course_name" class="form-control">
                         <option>-- Select Course name --</option>
-                        @foreach($courses as $course)
-                        <option value="{{$course->id}}">{{$course->course_name}}</option>
-                        @endforeach
                      </select>
                   </div>
                </div>
@@ -297,6 +305,53 @@
                 var option = "<option value='"+id+"'>"+name+"</option>"; 
    
                 $("#subCourse_id1").append(option); 
+              }
+            }
+   
+          }
+       });
+     });
+   
+   });
+   
+</script>
+
+
+
+<script type='text/javascript'>
+   $(document).ready(function(){
+   
+     // Department Change
+     $('#goal_id').change(function(){
+       
+        // Department id
+        var id = $(this).val();
+   
+        // Empty the dropdown
+        $('#course_id1').find('option').not(':first').remove();
+        // AJAX request 
+        $.ajax({
+          url: '{{url('admin/getcourse/')}}'+'/'+id,
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+   
+            var len = 0;
+            if(response['data'] != null){
+              len = response['data'].length;
+              
+            }
+   
+            if(len > 0){
+              // Read data and create <option >
+              for(var i=0; i<len; i++){
+   
+                var id = response['data'][i].id;
+                var name = response['data'][i].course_name;
+   
+                var option = "<option value='"+id+"'>"+name+"</option>"; 
+   
+                $("#course_id1").append(option); 
               }
             }
    
