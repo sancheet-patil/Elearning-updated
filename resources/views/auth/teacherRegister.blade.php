@@ -78,9 +78,9 @@
                             <label>Confirm Password</label>
                             <input type="password" class="form-control" name="c_password" placeholder="" required id="confirmpassword">
                             <input type="checkbox" onclick="myFunction2()">Show Password
-                            @if (Session::has('t_password_error'))
-                             <p class="text-danger text-center">{{Session::get('t_password_error')}}</p>
-                           @endif
+                            
+                             <p class="text-danger text-center"></p>
+                          
                         </div>
                         <button class="btn btn-filled btn-round"><span class="bh"></span> <span>Register</span></button>
                         <p class="notice">Already have an account? <a href="{{route('teacher.login')}}">SignIn Now</a></p>

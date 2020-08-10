@@ -34,7 +34,7 @@
                   <?php 
                      $courses= \App\course::all();
                      ?>
-                  <select id="course_id" name="course_name" class="form-control">
+                  <select id="course_id" name="course_name" class="form-control" >
                      <option value="-1">Select Course</option>
                      @foreach($courses as $course)
                      <option value="{{$course->id}}">{{$course->course_name}}</option>
@@ -50,7 +50,7 @@
                </div>
             </div>
             <div class="form-group">
-               <input name="video_file" id="poster" type="file" class="form-control"><br/>
+               <input name="video_file" id="poster" type="file" class="form-control" required><br/>
                <div class="progress">
                   <div class="progress bar progress-lg">
                      <div class="progress-bar bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
