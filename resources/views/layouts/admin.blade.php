@@ -187,6 +187,9 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{route('admin.goals')}}"><span>Teacher Groups</span></a>
+                    </li>
+                    <li>
                         <a href="{{route('admin.goals')}}"><span>Create Goal</span></a>
                     </li>
 

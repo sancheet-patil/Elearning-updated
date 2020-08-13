@@ -111,6 +111,13 @@ Route::prefix('teacher')->group(function (){
 
 
 
+    //teacher groups
+    Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
+    Route::post('/group-save', 'Teacher\TeacherGroupController@group_save')->name('teacher.group.save');
+    Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
+    Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
+
+
     //posting free_videos
     Route::post('/Upload-free_videos','Teacher\uploadVideoController@save')->name('teacher.free_videos.save');
     Route::get('/free_videos','Teacher\uploadVideoController@view')->name('teacher.free_videos.view');
