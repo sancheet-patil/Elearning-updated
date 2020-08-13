@@ -17,3 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group([
+    'prefix' => 'student'
+], function () {
+    Route::post('login', 'API\studentApicontroller@login');
+    Route::post('signup', 'API\studentApicontroller@signup');
+  
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'API\studentApicontroller@logout');
+        Route::get('user', 'API\studentApicontroller@user');
+    });
+});
+
+Route::get('goals','API\coursesController@goals');
+
+Route::group(['prefix'=>'courses'],function(){
+        Route::get('all_courses','API\coursesController@courses');
+        Route::get('course/{id}','API\coursesController@course');
+});
+
+Route::group(['prefix'=>'subcourses'],function(){
+    Route::get('all_subcourses','API\subcoursesController@subcourses');
+    Route::get('subcourse/{id}','API\subcoursesController@subcourse');
+});

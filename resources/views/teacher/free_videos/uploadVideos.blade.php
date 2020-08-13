@@ -30,21 +30,29 @@
          <form method="POST" action="{{ route('teacher.free_videos.save')  }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
-               <div class="col-md-10">
                   <?php 
-                     $courses= \App\course::all();
+                     $goals= \App\goals::all();
                      ?>
-                  <select id="course_id" name="course_name" class="form-control" >
-                     <option value="-1">Select Course</option>
-                     @foreach($courses as $course)
-                     <option value="{{$course->id}}">{{$course->course_name}}</option>
-                     @endforeach
-                  </select>
+                  <div class="col-md-10">
+
+                     <select id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
+                        <option>Select Goals</option>
+                        @foreach($goals as $goal)
+                        <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
                </div>
-            </div>
+               <div class="form-group row">
+                  <div class="col-md-10"> 
+                     <select id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
+                     <option value="-1">Select Course</option>
+                     </select>
+                  </div>
+               </div>
             <div class="form-group row">
                <div class="col-md-10">
-                  <select id="subCourse_id" name="subcourse_name" class="form-control">
+                  <select id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                      <option value="-1">Select SubCourse</option>
                   </select>
                </div>
@@ -155,14 +163,54 @@
    })();
 </script>
 <script type='text/javascript'>
-   $(document).ready(function(){
-   
      // Department Change
-     $('#course_id').change(function(){
-       
+   function getCourse(course){
+       //alert('Value:'+course.options[course.selectedIndex].value);
+        // Department id
+        var id = course.options[course.selectedIndex].value;
+   
+        // Empty the dropdown
+        $('#course_id').find('option').not(':first').remove();
+        // AJAX request 
+        $.ajax({
+          url: '{{url('teacher/getcourse/')}}'+'/'+id,
+          type: 'get',
+          dataType: 'json',
+          success: function(response){
+   
+            var len = 0;
+            if(response['data'] != null){
+              len = response['data'].length;
+              
+            }
+   
+            if(len > 0){
+              // Read data and create <option >
+              for(var i=0; i<len; i++){
+   
+                var id = response['data'][i].id;
+                var name = response['data'][i].course_name;
+   
+                var option = "<option value='"+id+"'>"+name+"</option>"; 
+   
+                $("#course_id").append(option);  
+              }
+            }
+            document.getElementById("course_id").disabled = false;
+          }
+       });
+   }
+   
+</script>
+
+
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+   
+   $("#course_id").change(function(){
         // Department id
         var id = $(this).val();
-   
         // Empty the dropdown
         $('#subCourse_id').find('option').remove();
         // AJAX request 
@@ -193,9 +241,10 @@
    
           }
        });
-     });
-   
+       document.getElementById("subCourse_id").disabled = false;
    });
+    });
    
 </script>
+
 @stop
