@@ -13,6 +13,10 @@
   border-radius: 10px; /* 5px rounded corners */
 
 }
+
+.san{
+   background-color:#000;
+}
 </style>
 @stop
 
@@ -40,8 +44,8 @@
                      ?>
                   <div class="col-md-10">
 
-                     <select id="goal_id" name="goal_name" class="form-control">
-                        <option>-- Select goal name --</option>
+                     <select id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
+                        <option>Select Goals</option>
                         @foreach($goals as $goal)
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
@@ -50,16 +54,16 @@
                </div>
                <div class="form-group row">
                   <div class="col-md-10"> 
-                     <select id="course_id" name="course_name" class="form-control">
+                     <select id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
                      <option value="-1">Select Course</option>
                      </select>
                   </div>
                </div>
                <div class="form-group row">
                   <div class="col-md-10">
-                     <select id="subCourse_id" name="subcourse_name" class="form-control">
+                      <select id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                         <option value="-1">Select SubCourse</option>
-                     </select>     
+                     </select>    
                   </div>
                </div>
             </div>
@@ -76,16 +80,14 @@
 @section('js')
 
 <script type='text/javascript'>
-   $(document).ready(function(){
-   
      // Department Change
-     $('#goal_id').change(function(){
-       
+   function getCourse(course){
+       //alert('Value:'+course.options[course.selectedIndex].value);
         // Department id
-        var id = $(this).val();
+        var id = course.options[course.selectedIndex].value;
    
         // Empty the dropdown
-        $('#course_id').find('option').remove();
+        $('#course_id').find('option').not(':first').remove();
         // AJAX request 
         $.ajax({
           url: '{{url('teacher/getcourse/')}}'+'/'+id,
@@ -108,29 +110,24 @@
    
                 var option = "<option value='"+id+"'>"+name+"</option>"; 
    
-                $("#course_id").append(option); 
+                $("#course_id").append(option);  
               }
             }
-   
+            document.getElementById("course_id").disabled = false;
           }
        });
-     });
-   
-   });
+   }
    
 </script>
 
 
 
 <script type='text/javascript'>
-   $(document).ready(function(){
+    $(document).ready(function(){
    
-     // Department Change
-     $('#course_id').change(function(){
-       
+   $("#course_id").change(function(){
         // Department id
         var id = $(this).val();
-   
         // Empty the dropdown
         $('#subCourse_id').find('option').remove();
         // AJAX request 
@@ -161,9 +158,9 @@
    
           }
        });
-     });
-   
+       document.getElementById("subCourse_id").disabled = false;
    });
+    });
    
 </script>
 

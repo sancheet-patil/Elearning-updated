@@ -22,6 +22,7 @@ class uploadVideoController extends Controller
             $image->move($directory,$imageName);
             $teacher_videos->video_file = $imgUrl1;
             $teacher_videos->teacher_id=Auth::guard('teacher')->user()->id;
+            $teacher_videos->goal_id = $request->goal_name;
             $teacher_videos->subcourse_id = $request->subcourse_name;
             $teacher_videos->course_id = $request->course_name;
             $teacher_videos->save();
