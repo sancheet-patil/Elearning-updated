@@ -4,19 +4,19 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\courses;
+use App\course;
 
 class coursesController extends Controller
 {
     public function courses()
     {
-        $courses['data']=courses::all();
+        $courses['data']=course::all();
         return response()->json($courses);
     }
 
     public function course($id)
     {
-        $course['data']=courses::where('goal_id',$id)->get();
+        $course['data']=course::where('goal_id',$id)->get();
         return response()->json($course);
     }
 }
