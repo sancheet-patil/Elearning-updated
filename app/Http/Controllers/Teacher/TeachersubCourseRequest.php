@@ -12,7 +12,7 @@ class TeachersubCourseRequest extends Controller
 
     public function view()
     {
-        return view('teacher.RequestSubCourse.request');
+        return view('teacher.RequestsubCourse.request');
     }
 
     public function request(Request $request)
