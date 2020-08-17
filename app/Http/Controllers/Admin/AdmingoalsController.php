@@ -11,7 +11,7 @@ class AdmingoalsController extends Controller
     public function goals()
     {
         $all_goals = goals::orderBy('id','desc')->paginate(20);
-        return view('admin.goals.goals',compact('all_goals'));
+        return view('admin.Goals.goals',compact('all_goals'));
     }
     public function goal_save(Request $request)
     {
