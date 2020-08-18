@@ -182,6 +182,9 @@
                         <a href="{{route('teacher.dashboard')}}"><span>Dashboard</span></a>
                     </li>
                     <li>
+                        <a href="{{route('teacher.group')}}"><span>Groups</span></a>
+                    </li>
+                    <li>
                         <a href="{{route('teacher.subcourses.view')}}"><span>Request SubCourse</span></a>
                     </li>
                     <!--<li class="submenu">

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'FrontendController@index')->name('front');
+Route::get('/blog', 'blogcontroller@index')->name('blog');
 
 Auth::routes();
 
@@ -109,6 +110,13 @@ Route::prefix('teacher')->group(function (){
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
+
+
+    //teacher groups
+    Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
+    Route::post('/group-save', 'Teacher\TeacherGroupController@group_save')->name('teacher.group.save');
+    Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
+    Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
 
 
     //posting free_videos
