@@ -196,6 +196,9 @@
                     <li>
                         <a href="{{route('teacher.free_videos.view')}}"><span>Upload videos</span></a>
                     </li>
+                   <li>
+                        <a href="{{route('blog.addblog')}}"><span>Blog</span></a>
+                    </li>
                    
 
 

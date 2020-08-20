@@ -23,6 +23,7 @@ class blogcontroller extends Controller
      */
     public function create()
     {
+        return view('singleblog');
         //
     }
 

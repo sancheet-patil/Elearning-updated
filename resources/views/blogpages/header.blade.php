@@ -16,7 +16,7 @@
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{route('front')}}" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1; color:#fff">HOME</a>
+    font-family:sans-serif; line-height: 1;">HOME</a>
                                 </li>
                                 <li class="nav-item" style="">
                                     <a class="nav-link" href="about.html" style="font-size: 13px; 

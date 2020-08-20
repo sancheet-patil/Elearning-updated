@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index')->name('front');
 Route::get('/blog', 'blogcontroller@index')->name('blog');
+Route::get('/singleblog', 'blogcontroller@create')->name('singleblog');
 
 Auth::routes();
 
@@ -130,6 +131,15 @@ Route::prefix('teacher')->group(function (){
     Route::get('getSubcourse/{id}','Teacher\TeachersubCourseRequest@getSubcourse');
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
     
+});
+//for blog
+Route::prefix('blog')->group(function (){
+ Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
+ Route::get('/createblog','Teacher\add_blogcontroller@create')->name('blog.createblog');
+ Route::post('/createblog','Teacher\add_blogcontroller@store')->name('blog.store');
+ Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('blog.edit');
+ Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
+ Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
 });
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
