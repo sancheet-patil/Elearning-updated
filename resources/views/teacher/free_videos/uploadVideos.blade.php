@@ -75,10 +75,9 @@
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <video width="320" height="240" controls>
-         <source src="{{asset($video->video_file)}}" type="video/mp4">
-         Your browser does not support the video tag.
-      </video>
+      <iframe width="320" height="240"
+            src="{{$video->video_file}}">
+      </iframe>
       <div class="card-header">
          <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}
          </h5>
@@ -118,8 +117,8 @@
 @endforeach
 @stop
 @section('js')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript">
    /*function validate(formData, jqForm, options) {
        var form = jqForm[0];
@@ -127,7 +126,7 @@
            alert('File not found');
            return false;
        }
-   }*/
+   }
    
    (function() {
    
@@ -136,7 +135,6 @@
    var status = $('#status');
    
    $('form').ajaxForm({
-       beforeSubmit: validate,
        beforeSend: function() {
            status.empty();
            var percentVal = '0%';
@@ -160,7 +158,7 @@
        }
    });
     
-   })();
+   })();*/
 </script>
 <script type='text/javascript'>
      // Department Change
@@ -202,9 +200,6 @@
    }
    
 </script>
-
-
-
 <script type='text/javascript'>
     $(document).ready(function(){
    

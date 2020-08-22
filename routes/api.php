@@ -33,12 +33,14 @@ Route::group([
 
 Route::get('goals','API\coursesController@goals');
 
+Route::get('free_videos','API\freevideosController@videos');
+
 Route::group(['prefix'=>'courses'],function(){
         Route::get('all_courses','API\coursesController@courses');
         Route::get('course/{id}','API\coursesController@course');
 });
 
 Route::group(['prefix'=>'subcourses'],function(){
-    Route::get('all_subcourses','API\subcoursesController@subcourses');
-    Route::get('subcourse/{id}','API\subcoursesController@subcourse');
+    Route::get('all_subcourses','API\subcourseController@subcourses');
+    Route::get('subcourse/{id}','API\subcourseController@subcourse');
 });
