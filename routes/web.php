@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index')->name('front');
 Route::get('/blog', 'blogcontroller@index')->name('blog');
-Route::get('/singleblog', 'blogcontroller@create')->name('singleblog');
+Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
+Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
+
 
 Auth::routes();
 
@@ -90,7 +92,26 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
         Route::get('getcourse/{id}','Admin\AdminCoursesController@getCourse');
     });
+
+
+    
 });
+Route::get('getSubcourse/{id}','Teacher\admin_blogController@getSubcourse');
+Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
+
+    //For Admin Blog
+Route::prefix('Adminblog')->group(function (){
+ Route::get('/Adminblog','Admin\admin_blogController@index')->name('Adminblog.Adminblog');
+ Route::get('/createblog','Admin\admin_blogController@create')->name('Adminblog.createblog');
+ Route::post('/createblog','Admin\admin_blogController@store')->name('Adminblog.store');
+ Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('Adminblog.edit');
+ Route::post('/update/{id}','Admin\admin_blogController@update')->name('Adminblog.update');
+ Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('Adminblog.delete');
+ Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('Adminblog.singleblog');
+
+
+});
+
 
 
 
@@ -132,7 +153,10 @@ Route::prefix('teacher')->group(function (){
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
     
 });
-//for blog
+//for blog courses and subcourses
+Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
+Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
+  //for blog  
 Route::prefix('blog')->group(function (){
  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
  Route::get('/createblog','Teacher\add_blogcontroller@create')->name('blog.createblog');
@@ -140,6 +164,9 @@ Route::prefix('blog')->group(function (){
  Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('blog.edit');
  Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
  Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
+ Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('blog.singleblog');
+
+
 });
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {

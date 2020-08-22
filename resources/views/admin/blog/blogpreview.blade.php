@@ -37,7 +37,7 @@
                      </p>
                   </div>
                </div>
-               @endforeach
+               
                <div class="navigation-top">
                   <div class="d-sm-flex justify-content-between text-center">
                      <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4
@@ -95,9 +95,9 @@
                      </div>
                   </div>
                </div>
-              @include('blogpages.comment')
+               @include('blogpages.comment')
             </div>
-            
+            @endforeach
          
             @include('blogpages.side')
          </div>

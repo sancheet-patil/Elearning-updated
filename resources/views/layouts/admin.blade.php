@@ -208,6 +208,11 @@
                     <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
                         <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
                     </li>
+                    <li class="">
+                        <a href="{{route('Adminblog.Adminblog')}}"><span>Blog</span></a>
+                    </li>
+
+
 
                     
 

@@ -29,9 +29,12 @@
 
 <body>
     
- @include('blogpages.header')
- @yield('content')
- @include('blogpages.footer')
+@include('blogpages.header')
+
+
+@yield('content')
+
+@include('blogpages.footer')
 
  
  <!--::header part start::-->

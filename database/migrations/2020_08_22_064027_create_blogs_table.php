@@ -15,11 +15,14 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->integer('teacher_id');
             $table->integer('goal');
+            $table->integer('course');
+            $table->integer('subcourse');
             $table->string('title');
             $table->text('content');
             $table->string('image');
-            $table->date('date');
+            
             $table->timestamps();
         });
     }

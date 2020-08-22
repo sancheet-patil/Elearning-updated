@@ -1,31 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\teacher;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\blog;
-use Illuminate\Support\Facades\Auth;
 
-class add_blogcontroller extends Controller
+class admin_blogController extends Controller
 {
+	public function index()
+	{
     
-    public function index()
-    {  
-        $a=Auth::guard('teacher')->user()->id;
-        $blog=blog::all()->where('teacher_id','=',$a);
-        return view('teacher/blog/addblog',compact('blog'));
-        //
-    }
+		$blog=blog::all();
 
-   
-    public function create()
-    {
-        return view('teacher/blog/createblog');
-        //
-    }
-
-        public function store(Request $request){
+        return view('admin.blog.blog',compact('blog'));
+       
+	}
+	public function create()
+	{
+		return view('admin.blog.newblog');
+	}
+	public function store(Request $request){
          $this->validate($request,[
             'teacher_id'=>'required',
             'goal'=>'required',
@@ -33,7 +28,7 @@ class add_blogcontroller extends Controller
             'subcourse'=>'required',
             'title'=>'required',
             'content'=>'required',
-            'image'=>'required',
+            'image'=>'required'
             
 
 
@@ -43,7 +38,6 @@ class add_blogcontroller extends Controller
         $blog->goal=$request->goal;
         $blog->course=$request->course;
         $blog->subcourse=$request->subcourse;
-        
         $blog->title=$request->title;
         $blog->content=$request->content;
         
@@ -62,7 +56,9 @@ class add_blogcontroller extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('blog/addblog')->with('success','Your Blog Post Sucessfully');
+         return redirect('Adminblog/Adminblog')->with('successMsg','Your Blog Post Sucessfully');
+       
+        //return redirect('');
         //$blog->save();
          //
 
@@ -71,7 +67,7 @@ class add_blogcontroller extends Controller
     {
 
       $blog=blog::find($id);
-      return view('teacher/blog/updateblog',compact('blog'));  
+      return view('admin/blog/update',compact('blog'));  
         //
     }
 
@@ -105,25 +101,26 @@ class add_blogcontroller extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('blog/addblog');
+        return redirect('Adminblog/Adminblog');
        
         //
     }
-
     public function delete($id)
     {
         blog::find($id)->delete();
-        return redirect('blog/addblog');
+        return redirect('Adminblog/Adminblog');
         //
     }
-     public function singleblog($id)
+    public function singleblog($id)
     {
         $blog=blog::all()->where('id','=',$id);
-        return view('teacher.blog.teacherblogpreview',compact('blog'));
+        return view('admin.blog.blogpreview',compact('blog'));
         //
     }
     
-    public function getCourse($goal_id)
+    
+    
+	public function getCourse($goal_id)
     {
         $course['data'] = \DB::table('courses')->where('goal_id',$goal_id)->get();
         echo json_encode($course);
@@ -135,5 +132,5 @@ class add_blogcontroller extends Controller
         echo json_encode($subcourse);
         exit;
     }
-
+    //
 }
