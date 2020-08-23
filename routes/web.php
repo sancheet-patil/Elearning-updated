@@ -37,6 +37,16 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/teacher-playfree-videos/{course_id}/{subcourse_id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
         Route::delete('/teacher-playerfree-videos-delete','Admin\FreevideosController@delete')->name('admin.free_videos.delete');
 
+
+
+
+
+        //Assiging Group Admin 
+        Route::put('/teacher-GroupName-approve','Admin\AdminTeacherGroupController@approve')->name('admin.teacher_GroupName.approve');
+        Route::delete('/teacher-GroupName-delete','Admin\AdminTeacherGroupController@delete')->name('admin.teacher_GroupName.delete');
+        Route::put('/teacher-GroupName-disapprove','Admin\AdminTeacherGroupController@disapprove')->name('admin.teacher_GroupName.disapprove');
+        Route::post('/teacher-GroupAdminName-save', 'Admin\AdminTeacherGroupController@Admin')->name('Admin.GroupAdmin.save');
+
         //Assiging Sub-courses to teacher
         Route::get('/teacher-subCourses','Admin\AdminTeacherSubCourses@viewApproved')->name('admin.teacher_assign_subCourses.view');
         Route::get('/teacher-subCoursesRequest','Admin\AdminTeacherSubCourses@viewRequest')->name('admin.teacher_assign_subCourses.viewRequest');
@@ -53,6 +63,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
         Route::get('/teacher-view-verification-data/{id}', 'Admin\AdminTeacherController@view_veri_doc_file')->name('teacher.view.doc');
         Route::post('/teacher-view-verification-data-update', 'Admin\AdminTeacherController@view_veri_doc_file_update')->name('admin.teacher.acc.ver.update');
+
+        //groups
+        Route::get('/teacherGroup', 'Admin\AdminTeacherGroupController@teacherGroups')->name('admin.teacherGroup');
+
+
 
         //goals
         Route::get('/goals', 'Admin\AdmingoalsController@goals')->name('admin.goals');
@@ -113,9 +128,13 @@ Route::prefix('teacher')->group(function (){
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
-    Route::post('/group-save', 'Teacher\TeacherGroupController@group_save')->name('teacher.group.save');
+    
     Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
     Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
+    Route::post('/groupAdmin-save', 'Teacher\TeacherGroupController@group_admin')->name('teacher.groupadmin.save');
+    Route::post('/group-save', 'Teacher\TeacherGroupController@group_members')->name('teacher.groupmembers.save');
+    Route::get('/Request-group','Teacher\TeacherGroupRequest@view')->name('teacher.group.view');
+    Route::post('/Request-group-approve','Teacher\TeacherGroupRequest@request')->name('teacher.group.request');
 
 
     //posting free_videos

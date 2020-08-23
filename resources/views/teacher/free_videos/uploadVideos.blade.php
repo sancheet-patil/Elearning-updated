@@ -103,7 +103,7 @@
             @method('DELETE')
             <div class="modal-body">
                <div class="form-group">
-                  are you sure to delete this course ?
+                  are you sure to delete this course video ?
                   <input type="hidden" class="form-control" name="delete_id" value="{{$video->id}}">
                </div>
             </div>
@@ -121,7 +121,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript">
-   /*function validate(formData, jqForm, options) {
+
+  /* function validate(formData, jqForm, options) {
        var form = jqForm[0];
        if (!form.video_file.value) {
            alert('File not found');

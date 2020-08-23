@@ -127,7 +127,7 @@
                   <div class="col-md-10">
 
                      <select name="goal_name" class="form-control">
-                        <option>-- Select Course name --</option>
+                        <option>-- Select Goal name --</option>
                         @foreach($courses as $course)
                         <option value="{{$course->id}}">{{$course->goal_name}}</option>
                         @endforeach

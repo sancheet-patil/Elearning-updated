@@ -1,10 +1,6 @@
 @extends('layouts.teacher')
 @section('css')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 
 @stop
 @section('teacher')
@@ -13,11 +9,25 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Create groups</h3>
-                <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#createnewgroup">Create New Group</button>
+                 <a href="{{route('teacher.group.view')}}"><button class="btn btn-success btn-sm pull-right" >Request for Group</button></a>
             </div>
         </div>
     </div>
 
+    @if (session('success'))
+    <div class="card-body">
+        <div class="alert alert-success">
+         <h5>  {{ session('success') }}</h5> 
+        </div>
+    </div>
+   @endif
+   @if (session('alert'))
+    <div class="card-body">
+        <div class="alert alert-danger">
+         <h5>  {{ session('alert') }}</h5> 
+        </div>
+    </div>
+   @endif
 
     <div class="row">
         <div class="col-md-12">
@@ -33,31 +43,43 @@
                             <thead>
                             <tr>
                             
-                            <th><h5>Group Name</h5></th>
-                            <th><h5>Admin Name</h5></th>
-                            <th><h5>Members</h5></th>
-                            <th><h5>Created at</h5></th>
-                                <th class="text-right"><h5>Action</h5></th>
+                            <th>Group Name</th>
+                            <th>Admin Name</th>
+                            
+                            <th>Created at</th>
+                                <th class="text-right">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                            
+                            @foreach($Group_names as $G_name)
+                           
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <?php 
+                                 $Group_name=\ App\group_name::all(); 
+                                 $Group_admin= \App\group_admins::all();
+                                 $teachers= \App\Teacher::all();
+                                ?>
+                                    <td>{{$G_name->group_name}}</td>
+                                    <?php $Admin_name=App\group_admins::where('group_id',$G_name->id)->get(); ?>
+                                    <td>@foreach($Admin_name as $adminNames)
+                                        {{$adminNames->Admin_name}}<br>
+                                        @endforeach
+                                    </td>
+                                    <td>{{$G_name->created_at}}</td>
                                     <td class="text-right">
-                                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button>
-                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletegoal"><i class="fa fa-trash"></i> </button>
+                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#groupadmin"><i class="fa fa-user"></i></button>
+                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newgroupmembers"><i class="fa fa-users"></i></button>
+                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgroup{{$G_name->id}}"><i class="fa fa-edit"></i> </button>
+                                    <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletegroup{{$G_name->id}}"><i class="fa fa-trash"></i> </button>
                                     </td>
                                 </tr>
-
-                                <div class="modal fade" id="deletegoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                       
+                                <div class="modal fade" id="deletegroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete goal</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Group</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -66,8 +88,8 @@
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                      are you sure to delete this goal ?
-                                                        <input type="hidden" class="form-control" name="goal_delete_id" value="">
+                                                    <h5>are you sure to delete this {{$G_name->group_name}} group ?</h5>  
+                                                        <input type="hidden" class="form-control" name="group_delete_id" value="{{$G_name->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -78,13 +100,13 @@
                                         </div>
                                     </div>
                                 </div>
+                               
 
-
-                                <div class="modal fade" id="editgoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="editgroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Update goal</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Update Group</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -93,9 +115,9 @@
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label>goal Name</label>
-                                                        <input type="text" class="form-control" name="goal_name" value="">
-                                                        <input type="hidden" class="form-control" name="goal_edit_id" value="">
+                                                        <label><h3>Group Name</h3></label>
+                                                        <input type="text" class="form-control" name="group_name" value="{{$G_name->group_name}}">
+                                                        <input type="hidden" class="form-control" name="group_edit_id" value="{{$G_name->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -107,7 +129,7 @@
                                     </div>
                                 </div>
 
-                           
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -120,30 +142,42 @@
     </div>
 
 
-
-
-    <div class="modal fade" id="createnewgroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- /Group Admin -->
+    <div class="modal fade" id="groupadmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Create New Goal</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Select Admin</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('teacher.group.save')}}" method="post">
+                <form action="{{route('teacher.groupadmin.save')}}" method="post" enct>l
                     @csrf
                 <div class="modal-body">
                 <?php 
+                     $group_names=\ App\group_name::all(); 
                      $teachers= \App\Teacher::all();
                      ?>
                     <div class="form-group">
-                        <label><h5>Group Name</h5></label>
-                        <input type="text" class="form-control" name="goal_name" placeholder="Group Name" required><br>
-                        <select multiple name="Teacher_list" id="" class="form-control">
-                        <option>-- Select Group Members --</option>
+                        <select name="group_name" id="" class="form-control" required>
+                        <option>-- Select Group--</option>
+                        @foreach($group_names as $g_name)
+                        <option value="{{$g_name->id}}">{{$g_name->group_name}}</option>
+                        @endforeach
+                        </select><br>
+
+                        <select  multiple="multiple"  name="group_member" id="" class="form-control" >
+                        <option>-- Select Group Member as admin --</option>
                         @foreach($teachers as $teacher)
-                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                        <option  value="{{$teacher->id}}">{{$teacher->name}}</option>
+                        @endforeach
+                        </select><br>
+                        
+                        <select  multiple="multiple"  name="group_admins" id="" class="form-control" >
+                        <option>-- Select Group Admin --</option>
+                        @foreach($teachers as $teacher)
+                        <option  value="{{$teacher->name}}">{{$teacher->name}}</option>
                         @endforeach
                         </select>
                     </div>
@@ -156,6 +190,48 @@
             </div>
         </div>
     </div>
-
+    
+<!-- / Add Group Members -->
+    <div class="modal fade" id="newgroupmembers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Members</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('teacher.groupmembers.save')}}" method="post">
+                    @csrf
+                <div class="modal-body">
+                <?php 
+                     $group_names=\ App\group_name::all(); 
+                     $teachers= \App\Teacher::all();
+                     ?>
+                    <div class="form-group">
+                        <select name="group_name" id="" class="form-control" >
+                        <option>-- Select Group--</option>
+                        @foreach($group_names as $g_name)
+                        <option value="{{$g_name->id}}">{{$g_name->group_name}}</option>
+                        @endforeach
+                        </select><br>
+                        
+                        <select multiple name="group_members" id="" class="form-control" >
+                        <option>-- Select Group Members --</option>
+                        @foreach($teachers as $teacher)
+                        <option  value="{{$teacher->name}}">{{$teacher->name}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
 
 @stop
