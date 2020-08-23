@@ -19,6 +19,7 @@ Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
 
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

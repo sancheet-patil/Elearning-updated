@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\blog;
 
+
 class blogcontroller extends Controller
 {
     /**
@@ -32,5 +33,7 @@ class blogcontroller extends Controller
         return view('frontblog',compact('blog'));
         //
     }
-
+    
+   
+    
 }
