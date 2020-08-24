@@ -56,7 +56,7 @@
                            
                                 <tr>
                                 <?php 
-                                 $Group_name=\ App\group_name::all(); 
+                                 $Group_names=App\group_name::where('status',1)->get(); 
                                  $Group_admin= \App\group_admins::all();
                                  $teachers= \App\Teacher::all();
                                 ?>
@@ -68,40 +68,12 @@
                                     </td>
                                     <td>{{$G_name->created_at}}</td>
                                     <td class="text-right">
-                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#groupadmin"><i class="fa fa-user"></i></button>
-                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newgroupmembers"><i class="fa fa-users"></i></button>
+                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#groupadmin{{$G_name->id}}"><i class="fa fa-user"></i></button>
+                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newgroupmembers{{$G_name->id}}"><i class="fa fa-users"></i></button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgroup{{$G_name->id}}"><i class="fa fa-edit"></i> </button>
                                     <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletegroup{{$G_name->id}}"><i class="fa fa-trash"></i> </button>
                                     </td>
                                 </tr>
-                       
-                                <div class="modal fade" id="deletegroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Group</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form action="{{route('teacher.group.delete')}}" method="post">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                    <h5>are you sure to delete this {{$G_name->group_name}} group ?</h5>  
-                                                        <input type="hidden" class="form-control" name="group_delete_id" value="{{$G_name->id}}">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-
                                 <div class="modal fade" id="editgroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -128,7 +100,124 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="deletegroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Group</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{route('teacher.group.delete')}}" method="post">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                    <h5>are you sure to delete this {{$G_name->group_name}} group ?</h5>  
+                                                        <input type="hidden" class="form-control" name="group_delete_id" value="{{$G_name->id}}">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                                 <!-- / Add Group Members -->
+                                 <div class="modal fade" id="newgroupmembers{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Add Group Members</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{route('teacher.groupmembers.save')}}" method="post" enctype="multipart/form-data">
+                                             @csrf
+                                            <div class="modal-body">
+                                             <?php 
+                     
+                                                $teachers= \App\Teacher::all();
+                                             ?>
+                                                   <div class="form-group">
+                                                   <select name="group_name" id="" class="form-control" >
+                       
+                                                   <option value="{{$G_name->id}}">{{$G_name->group_name}}</option>
+                       
+                                                   </select><br>
+                        
+                                                   <select multiple name="group_members" id="" class="form-control" >
+                                                   <option>-- Select Group Members --</option>
+                                                    @foreach($teachers as $teacher)
+                                                   <option  value="{{$teacher->name}}">{{$teacher->name}}</option>
+                                                    @endforeach
+                                                   </select>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                           <button type="submit" class="btn btn-primary">Save</button>
+                                     </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- /Group Admin -->
+                                 <div class="modal fade" id="groupadmin{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Select Group Admin</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{route('teacher.groupadmin.save')}}" method="post" enct>l
+                                              @csrf
+                                                <div class="modal-body">
+                                               
+                                               <div class="form-group">
+                                                 <select name="group_name" id="" class="form-control" enctype="multipart/form-data">
+                        
+                       
+                                                <option value="{{$G_name->id}}">{{$G_name->group_name}}</option>
+                        
+                                                </select><br>
 
+                                                <select  multiple="multiple"  name="group_members" id="" class="form-control" >
+                                                 <option>-- Select Group Admin --</option>
+                                                 <?php 
+                                                    $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
+                                                  ?>
+                                                   @foreach($Group_members as $members)
+                                                    <option  value="{{$members->id}}">{{$members->group_members}}</option>
+                                                   @endforeach
+                                                </select><br>
+                        
+                                                 <select  multiple="multiple"  name="group_admin" id="" class="form-control" >
+                                                 <option>-- Select Group Admin --</option>
+                                                 <?php 
+                                                    $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
+                                                  ?>
+                                                   @foreach($Group_members as $members)
+                                                    <option  value="{{$members->group_members}}">{{$members->group_members}}</option>
+                                                   @endforeach
+                                                </select><br>
+                                                </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endforeach
 
                             </tbody>
@@ -142,96 +231,10 @@
     </div>
 
 
-<!-- /Group Admin -->
-    <div class="modal fade" id="groupadmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Select Admin</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{route('teacher.groupadmin.save')}}" method="post" enct>l
-                    @csrf
-                <div class="modal-body">
-                <?php 
-                     $group_names=\ App\group_name::all(); 
-                     $teachers= \App\Teacher::all();
-                     ?>
-                    <div class="form-group">
-                        <select name="group_name" id="" class="form-control" required>
-                        <option>-- Select Group--</option>
-                        @foreach($group_names as $g_name)
-                        <option value="{{$g_name->id}}">{{$g_name->group_name}}</option>
-                        @endforeach
-                        </select><br>
 
-                        <select  multiple="multiple"  name="group_member" id="" class="form-control" >
-                        <option>-- Select Group Member as admin --</option>
-                        @foreach($teachers as $teacher)
-                        <option  value="{{$teacher->id}}">{{$teacher->name}}</option>
-                        @endforeach
-                        </select><br>
-                        
-                        <select  multiple="multiple"  name="group_admins" id="" class="form-control" >
-                        <option>-- Select Group Admin --</option>
-                        @foreach($teachers as $teacher)
-                        <option  value="{{$teacher->name}}">{{$teacher->name}}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     
-<!-- / Add Group Members -->
-    <div class="modal fade" id="newgroupmembers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Members</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{route('teacher.groupmembers.save')}}" method="post">
-                    @csrf
-                <div class="modal-body">
-                <?php 
-                     $group_names=\ App\group_name::all(); 
-                     $teachers= \App\Teacher::all();
-                     ?>
-                    <div class="form-group">
-                        <select name="group_name" id="" class="form-control" >
-                        <option>-- Select Group--</option>
-                        @foreach($group_names as $g_name)
-                        <option value="{{$g_name->id}}">{{$g_name->group_name}}</option>
-                        @endforeach
-                        </select><br>
-                        
-                        <select multiple name="group_members" id="" class="form-control" >
-                        <option>-- Select Group Members --</option>
-                        @foreach($teachers as $teacher)
-                        <option  value="{{$teacher->name}}">{{$teacher->name}}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+ 
+    
     
 
 @stop

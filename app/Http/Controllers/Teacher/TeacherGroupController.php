@@ -18,11 +18,31 @@ class TeacherGroupController extends Controller
         return view('teacher.groups.creategroup',compact('Group_names'));
     }
 
+    public function group_admin(Request $request)
+    {
+        $user =Auth::guard('teacher')->user();
+        $admin_exist = group_admins::where('Admin_name',$request->name)->first();
+
+        if($admin_exist == null)
+        {
+            $new_admin = new group_admins();
+            $new_admin->group_id = $request->group_name;
+            $new_admin->member_id = $request->group_members;
+            $new_admin->Admin_name = $request->group_admin;
+            $new_admin->save();
+            return back()->with('success','Admin Successfully Assigned');
+        }
+        
+        else
+        {
+            return back()->with('alert','Admin Already Assigned');
+        }
+    }
     public function group_members(Request $request)
     {
-        return $request;
+       //return $request;
         $user =Auth::guard('teacher')->user();
-        $members_exist = group_members::where('group_members',$request->group_members)->first();
+        $members_exist = group_members::where('group_members',$request->name)->first();
 
         if($members_exist == null)
         {
@@ -38,27 +58,7 @@ class TeacherGroupController extends Controller
             return back()->with('alert','Member Already Exist');
         }
     }
-    public function group_admin(Request $request)
-    {
-       
-        $admin_exist = group_admins::where('Admin_name',$request->group_admins)->first();
-
-        if($admin_exist == null)
-        {
-            $new_admin = new group_admins();
-            $new_admin->group_id = $request->group_name;
-            $new_admin->member_id = $request->group_member;
-            $new_admin->Admin_name = $request->group_admins;
-            $new_admin->save();
-            return back()->with('success','Admin Successfully Assigned');
-        }
-        
-        else
-        {
-            return back()->with('alert',' Already Assigned');
-        }
-
-    }
+   
     public function group_delete(Request $request)
     {
         $delete_assign = group_name::where('id',$request->group_delete_id)->first();

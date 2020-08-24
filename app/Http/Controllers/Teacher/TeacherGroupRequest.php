@@ -15,17 +15,22 @@ class TeacherGroupRequest extends Controller
     public function request(Request $request)
     {
         $user =Auth::guard('teacher')->user();
-        //$exist =TeaGroup::where('group_id',$request->group_name)->first();
-      
+        $exist =TeaGroup::where('group_name',$request->group_name)->first();
+
+      if ( $exist == NULL) {
+         
+    
         
             $new_assign = new TeaGroup();
             $new_assign->group_name = $request->group_name;
             $new_assign->status=0;
             $new_assign->save();
             return back()->with('success','Request for group is under review');
-        
+        }else {
+            return back()->with('success','Already Requested');
+        }
 
-        return back()->with('success','Already Requested');
+        
     }
    
 }

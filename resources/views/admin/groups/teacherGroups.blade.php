@@ -42,8 +42,10 @@
                                         Dis-Approved
 
                           @endif
-                                </td>
-                                <td>{{$teacherGroup->Admin_name}}</td>
+                                </td><?php $Admin_name=App\group_admins::where('group_id',$teacherGroup->id)->get(); ?>
+                                <td>@foreach($Admin_name as $adminNames)
+                                        {{$adminNames->Admin_name}}<br>
+                                        @endforeach</td>
                                 
                         <td class="text-right">
                         
