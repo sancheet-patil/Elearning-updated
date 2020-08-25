@@ -17,13 +17,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Teacher List</h4>
                 </div>
-                <div class="card-header">
-                    <div class="top-nav-search">
-                       <form method="GET" action="{{url('/teacher/search')}}">
-                        <input type="search" class="form-control" placeholder="Search here" name="search">
-                         <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                     </form>
-                </div>
+                
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

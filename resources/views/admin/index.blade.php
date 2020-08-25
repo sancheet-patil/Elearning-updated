@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 @section('admin')
     <!-- Page Header -->
@@ -27,6 +28,26 @@
                     </div>
                     <div class="dash-widget-info">
                         <h6 class="text-muted">Pending Demo Request</h6>
+                        <div class="progress progress-sm">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-12">
+            <div class="card">
+                <a href="{{route('admin.teacherGroup')}}"><div class="card-body">
+                    <div class="dash-widget-header">
+										<span class="dash-widget-icon text-primary border-primary">
+											<i class="fe fe-users"></i>
+										</span>
+                        <div class="dash-count">
+                            <h3>{{\App\group_name::where('status',0)->count()}}</h3>
+                        </div>
+                    </div>
+                    <div class="dash-widget-info">
+                        <h6 class="text-muted">Pending Group Request</h6>
                         <div class="progress progress-sm">
                         <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>

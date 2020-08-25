@@ -75,10 +75,9 @@
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <video width="320" height="240" controls>
-         <source src="{{asset($video->video_file)}}" type="video/mp4">
-         Your browser does not support the video tag.
-      </video>
+      <iframe width="320" height="240"
+            src="{{$video->video_file}}">
+      </iframe>
       <div class="card-header">
          <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}
          </h5>
@@ -103,7 +102,7 @@
             @method('DELETE')
             <div class="modal-body">
                <div class="form-group">
-                  are you sure to delete this course ?
+                  are you sure to delete this course video ?
                   <input type="hidden" class="form-control" name="delete_id" value="{{$video->id}}">
                </div>
             </div>
@@ -121,13 +120,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="https://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript">
-   /*function validate(formData, jqForm, options) {
+
+  /* function validate(formData, jqForm, options) {
        var form = jqForm[0];
        if (!form.video_file.value) {
            alert('File not found');
            return false;
        }
-   }*/
+   }
    
    (function() {
    
@@ -159,7 +159,7 @@
        }
    });
     
-   })();
+   })();*/
 </script>
 <script type='text/javascript'>
      // Department Change
