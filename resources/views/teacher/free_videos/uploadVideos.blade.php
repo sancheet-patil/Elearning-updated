@@ -118,8 +118,8 @@
 @endforeach
 @stop
 @section('js')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript">
    /*function validate(formData, jqForm, options) {
        var form = jqForm[0];
@@ -136,7 +136,6 @@
    var status = $('#status');
    
    $('form').ajaxForm({
-       beforeSubmit: validate,
        beforeSend: function() {
            status.empty();
            var percentVal = '0%';
@@ -202,9 +201,6 @@
    }
    
 </script>
-
-
-
 <script type='text/javascript'>
     $(document).ready(function(){
    
