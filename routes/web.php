@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/teacher-playfree-videos/{course_id}/{subcourse_id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
         Route::delete('/teacher-playerfree-videos-delete','Admin\FreevideosController@delete')->name('admin.free_videos.delete');
 
-
+        
 
 
 
@@ -148,11 +148,13 @@ Route::prefix('teacher')->group(function (){
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
+    //TestSeries
+    Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
+    Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
 
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
-    
     Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
     Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
     Route::post('/groupAdmin-save', 'Teacher\TeacherGroupController@group_admin')->name('teacher.groupadmin.save');
@@ -173,10 +175,12 @@ Route::prefix('teacher')->group(function (){
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
     
 });
+
 //for blog courses and subcourses
 Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
 Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
-  //for blog  
+
+//for blog  
 Route::prefix('blog')->group(function (){
  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
  Route::get('/createblog','Teacher\add_blogcontroller@create')->name('blog.createblog');
