@@ -57,7 +57,7 @@
                             <div class="form-group col-md-10">
                                 <label>Blog Title</label>
                                 <input type="text" name="title" value="" class="form-control" required>
-                                <input type="text" name="teacher_id" value="0" class="form-control" required> 
+                                <input type="hidden" name="teacher_id" value="0" class="form-control" required> 
                          
                         
                             </div>
