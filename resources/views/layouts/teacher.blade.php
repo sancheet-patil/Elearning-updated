@@ -199,7 +199,13 @@
 
                     <li>
                         <a href="https://solutions.agora.io/education/web/?_ga=2.113566215.184414609.1597420959-482435269.1596626319&_gac=1.261705599.1596683766.CjwKCAjwsan5BRAOEiwALzomX2k8YKitn0lIWH4oZP26lbOgh_4SYTC0FHRSQa7z4LSKOuDwDa0fDxoCkPIQAvD_BwE#/"><span>Live stream</span></a>
-                        <a href="{{route('blog.addblog')}}"><span>Blog</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('teacher.addblog')}}"><span>Blog</span></a>
+                    </li>
+
+                     <li>
+                        <a href="{{route('paper')}}"><span>Previous Papers</span></a>
                     </li>
 
 

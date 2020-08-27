@@ -56,7 +56,7 @@ class admin_blogController extends Controller
             $blog->image='';
         }
         $blog->save();
-         return redirect('Adminblog/Adminblog')->with('successMsg','Your Blog Post Sucessfully');
+         return redirect('admin/Adminblog')->with('successMsg','Your Blog Post Sucessfully');
        
         //return redirect('');
         //$blog->save();
@@ -101,14 +101,14 @@ class admin_blogController extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('Adminblog/Adminblog');
+        return redirect('admin/Adminblog');
        
         //
     }
     public function delete($id)
     {
         blog::find($id)->delete();
-        return redirect('Adminblog/Adminblog');
+        return redirect('admin/Adminblog');
         //
     }
     public function singleblog($id)

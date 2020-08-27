@@ -62,7 +62,7 @@ class add_blogcontroller extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('blog/addblog')->with('success','Your Blog Post Sucessfully');
+        return redirect('teacher/addblog')->with('success','Your Blog Post Sucessfully');
         //$blog->save();
          //
 
@@ -105,7 +105,7 @@ class add_blogcontroller extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('blog/addblog');
+        return redirect('teacher/addblog');
        
         //
     }
@@ -113,7 +113,7 @@ class add_blogcontroller extends Controller
     public function delete($id)
     {
         blog::find($id)->delete();
-        return redirect('blog/addblog');
+        return redirect('teacher/addblog');
         //
     }
      public function singleblog($id)
