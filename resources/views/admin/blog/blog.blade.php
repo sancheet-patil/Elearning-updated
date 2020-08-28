@@ -39,7 +39,6 @@
                             <th><h5>Course</h5></th>
                             <th><h5>Subcourse</h5></th>
                             <th><h5>Blog Title</h5></th>
-                            <th><h5>Blog Content</h5></th>
                             <th><h5>Image</h5></th>
                             <th class="text-right"><h5>Edit</h5></th>
                             <th class="text-right"><h5>Delete</h5></th>
@@ -59,7 +58,7 @@
                                     <td>{{$subcourse->subCourses_name}}</td>
                                     
                                     <td>{{$blog->title}}</td>
-                                    <td>{{$blog->content}}</td>
+                                    
                                     <td>
                                         <img src="{{asset('blogfiles\upload/'.$blog->image)}}" height="70px" width="70px"></td>
 
@@ -84,7 +83,7 @@
                                         class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletegoal"><i class="fa fa-trash"></i> </button>
                                            
                                     </td>
-                                    <td style="text-align: center;" class="text-right"><a href="{{route('admin.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #ee82ee; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                                    <td style="text-align: center;" class="text-right"><a href="{{route('admin.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
                                 </tr>
                                 @endforeach
                                 
