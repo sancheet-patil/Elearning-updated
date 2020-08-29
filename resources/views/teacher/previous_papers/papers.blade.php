@@ -1,71 +1,31 @@
 @extends('layouts.teacher')
-@section('css')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
-
-@stop
 @section('teacher')
-
-@if(session('success'))
-   <div class="alert alert-info" role="alert" style="font-size:20px; text-align: center;"> 
-        {{session('success')}}
+@if (session('Success'))
+<div class="card-body">
+   <div class="alert alert-success" style="text-align: center">
+      {{ session('Success') }}
    </div>
-@endif   
-    <div class="page-header">
-        <div class="row">
-            <div class="col-sm-12">
-                <h3 class="page-title">Blog</h3>
-                <a href="{{route('upload')}}"><button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#createnewgroup">Add New Blog</button></a>
-            </div>
+</div>
+@endif
+    <div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-header">
+            Upload Question Papers 
+        </div>
+        <div class="card-body">
+            <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button class="btn btn-success">Upload Previous Papers</button>
+                               <a class="btn btn-warning" href="{{ route('teacher.export') }}">Export Bulk Data</a>
+            </form>
         </div>
     </div>
+</div>
+@stop
 
-
-
-    <div class="row">
-        <div class="col-md-12">
-
-            <!-- Recent Orders -->
-            <div class="card card-table">
-                <div class="card-header">
-                    <h4 class="card-title">Blog List</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-center mb-0">
-                            <thead>
-                            <tr>
-                            <th><h5>Goal</h5></th>
-                            <th><h5>Course</h5></th>
-                            <th><h5>Subcourse</h5></th>
-                            <th><h5>Blog Title</h5></th>
-                            <th><h5>Blog Content</h5></th>
-                            <th><h5>Image</h5></th>
-                            <th class="text-right"><h5>Edit</h5></th>
-                            <th class="text-right"><h5>Delete</h5></th>
-                            <th class="text-right"><h5>Preview</h5></th>
-                            
-                            </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /Recent Orders -->
-
-        </div>
-    </div>
-
-
-
-
-   
-
-
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://malsup.github.com/jquery.form.js"></script>
 @stop

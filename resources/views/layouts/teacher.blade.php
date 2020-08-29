@@ -206,7 +206,7 @@
                     </li>
 
                      <li>
-                        <a href="{{route('paper')}}"><span>Previous Papers</span></a>
+                        <a href="{{route('teacher.paper')}}"><span>Previous Papers</span></a>
 
                     </li>
 
