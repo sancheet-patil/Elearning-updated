@@ -27,12 +27,12 @@ class testSeries implements ToModel,WithHeadingRow
     {
         //dd($row['questions']);
         return new test([
-            'Goal_id'   => $this->goal,
+            'Goal_id'  => $this->goal,
             'course_id'   => $this->course,
             'subCourse_id'   => $this->subcourse,
             'Negative_marks'   => $this->negative_marks,
             'time'   => $this->time,
-            'Questions'    => $row['questions'],
+            'Questions'  => $row['questions'],
             'Option1'    => $row['option1'],
             'Option2'    => $row['option2'],
             'Option3'    => $row['option3'],
