@@ -17,7 +17,7 @@
                     <h4 class="card-title" style="text-align: center">Create Blog</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Adminblog.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                         {{csrf_field() }}
 
                     <div class="row">

@@ -199,16 +199,28 @@
                         </ul>
                     </li>
 
+                    <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
+                        <a href="#"><span>Create Videos</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;" >
+                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                        <a href="{{route('admin.Specialvideos.view')}}"><span>Special Videos</span></a>
+                    </li>
+                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                        <a href="{{route('admin.free_videos.view')}}"><span>Motivational Videos</span></a>
+                    </li>
+
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
                     </li>
+                    
+                    </ul>
+                    </li>
+                
 
                     <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
                         <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
                     </li>
-                    <li class="">
-                        <a href="{{route('Adminblog.Adminblog')}}"><span>Blog</span></a>
-                    </li>
+                    
 
 
 
