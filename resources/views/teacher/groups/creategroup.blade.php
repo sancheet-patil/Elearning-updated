@@ -177,11 +177,13 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="{{route('teacher.groupadmin.save')}}" method="post" enct>l
+                                            <form action="{{route('teacher.groupadmin.save')}}" method="post" >
                                               @csrf
                                                 <div class="modal-body">
                                                
                                                <div class="form-group">
+                                             
+                                               
                                                  <select name="group_name" id="" class="form-control" enctype="multipart/form-data">
                         
                        
@@ -189,21 +191,21 @@
                         
                                                 </select><br>
 
-                                                <select  multiple="multiple"  name="group_members" id="" class="form-control" >
-                                                 <option>-- Select Group Admin --</option>
+                                        
                                                  <?php 
                                                     $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
                                                   ?>
                                                    @foreach($Group_members as $members)
-                                                    <option  value="{{$members->id}}">{{$members->group_members}}</option>
+                                                   <input type="hidden" value="{{$members->id}}" name="group_members" class="form-control">
+                                                    
                                                    @endforeach
-                                                </select><br>
+                                               
                         
                                                  <select  multiple="multiple"  name="group_admin" id="" class="form-control" >
                                                  <option>-- Select Group Admin --</option>
                                                  <?php 
                                                     $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
-                                                  ?>
+                                                ?>
                                                    @foreach($Group_members as $members)
                                                     <option  value="{{$members->group_members}}">{{$members->group_members}}</option>
                                                    @endforeach
