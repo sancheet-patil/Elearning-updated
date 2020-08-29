@@ -205,10 +205,6 @@
                         <a href="{{route('blog.addblog')}}"><span>Blog</span></a>
                     </li>
 
-                     <li>
-                        <a href=""><span>Previous Papers</span></a>
-
-                    </li>
 
                     <li>
                         <a href="{{route('teacher.testSeries')}}"><span>Test Series</span></a>
