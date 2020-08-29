@@ -185,8 +185,9 @@ Route::prefix('teacher')->group(function (){
     Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('teacher.singleblog');
 
     //Previous Papers
-    Route::get('/paper','Teacher\previouspapersController@index')->name('paper');
-    Route::post('/import','Teacher\previouspapersController@import')->name('import');
+    Route::get('/paper','Teacher\previouspapersController@index')->name('teacher.paper');
+    Route::post('/paper-upload','Teacher\previouspapersController@import')->name('teacher.upload');
+    Route::get('export', 'Teacher\previouspapersController@export')->name('teacher.export');
 
 
     
