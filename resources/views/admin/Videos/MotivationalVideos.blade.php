@@ -27,36 +27,22 @@
          <h2>Motivational Videos</h2>
       </div>
       <div class="card-body">
-         <form method="POST" action="{{ route('teacher.free_videos.save')  }}" enctype="multipart/form-data">
+         <form method="POST" action="{{ route('admin.Motivationalvideos.save')  }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
-                  <?php 
-                     $goals= \App\goals::all();
-                     ?>
+                  
                   <div class="col-md-10">
 
-                     <select id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
-                        <option>Select Goals</option>
-                        @foreach($goals as $goal)
-                        <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
-                        @endforeach
-                     </select>
+                     <input type="text" name="title" placeholder="Title" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <div class="col-md-10"> 
-                     <select id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
-                     <option value="-1">Select Course</option>
-                     </select>
+                    
+                  <input type="text" name="description" placeholder="Description" class="form-control">
                   </div>
                </div>
-            <div class="form-group row">
-               <div class="col-md-10">
-                  <select id="subCourse_id" name="subcourse_name" class="form-control" disabled>
-                     <option value="-1">Select SubCourse</option>
-                  </select>
-               </div>
-            </div>
+            
             <div class="form-group">
                <input name="video_file" id="poster" type="file" class="form-control" required><br/>
                <div class="progress">
@@ -67,26 +53,7 @@
                </div>
                
             </div>
-            <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12">
-            
-            <div class="card" style="width:100%;">
-            
-            <label >All Students <input type="checkbox" name="All Students"></label>
-           
-           
-           </div>
-           </div>
-           <div class="col-xl-3 col-sm-6 col-12" >
-          
-           <div class="card" style="width:100%;">
-           
-            <label >All Students <input type="checkbox" name="All Students"></label>
-           
-          
-           </div>
-           </div>
-           </div>
+         
             <input type="submit"  value="Submit" class="btn btn-success">
          </form>
       </div>
