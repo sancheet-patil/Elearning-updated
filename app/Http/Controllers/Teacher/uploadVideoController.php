@@ -27,7 +27,7 @@ class uploadVideoController extends Controller
                 'title'       => course::find($request->input('course_name'))->course_name,
                 'description' => subcourses::find($request->input('subcourse_name'))->subCourses_name
                 
-            ],'public');
+            ]);
             $imgUrl1= $video->getVideoId();
             $teacher_videos->video_file = $imgUrl1;
             $teacher_videos->teacher_id=Auth::guard('teacher')->user()->id;

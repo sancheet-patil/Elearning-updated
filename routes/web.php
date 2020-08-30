@@ -47,7 +47,9 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/Specialvideos','Admin\SpecialVideosController@view')->name('admin.Specialvideos.view');
         Route::delete('/Specialvideos-delete','Admin\SpecialVideosController@delete')->name('admin.Specialvideos.delete');
 
-
+        //payment allocation
+        Route::get('/payment-allocation','Admin\paymentAllocationcontroller@view')->name('admin.payment_allocation.view');
+        Route::post('/payment-allocation-save','Admin\paymentAllocationcontroller@save')->name('admin.payment_allocation.save');
 
 
 

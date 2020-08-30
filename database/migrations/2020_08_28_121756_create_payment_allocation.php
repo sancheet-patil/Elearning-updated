@@ -15,6 +15,7 @@ class CreatePaymentAllocation extends Migration
     {
         Schema::create('payment_allocation', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('goal_id'); 
             $table->foreignId('course_id');
             $table->foreignId('subcourse_id');
             $table->foreignId('teacher_id');
@@ -36,6 +37,11 @@ class CreatePaymentAllocation extends Migration
             $table->foreign('course_id')
             ->references('id')
             ->on('courses')
+            ->onDelete('cascade');
+
+            $table->foreign('goal_id')
+            ->references('id')
+            ->on('goals')
             ->onDelete('cascade');
         });
     }
