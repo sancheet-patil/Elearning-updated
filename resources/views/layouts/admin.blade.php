@@ -187,13 +187,11 @@
                             <li><a href="{{route('admin.teacher_assign_subCourses.viewRequest')}}">Requested sub-Courses</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="{{route('admin.goals')}}"><span>Create Goal</span></a>
-                    </li>
-
+                    
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                        <a href="#"><span>Create Courses</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><span>Create Syllabus</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
+                            <li><a href="{{route('admin.goals')}}">Create Goal</a></li>
                             <li><a href="{{route('admin.courses')}}">Courses</a></li>
                             <li><a href="{{route('admin.subCourses')}}">sub-Courses</a></li>
                         </ul>
@@ -213,22 +211,14 @@
                     
                     </ul>
                     </li>
-                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
-                        <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
+                
+                    <li class="{{ Request::segment(2) === 'payment-allocation' ? 'active' : null }}">
+                        <a href="{{route('admin.payment_allocation.view')}}"><span>Payment Percentage</span></a>
                     </li>
 
                     <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
                         <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
                     </li>
-                    
-
-
-
-                    
-
-                    
-
-
 
                 </ul>
             </div>
