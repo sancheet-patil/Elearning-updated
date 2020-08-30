@@ -12,7 +12,7 @@
    }
 </style>
 @stop
-@section('teacher')
+@section('admin')
 @if (session('success'))
 <div class="card-body">
    <div class="alert alert-success">
@@ -21,10 +21,10 @@
 </div>
 @endif
 <center>
-<div class="container">
+<div class="container" style="width:50%;">
    <div class="card">
       <div class="card-header">
-         <h2>Free Video</h2>
+         <h2>Motivational Videos</h2>
       </div>
       <div class="card-body">
          <form method="POST" action="{{ route('teacher.free_videos.save')  }}" enctype="multipart/form-data">
@@ -65,56 +65,38 @@
                   </div>
                   <div class="percent">0%</div >
                </div>
-               <input type="submit"  value="Submit" class="btn btn-success">
+               
             </div>
+            <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+            
+            <div class="card" style="width:100%;">
+            
+            <label >All Students <input type="checkbox" name="All Students"></label>
+           
+           
+           </div>
+           </div>
+           <div class="col-xl-3 col-sm-6 col-12" >
+          
+           <div class="card" style="width:100%;">
+           
+            <label >All Students <input type="checkbox" name="All Students"></label>
+           
+          
+           </div>
+           </div>
+           </div>
+            <input type="submit"  value="Submit" class="btn btn-success">
          </form>
       </div>
    </div>
 </div>
-<div class="row">
-@foreach($free_videos as $video)
-<div class="col-12 col-md-6 col-lg-4 d-flex">
-   <div class="card flex-fill">
-      <iframe width="320" height="240"
-            src="{{$video->video_file}}">
-      </iframe>
-      <div class="card-header">
-         <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}
-         </h5>
-      </div>
-      <div class="card-body">
-         Sub-Course:  {{App\subcourses::select('subCourses_name')->where('id',$video->subcourse_id)->first()->subCourses_name}} 
-         <button class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#deletecourse{{$video->id}}"><i class="fa fa-trash"></i> </button>
-      </div>
-   </div>
-</div>
-<div class="modal fade" id="deletecourse{{$video->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Delete Course</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <form action="{{route('teacher.free_videos.delete')}}" method="post">
-            @csrf
-            @method('DELETE')
-            <div class="modal-body">
-               <div class="form-group">
-                  are you sure to delete this course video ?
-                  <input type="hidden" class="form-control" name="delete_id" value="{{$video->id}}">
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button type="submit" class="btn btn-danger">Delete</button>
-            </div>
-         </form>
-      </div>
-   </div>
-</div>
-@endforeach
+
+
+
+
+
 @stop
 @section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>

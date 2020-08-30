@@ -4,43 +4,37 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\specialvideos;
-use Youtube;
-class SpecialVideosController extends Controller
+
+class MotivationalVideosController extends Controller
 {
     public function view()
     {
        
-        return view('admin.videos.SpecialVideos');
+        return view('admin.videos.MotivationalVideos');
     }
     public function save(Request $request)
     {
 
         if($request->hasFile('video_file'))
         {
-            $special_videos = new specialvideos();
-            $special_students = new specialvideos();
+            $teacher_videos = new free_videos();
             /*$image = $request->file('video_file');
             $imageName = Auth::guard('teacher')->user()->id.time().'.'.$image->getClientOriginalName('video_file');
             $directory = 'assets/free_video/';
             $imgUrl1  = $directory.$imageName;
             $image->move($directory,$imageName);*/
             $video = Youtube::upload($request->file('video_file')->getPathName(), [
-                'title'       =>$request->input('title'),
-                'description' =>$request->input('description')
+                'title'       => course::find($request->input('course_name'))->course_name,
+                'description' => subcourses::find($request->input('subcourse_name'))->subCourses_name
                 
             ],'unlisted');
             $imgUrl1= $video->getVideoId();
-            $special_videos->video_file = $imgUrl1;
-           
-            $special_videos->title = $request->title;
-            $special_videos->description = $request->description;
-
-            $special_students->teachers =implode( ",", $request->All_Teachers);
-            $special_students->students =implode( ",", $request->All_Teachers);
-
-            $special_students->save();
-            $special_videos->save();
+            $teacher_videos->video_file = $imgUrl1;
+            $teacher_videos->teacher_id=Auth::guard('teacher')->user()->id;
+            $teacher_videos->goal_id = $request->goal_name;
+            $teacher_videos->subcourse_id = $request->subcourse_name;
+            $teacher_videos->course_id = $request->course_name;
+            $teacher_videos->save();
 
             return back()->with('success','Video Successfully uploaded');
         }
@@ -53,7 +47,7 @@ class SpecialVideosController extends Controller
 
     public function delete(Request $request)
     {
-        $delete = specialvideos::where('id',$request->delete_id)->first();
+        $delete = free_videos::where('id',$request->delete_id)->first();
         Youtube::delete($delete->video_file);
         return back()->with('success','Video Deleted!!!');
     }

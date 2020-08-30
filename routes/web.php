@@ -47,6 +47,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/Specialvideos','Admin\SpecialVideosController@view')->name('admin.Specialvideos.view');
         Route::delete('/Specialvideos-delete','Admin\SpecialVideosController@delete')->name('admin.Specialvideos.delete');
 
+        Route::post('/Upload-Motivationalvideos','Admin\MotivationalVideosController@save')->name('admin.Motivationalvideos.save');
+        Route::get('/Motivationalvideos','Admin\MotivationalVideosController@view')->name('admin.Motivationalvideos.view');
+        Route::delete('/Motivationalvideos-delete','Admin\MotivationalVideosController@delete')->name('admin.Motivationalvideos.delete');
+
 
 
 
@@ -178,24 +182,22 @@ Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
     
     Route::get('getSubcourse/{id}','Teacher\TeachersubCourseRequest@getSubcourse');
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
+
+    //for blog 
+  Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
+  Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
+  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('teacher.addblog');
+  Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
+  Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
+  Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
+  Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
+  Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
+  Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
     
 });
-//for blog courses and subcourses
-Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
-Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
-
-  //for blog  
-Route::prefix('blog')->group(function (){
- Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
- Route::get('/createblog','Teacher\add_blogcontroller@create')->name('blog.createblog');
- Route::post('/createblog','Teacher\add_blogcontroller@store')->name('blog.store');
- Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('blog.edit');
- Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
- Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
- Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('blog.singleblog');
 
 
-});
+  
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
     Route::prefix('teacher')->group(function() {
