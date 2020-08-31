@@ -54,6 +54,7 @@
                 <input type="file" name="file" class="form-control">
                 <br>
                 <button class="btn btn-success">Upload test Series</button>
+                <a class="btn btn-success" href="{{ route('teacher.testexport') }}">Download Template</a>
             </form>
         </div>
     </div>

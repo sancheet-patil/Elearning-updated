@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,11 +9,11 @@ use App\Imports\Previous_import;
 use App\Exports\Previous_export;
 
 
-class previouspapersController extends Controller
+class PreviousPaperController extends Controller
 {
-    public function index()
+	 public function index()
     {
-    	return view('teacher.previous_papers.papers');
+    	return view('admin.previous_papers.papers');
     }
     public function import(Request $request)
     {
@@ -25,5 +25,6 @@ class previouspapersController extends Controller
     {
         return Excel::download(new Previous_export, 'samplePapers.xlsx');
     }
+   
     //
 }

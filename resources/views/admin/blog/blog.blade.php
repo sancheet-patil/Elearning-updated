@@ -34,7 +34,7 @@
                         <table class="table table-hover table-center mb-0">
                             <thead>
                             <tr>
-                            <th><h5>Blog Id</h5></th>
+                            <th><h5>Sr.No.</h5></th>
                             <th><h5>Goal</h5></th>
                             <th><h5>Course</h5></th>
                             <th><h5>Subcourse</h5></th>
@@ -47,10 +47,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                                <?php $sr=1;?>
                                 @foreach($blog as $blog)
                                 <?php $goal=\App\goals::find($blog->goal);?>
                                 <tr style="font-size:15px"> 
-                                    <td>{{$blog->id}}</td>
+                                    <td>{{$sr}}</td>
                                     <td>{{$goal->goal_name}}</td>
                                     <?php $course=\App\course::find($blog->course)?>
                                     <td>{{$course->course_name}}</td>
@@ -85,6 +86,7 @@
                                     </td>
                                     <td style="text-align: center;" class="text-right"><a href="{{route('admin.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
                                 </tr>
+                                <?php $sr++;?>
                                 @endforeach
                                 
                               

@@ -152,7 +152,7 @@
                             <img src="{{asset('assets/admin/')}}/img/profiles/avatar-12.jpg" alt="User Image" class="avatar-img rounded-circle">
                         </div>
                         <div class="user-text">
-                            <h6>Allen Davis</h6>
+                            <h6>{{Auth::guard('admin')->user()->name}}</h6>
                             <p class="text-muted mb-0">Administrator</p>
                         </div>
                     </div>
@@ -220,6 +220,12 @@
 
                     <li class="{{ Request::segment(2) === 'select-syllabus' ? 'active' : null }}">
                         <a href="{{route('admin.syllabus.select')}}"><span>Syllabus</span></a>
+                    </li>
+                    <li class="">
+                        <a href="{{route('admin.Adminblog')}}"><span>Blog</span></a>
+                    </li>
+                     <li class="">
+                        <a href="{{route('admin.paper')}}"><span>Previous Papers</span></a>
                     </li>
 
                 </ul>

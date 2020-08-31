@@ -1,5 +1,5 @@
-@extends('layouts.teacher')
-@section('teacher')
+@extends('layouts.admin')
+@section('admin')
 @if (session('Success'))
 <div class="card-body">
    <div class="alert alert-success" style="text-align: center">
@@ -13,7 +13,7 @@
             Upload Question Papers 
         </div>
         <div class="card-body">
-            <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                  <select name ="year" class="form-control">
                        <option>Select Year</option>
@@ -25,7 +25,7 @@
                 <input type="file" name="file" class="form-control">
                 <br>
                 <button class="btn btn-success">Upload Previous Papers</button>
-                <a class="btn btn-success" href="{{ route('teacher.export') }}">Download Template</a>
+                    <a class="btn btn-success" href="{{ route('admin.export') }}">Download Template</a>
             </form>
         </div>
     </div>

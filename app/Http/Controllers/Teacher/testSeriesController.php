@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Excel;
 use App\Imports\testSeries;
+use App\Exports\testseriesExport;
+
 class testSeriesController extends Controller
 {
     public function view()
@@ -17,5 +19,9 @@ class testSeriesController extends Controller
 
         Excel::import(new testSeries($request->goal_name,$request->course_name,$request->subcourse_name,$request->negative_marks,$request->time),$request->file);
         return back()->with('success','Test-Series Successfully uploaded');
+    }
+    public function export() 
+    {
+        return Excel::download(new testseriesExport, 'testSeries.xlsx');
     }
 }

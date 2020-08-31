@@ -15,6 +15,9 @@ class CreatePreviousPapersTable extends Migration
     {
         Schema::create('previous_papers', function (Blueprint $table) {
             $table->id();
+        
+            $table->year('Year');
+            $table->string('Name');
             $table->string('Subject');
             $table->text('Question');
             $table->text('Option1');

@@ -16,7 +16,7 @@ class Previous_export implements WithHeadings
     public function headings(): array
     {
         return [
-            'id',
+            'Name',
             'Subject',
             'Question',
             'Option1',
@@ -24,14 +24,14 @@ class Previous_export implements WithHeadings
             'Option3',
             'Option4',
             'Answer',
-            'createdAt',
-            'updatedAt',
-        ];
+            ];
     }
     public function map($previous_papers): array
     {
         return [
             $previous_papers->id,
+             $previous_papers->Year,
+            $previous_papers->Name,
             $previous_papers->Subject,
             $previous_papers->Question,
             $previous_papers->Option1,
