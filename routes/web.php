@@ -42,7 +42,21 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/teacher-playfree-videos/{course_id}/{subcourse_id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
         Route::delete('/teacher-playerfree-videos-delete','Admin\FreevideosController@delete')->name('admin.free_videos.delete');
 
-           
+        //videos 
+        Route::post('/Upload-Specialvideos','Admin\SpecialVideosController@save')->name('admin.Specialvideos.save');
+        Route::get('/Specialvideos','Admin\SpecialVideosController@view')->name('admin.Specialvideos.view');
+        Route::delete('/Specialvideos-delete','Admin\SpecialVideosController@delete')->name('admin.Specialvideos.delete');
+
+        Route::post('/Upload-Motivationalvideos','Admin\MotivationalVideosController@save')->name('admin.Motivationalvideos.save');
+        Route::get('/Motivationalvideos','Admin\MotivationalVideosController@view')->name('admin.Motivationalvideos.view');
+        Route::delete('/Motivationalvideos-delete','Admin\MotivationalVideosController@delete')->name('admin.Motivationalvideos.delete');
+
+
+        //payment allocation
+        Route::get('/payment-allocation','Admin\paymentAllocationcontroller@view')->name('admin.payment_allocation.view');
+        Route::post('/payment-allocation-save','Admin\paymentAllocationcontroller@save')->name('admin.payment_allocation.save');
+
+
 
         //Assiging Group Admin 
         Route::put('/teacher-GroupName-approve','Admin\AdminTeacherGroupController@approve')->name('admin.teacher_GroupName.approve');
@@ -103,42 +117,37 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::put('/update-syllabus-sub_chapter','Admin\AdminControllersyllabus@updatesubchapter')->name('admin.syllabus.updatesubChapter');
         Route::delete('/update-syllabus-sub_chapter-delete','Admin\AdminControllersyllabus@deleteSubchapter')->name('admin.syllabus.deleteSubchapter');
 
+
         Route::get('getcourse/{id}','Admin\AdminCoursesController@getCourse');
-        
-        //For Admin Blog
-        Route::get('getSubcourse/{id}','Admin\admin_blogController@getSubcourse');
-        Route::get('getcourse/{id}','Admin\admin_blogController@getCourse');
-        Route::get('/Adminblog','Admin\admin_blogController@index')->name('admin.Adminblog');
-         Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
-         Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
-         Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
-         Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
-         Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
-         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
-
-
-         //Previous Papers
-         Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
-         Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
-         Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
-
-
-
-
     });
 
 
     
 });
+Route::get('getSubcourse/{id}','Teacher\admin_blogController@getSubcourse');
+Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
+
+    //For Admin Blog
+ Route::prefix('Adminblog')->group(function (){
+ Route::get('/Adminblog','Admin\admin_blogController@index')->name('Adminblog.Adminblog');
+ Route::get('/createblog','Admin\admin_blogController@create')->name('Adminblog.createblog');
+ Route::post('/createblog','Admin\admin_blogController@store')->name('Adminblog.store');
+ Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('Adminblog.edit');
+ Route::post('/update/{id}','Admin\admin_blogController@update')->name('Adminblog.update');
+ Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('Adminblog.delete');
+ Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('Adminblog.singleblog');
 
 
+});
+
+  
 
 
 
 
 
 //teacher section
-Route::prefix('teacher')->group(function (){
+ Route::prefix('teacher')->group(function (){
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
     Route::post('/register-submit', 'Auth\TeacherLoginController@register_submit')->name('teacher.register.submit');
     Route::get('/login', 'Auth\TeacherLoginController@showLoginform')->name('teacher.login');
@@ -151,15 +160,13 @@ Route::prefix('teacher')->group(function (){
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
-    //TestSeries
-    Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
-    Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
-    Route::get('/testSeries-export','Teacher\testSeriescontroller@export')->name('teacher.testexport');
-
-
+        //TestSeries
+        Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
+        Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
+    
     Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
     Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
     Route::post('/groupAdmin-save', 'Teacher\TeacherGroupController@group_admin')->name('teacher.groupadmin.save');
@@ -180,25 +187,20 @@ Route::prefix('teacher')->group(function (){
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
 
     //for blog 
-    Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
-    Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
-    Route::get('/addblog','Teacher\add_blogcontroller@index')->name('teacher.addblog');
-    Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
-    Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
-    Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
-    Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
-    Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
-    Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
-
-    //Previous Papers
-    Route::get('/paper','Teacher\previouspapersController@index')->name('teacher.paper');
-    Route::post('/paper-upload','Teacher\previouspapersController@import')->name('teacher.upload');
-    Route::get('/export', 'Teacher\previouspapersController@export')->name('teacher.export');
-
-
+  Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
+  Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
+  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('teacher.addblog');
+  Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
+  Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
+  Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
+  Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
+  Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
+  Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
     
 });
 
+
+  
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
     Route::prefix('teacher')->group(function() {

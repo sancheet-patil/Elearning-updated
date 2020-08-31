@@ -204,12 +204,10 @@
                         <a href="{{route('admin.Specialvideos.view')}}"><span>Special Videos</span></a>
                     </li>
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
-                        <a href="{{route('admin.free_videos.view')}}"><span>Motivational Videos</span></a>
+                        <a href="{{route('admin.Motivationalvideos.view')}}"><span>Motivational Videos</span></a>
                     </li>
 
-                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
-                        <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
-                    </li>
+                   
                     
                     </ul>
                     </li>

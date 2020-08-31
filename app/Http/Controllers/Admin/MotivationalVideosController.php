@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\specialvideos;
+use App\motivationalvideos;
 use Youtube;
-class SpecialVideosController extends Controller
+class MotivationalVideosController extends Controller
 {
     public function view()
     {
        
-        return view('admin.videos.SpecialVideos');
+        return view('admin.videos.MotivationalVideos');
     }
     public function save(Request $request)
     {
 
         if($request->hasFile('video_file'))
         {
-            $special_videos = new specialvideos();
-            $special_students = new specialvideos();
+            $motivational_videos = new motivationalvideos();
+            
             /*$image = $request->file('video_file');
             $imageName = Auth::guard('teacher')->user()->id.time().'.'.$image->getClientOriginalName('video_file');
             $directory = 'assets/free_video/';
@@ -31,16 +31,11 @@ class SpecialVideosController extends Controller
                 
             ],'unlisted');
             $imgUrl1= $video->getVideoId();
-            $special_videos->video_file = $imgUrl1;
+            $motivational_videos->video_file = $imgUrl1;
            
-            $special_videos->title = $request->title;
-            $special_videos->description = $request->description;
-
-            $special_students->teachers =implode( ",", $request->All_Teachers);
-            $special_students->students =implode( ",", $request->All_Teachers);
-
-            $special_students->save();
-            $special_videos->save();
+            $motivational_videos->title = $request->title;
+            $motivational_videos->description = $request->description;
+            $motivational_videos->save();
 
             return back()->with('success','Video Successfully uploaded');
         }
@@ -53,7 +48,7 @@ class SpecialVideosController extends Controller
 
     public function delete(Request $request)
     {
-        $delete = specialvideos::where('id',$request->delete_id)->first();
+        $delete = motivational_videos::where('id',$request->delete_id)->first();
         Youtube::delete($delete->video_file);
         return back()->with('success','Video Deleted!!!');
     }
