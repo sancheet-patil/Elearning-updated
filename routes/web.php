@@ -119,33 +119,28 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
 
         Route::get('getcourse/{id}','Admin\AdminCoursesController@getCourse');
+          //For Admin Blog
+        Route::get('getSubcourse/{id}','Admin\admin_blogController@getSubcourse');
+        Route::get('getcourse/{id}','Admin\admin_blogController@getCourse');
+        Route::get('/Adminblog','Admin\admin_blogController@index')->name('admin.Adminblog');
+         Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
+         Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
+         Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
+         Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
+         Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
+         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
+
+         //Previous Papers
+         Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
+         Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
+         Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
+
     });
 
 
     
 });
-Route::get('getSubcourse/{id}','Teacher\admin_blogController@getSubcourse');
-Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
-
-    //For Admin Blog
- Route::prefix('Adminblog')->group(function (){
- Route::get('/Adminblog','Admin\admin_blogController@index')->name('Adminblog.Adminblog');
- Route::get('/createblog','Admin\admin_blogController@create')->name('Adminblog.createblog');
- Route::post('/createblog','Admin\admin_blogController@store')->name('Adminblog.store');
- Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('Adminblog.edit');
- Route::post('/update/{id}','Admin\admin_blogController@update')->name('Adminblog.update');
- Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('Adminblog.delete');
- Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('Adminblog.singleblog');
-
-
-});
-
   
-
-
-
-
-
 //teacher section
  Route::prefix('teacher')->group(function (){
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
@@ -163,6 +158,7 @@ Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
         //TestSeries
         Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
         Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
+         Route::get('/testSeries-export','Teacher\testSeriescontroller@export')->name('teacher.testexport');
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
@@ -196,6 +192,12 @@ Route::get('getcourse/{id}','Teacher\admin_blogController@getCourse');
   Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
   Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
   Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
+
+    //Previous Papers
+    Route::get('/paper','Teacher\previouspapersController@index')->name('teacher.paper');
+    Route::post('/paper-upload','Teacher\previouspapersController@import')->name('teacher.upload');
+    Route::get('/export', 'Teacher\previouspapersController@export')->name('teacher.export');
+
     
 });
 
