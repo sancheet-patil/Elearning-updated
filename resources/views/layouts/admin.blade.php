@@ -8,7 +8,7 @@
     <title>LivestudyHub - Dashboard</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub.jpg">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -184,7 +184,7 @@
                         <ul style="display: none;">
                             <li><a href="{{route('admin.teacher')}}"><span>Demo Request</span></a></li>
                             <li><a href="{{route('admin.teacherGroup')}}"><span>Groups Request</span></a></li>
-                            <li><a href="{{route('admin.teacher_assign_subCourses.viewRequest')}}">Requested sub-Courses</a></li>
+                            <li><a href="{{route('admin.teacher_assign_subCourses.viewRequest')}}">Requested Sub-courses</a></li>
                         </ul>
                     </li>
                     
@@ -193,13 +193,16 @@
                         <ul style="display: none;">
                             <li><a href="{{route('admin.goals')}}">Create Goal</a></li>
                             <li><a href="{{route('admin.courses')}}">Courses</a></li>
-                            <li><a href="{{route('admin.subCourses')}}">sub-Courses</a></li>
+                            <li><a href="{{route('admin.subCourses')}}">Sub-courses</a></li>
                         </ul>
                     </li>
 
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                        <a href="#"><span>Create Videos</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><span>Videos</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;" >
+                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                        <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
+                    </li>
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.Specialvideos.view')}}"><span>Special Videos</span></a>
                     </li>

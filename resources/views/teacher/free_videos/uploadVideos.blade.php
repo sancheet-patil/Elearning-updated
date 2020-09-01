@@ -75,8 +75,8 @@
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <iframe width="320" height="240"
-            src="{{$video->video_file}}">
+      <iframe width="390" height="240"
+            src="https://www.youtube.com/embed/{{$video->video_file}}">
       </iframe>
       <div class="card-header">
          <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}

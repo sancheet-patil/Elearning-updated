@@ -19,7 +19,8 @@ class SpecialVideosController extends Controller
         if($request->hasFile('video_file'))
         {
             $special_videos = new specialvideos();
-            $special_students = new specialvideos();
+
+           
             /*$image = $request->file('video_file');
             $imageName = Auth::guard('teacher')->user()->id.time().'.'.$image->getClientOriginalName('video_file');
             $directory = 'assets/free_video/';
@@ -36,10 +37,10 @@ class SpecialVideosController extends Controller
             $special_videos->title = $request->title;
             $special_videos->description = $request->description;
 
-            $special_students->teachers =implode( ",", $request->All_Teachers);
-            $special_students->students =implode( ",", $request->All_Teachers);
+            $special_videos->teachers =implode( ",", $request->All_Teachers);
+            $special_videos->students =implode( ",", $request->All_Teachers);
 
-            $special_students->save();
+            
             $special_videos->save();
 
             return back()->with('success','Video Successfully uploaded');

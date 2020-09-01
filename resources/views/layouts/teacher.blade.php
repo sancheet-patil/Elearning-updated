@@ -8,7 +8,7 @@
     <title>LivestudyHub - Dashboard</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub.jpg">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -174,16 +174,17 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
             <div id="sidebar-menu" class="sidebar-menu">
-                <ul>
+                <ul><?php
+                $status=App\Teacher::select('status','name')->where('id',Auth::guard('teacher')->user()->id)->first();
+                ?>
+                @if($status->status > 1)
                     <li class="menu-title">
                         <span><i class="fe fe-home"></i> Main</span>
                     </li>
                     <li class="active">
                         <a href="{{route('teacher.dashboard')}}"><span>Dashboard</span></a>
                     </li>
-                    <li>
-                        <a href="{{route('teacher.group')}}"><span>Groups</span></a>
-                    </li>
+                @endif
                     <li>
                         <a href="{{route('teacher.subcourses.view')}}"><span>Request SubCourse</span></a>
                     </li>
@@ -193,6 +194,10 @@
                             <li><a href="invoice-report.html">Invoice Reports</a></li>
                         </ul>
                     </li>-->
+                    @if($status->status > 3)
+                    <li>
+                        <a href="{{route('teacher.group')}}"><span>Groups</span></a>
+                    </li>
                     <li>
                         <a href="{{route('teacher.free_videos.view')}}"><span>Upload videos</span></a>
                     </li>
@@ -212,7 +217,7 @@
                      <li class="">
                         <a href="{{route('teacher.paper')}}"><span>Previous Papers</span></a>
                     </li>
-
+                    @endif
 
 
 

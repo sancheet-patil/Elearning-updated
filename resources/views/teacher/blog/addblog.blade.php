@@ -53,14 +53,17 @@
                             <tbody>
                                 <?php $sr=1;?>
                                 @foreach($blog as $blog)
-                                <?php $goal=\App\goals::find($blog->goal);?>
+                                <?php $goal=\App\goals::find($blog->goal);
+                                      $subcourse=\App\subcourses::find($blog->subcourse);
+                                
+                                ?>
                                 <tr style="font-size:15px">
                                     <td>{{$sr}}</td> 
                                     <td>{{$goal->goal_name}}</td>
                                     <?php $course=\App\course::find($blog->course);?>
                                     <td>{{$course->course_name}}</td>
-                                    <?php $subcourse=\App\subcourses::find($blog->subcourse);?>
-                                    <td></td>
+                                    <?php ?>
+                                    <td>{{$subcourse->subCourses_name}}</td>
                                     
                                     <td>{{$blog->title}}</td>
                                     
