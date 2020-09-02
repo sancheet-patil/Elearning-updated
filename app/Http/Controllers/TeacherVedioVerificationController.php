@@ -22,7 +22,18 @@ class TeacherVedioVerificationController extends Controller
     }
 
     public function video_verification_file_save(Request $request)
+
     {
+
+         $this->validate($request,[if($request->p1==true)
+                                        {
+                                            'private_coaching'=> 'required';
+                                        }],
+      'certification'=> 'required',
+      'doc_file'=> 'required',
+      'video_file'=> 'required'
+      
+      ]);
         $teacher = Teacher::where('id',Auth::user()->id)->first();
         if($request->hasFile('doc_file')){
             @unlink($teacher->doc_file);
@@ -52,6 +63,8 @@ class TeacherVedioVerificationController extends Controller
         $teacher->book_publish = $request->book_publish;
         $teacher->stat_new_teaching = $request->stat_new_teaching;
         $teacher->certification = $request->certification;
+        $teacher->equipment= implode($request->equipment);
+
         $teacher->save();
 
         $status=Teacher::select('status','name')->where('id',Auth::guard('teacher')->user()->id)->first();

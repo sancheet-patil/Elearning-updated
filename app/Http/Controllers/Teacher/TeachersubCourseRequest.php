@@ -17,6 +17,9 @@ class TeachersubCourseRequest extends Controller
 
     public function request(Request $request)
     {
+$this->validate($request,[
+      'goal_name'=>'required', 'course_name'=> 'required','subcourse_name'=> 'required'
+      ]);
         $user =Auth::guard('teacher')->user();
         $exist =TeaSubCour::where([['subCourse_id','=',$request->subcourse_name],['teacher_id',$user->id]])->first();
         if($exist==null)

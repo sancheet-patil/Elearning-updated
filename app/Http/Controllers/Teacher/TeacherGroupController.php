@@ -20,6 +20,10 @@ class TeacherGroupController extends Controller
 
     public function group_admin(Request $request)
     {
+
+         $this->validate($request,[
+       'group_admin'=> 'required'
+      ]);
         $user =Auth::guard('teacher')->user();
         $admin_exist = group_admins::where('Admin_name',$request->name)->first();
 
@@ -41,6 +45,9 @@ class TeacherGroupController extends Controller
     public function group_members(Request $request)
     {
        //return $request;
+         $this->validate($request,[
+       'group_members'=> 'required'
+      ]);
         $user =Auth::guard('teacher')->user();
         $members_exist = group_members::where('group_members',$request->name)->first();
 
@@ -68,6 +75,10 @@ class TeacherGroupController extends Controller
     }
     public function group_update(Request $request)
     {
+
+         $this->validate($request,[
+       'group_name'=> 'required'
+      ]);
         $update_group = group_name::where('id',$request->group_edit_id)->first();
         $update_group->group_name = $request->group_name;
         $update_group->save();

@@ -1,5 +1,15 @@
 @extends('layouts.admin')
 @section('admin')
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
@@ -120,7 +130,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Goal Name</label>
-                        <input type="text" class="form-control" name="goal_name" required>
+                        <input type="text" class="form-control" name="goal_name">
                     </div>
                 </div>
                 <div class="modal-footer">

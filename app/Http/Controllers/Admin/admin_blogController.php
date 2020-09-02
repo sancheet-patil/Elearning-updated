@@ -22,8 +22,7 @@ class admin_blogController extends Controller
 	}
 	public function store(Request $request){
          $this->validate($request,[
-            'teacher_id'=>'required',
-            'goal'=>'required',
+            'goal_name'=>'required',
             'course'=>'required',
             'subcourse'=>'required',
             'title'=>'required',
@@ -74,10 +73,10 @@ class admin_blogController extends Controller
     public function update(Request $request, $id)
     {
           $this->validate($request,[
+            
             'title'=>'required',
             'content'=>'required',
-            'image'=>'required',
-            
+            'image'=>'required'
 
 
         ]);

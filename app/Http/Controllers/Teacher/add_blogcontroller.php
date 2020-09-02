@@ -29,7 +29,7 @@ class add_blogcontroller extends Controller
          $this->validate($request,[
             'teacher_id'=>'required',
             'goal'=>'required',
-            'course'=>'required',
+            'course_name'=>'required',
             'subcourse'=>'required',
             'title'=>'required',
             'content'=>'required',

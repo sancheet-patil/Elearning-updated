@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
 
 <!-- Mirrored from dreamguys.co.in/demo/mentoring-html/admin/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jul 2020 14:50:18 GMT -->
 <head>

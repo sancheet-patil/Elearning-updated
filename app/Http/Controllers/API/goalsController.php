@@ -9,8 +9,13 @@ use App\goals;
 class goalsController extends Controller
 {
     //
-    public function courses()
+    public function courses(Request $request)
     {
+
+    	$this->validate($request,[
+      'goal_name'=> 'required'
+ 
+            ]);
         $goals['data']=goals::all();
         return response()->json($goals);
     }

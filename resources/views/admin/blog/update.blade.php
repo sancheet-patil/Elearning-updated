@@ -8,7 +8,16 @@
         </div>
     </div>
 
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
 
+
+
+@endif
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -24,7 +33,7 @@
                             <div class="col-md-1"></div>
                             <div class="form-group col-md-10">
                                 <label>Blog Title</label>
-                                <input type="text" name="title" value="{{$blog->title}}" class="form-control" required>
+                                <input type="text" name="title" value="{{$blog->title}}" class="form-control">
                             </div>
                         </div>
                         <div class="row">
@@ -32,7 +41,7 @@
                             <div class="form-group col-md-10">
                                 <label>Blog Content </label>
                                 
-                                <textarea class="form-control" required cols="10" rows="12" name="content">{{$blog->content}}</textarea>
+                                <textarea class="form-control"  cols="10" rows="12" name="content">{{$blog->content}}</textarea>
                         
                             </div>
                         </div>
@@ -40,7 +49,7 @@
                             <div class="col-md-1"></div>
                             <div class="form-group col-md-4">
                                 <label>Blog Image</label>
-                                <input type="file" name="image" value="{{$blog ->image}}" class="form-control" required>
+                                <input type="file" name="image" value="{{$blog ->image}}" class="form-control">
                         
                             </div>
                             <div class="col-md-2"></div>

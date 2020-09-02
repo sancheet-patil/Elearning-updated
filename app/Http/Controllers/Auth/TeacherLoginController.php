@@ -34,6 +34,7 @@ class TeacherLoginController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'dob' => 'required',
             'password' => 'required|min:8',
             'c_password' => 'required|min:8',
         ]);
