@@ -197,8 +197,8 @@
                         </ul>
                     </li>
 
-                    <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                        <a href="#"><span>Create Videos</span> <span class="menu-arrow"></span></a>
+                    <li class="submenu {{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                        <a href="#"><span>Videos</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;" >
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.Specialvideos.view')}}"><span>Special Videos</span></a>
