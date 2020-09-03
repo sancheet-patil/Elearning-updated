@@ -53,9 +53,9 @@
                                 <tr style="font-size:15px"> 
                                     <td>{{$sr}}</td>
                                     <td>{{$goal->goal_name}}</td>
-                                    <?php $course=\App\course::find($blog->course)?>
+                                    <?php $course=\App\course::find($blog->course);?>
                                     <td>{{$course->course_name}}</td>
-                                    <?php $subcourse=\App\subcourses::find($blog->subcourse)?>
+                                    <?php $subcourse=\App\subcourses::find($blog->subcourse);?>
                                     <td>{{$subcourse->subCourses_name}}</td>
                                     
                                     <td>{{$blog->title}}</td>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon icons -->
-    <link href="{{asset('assets/frontend/')}}/images/favicon.png" rel="shortcut icon">
+    <link href="{{asset('assets/frontend/')}}/images/favicon.jpg" rel="shortcut icon">
 
     <!-- All CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/')}}/css/bootstrap.min.css">
@@ -23,9 +23,6 @@
 <body>
 
 <!-- Preloader -->
-<div id="preloader">
-    <div id="status"></div>
-</div>
 
 <!-- Header strat -->
 @yield('header')

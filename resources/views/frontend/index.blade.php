@@ -4,8 +4,8 @@
         <div class="container">
             <nav class="navbar">
                 <!-- Site logo -->
-                <a href="{{asset('assets/frontend/')}}/home-01.html" class="logo">
-                    <img src="{{asset('assets/frontend/')}}/images/logo.png" alt="">
+                <a href="{{asset(route('front'))}}" class="logo">
+                    <img src="{{asset('assets/frontend/')}}/images/logo.jpg" alt="">
                 </a>
                 <a href="javascript:void(0);" id="mobile-menu-toggler">
                     <i class="ti-align-justify"></i>
