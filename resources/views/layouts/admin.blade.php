@@ -41,7 +41,7 @@
         <!-- Logo -->
         <div class="header-left">
             <a href="index.html" class="logo">
-                <img src="{{asset('assets/admin/')}}/img/logo.png" alt="Logo">
+                <img src="{{asset('assets/admin/')}}/img/logo1.jpg" alt="Logo" style="height: 200px; width: 100px">
             </a>
             <a href="index.html" class="logo logo-small">
                 <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="30">
@@ -199,6 +199,7 @@
                     </li>
 
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
+                    <li class="submenu {{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="#"><span>Videos</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;" >
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
@@ -210,12 +211,13 @@
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.Motivationalvideos.view')}}"><span>Motivational Videos</span></a>
                     </li>
-
-                   
-                    
                     </ul>
                     </li>
                 
+                    <li class="{{ Request::segment(2) === 'subscription_plans' ? 'active' : null }}">
+                        <a href="{{route('admin.subscription_plan.view')}}"><span>Subscription Managnement</span></a>
+                    </li>
+
                     <li class="{{ Request::segment(2) === 'payment-allocation' ? 'active' : null }}">
                         <a href="{{route('admin.payment_allocation.view')}}"><span>Payment Percentage</span></a>
                     </li>

@@ -84,8 +84,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
         //groups
         Route::get('/teacherGroup', 'Admin\AdminTeacherGroupController@teacherGroups')->name('admin.teacherGroup');
 
-
-
+        //subscription Managment
+        Route::get('/subscription_plans','Admin\adminSubscription_plans@view')->name('admin.subscription_plan.view');
+        Route::post('/subscription_plans-save','Admin\adminSubscription_plans@save')->name('admin.subscription_plan.save');
+        
+        
         //goals
         Route::get('/goals', 'Admin\AdmingoalsController@goals')->name('admin.goals');
         Route::post('/goal-save', 'Admin\AdmingoalsController@goal_save')->name('admin.goal.save');

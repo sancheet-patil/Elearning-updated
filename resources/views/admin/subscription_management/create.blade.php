@@ -1,20 +1,12 @@
-@extends('layouts.teacher')
-@section('teacher')
-@if (session('success'))
-<div class="card-body">
-   <div class="alert alert-success">
-      {{ session('success') }}
-   </div>
-</div>
-@endif
+@extends('layouts.admin')
+@section('admin')
     <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-header">
-            Upload Test Series 
-            <a class="btn btn-success btn-sm pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
+            Subscription Management
         </div>
         <div class="card-body">
-            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.subscription_plan.save') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                   <?php 
@@ -44,17 +36,40 @@
                   </select>
                </div>
             </div>
-            <div class="form-group">
-                        <label>Time For each Question(in Min)</label>
-                        <input type="text" class="form-control" name="time" required>
-                    </div>
+            <div class="form-group row">
+                <?php 
+                   $teachers= \App\Teacher::all();
+                   ?>
+                <div class="col-md-10">
+
+                   <select name="teacher_name" class="form-control">
+                      <option>Select Teacher</option>
+                      @foreach($teachers as $teacher)
+                      <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                      @endforeach
+                   </select>
+                </div>
+             </div>
                     <div class="form-group">
-                        <label>Negative marks for each question</label>
-                        <input type="text" class="form-control" name="negative_marks" required>
+                        <label>Price Per Month</label>
+                        <input type="text" class="form-control" name="price_per_month" required>
                     </div>
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">Upload test Series</button>
+
+                    <div class="form-group">
+                        <label>Price Quaterly</label>
+                        <input type="text" class="form-control" name="price_quaterly" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price Semi Annually</label>
+                        <input type="text" class="form-control" name="price_semiannually" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price Annually</label>
+                        <input type="text" class="form-control" name="price_annually" required>
+                    </div>
+                <button class="btn btn-success">Submit</button>
             </form>
         </div>
     </div>
@@ -65,15 +80,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="https://malsup.github.com/jquery.form.js"></script>
 <script type='text/javascript'>
-     // course Change
+     // Department Change
    function getCourse(course){
+       //alert('Value:'+course.options[course.selectedIndex].value);
+        // Department id
         var id = course.options[course.selectedIndex].value;
    
         // Empty the dropdown
         $('#course_id').find('option').not(':first').remove();
         // AJAX request 
         $.ajax({
-          url: '{{url('teacher/getcourse/')}}'+'/'+id,
+          url: '{{url('admin/getcourse/')}}'+'/'+id,
           type: 'get',
           dataType: 'json',
           success: function(response){
@@ -112,7 +129,7 @@
         $('#subCourse_id').find('option').remove();
         // AJAX request 
         $.ajax({
-          url: '{{url('teacher/getSubcourse/')}}'+'/'+id,
+          url: '{{url('admin/getSubcourse/')}}'+'/'+id,
           type: 'get',
           dataType: 'json',
           success: function(response){

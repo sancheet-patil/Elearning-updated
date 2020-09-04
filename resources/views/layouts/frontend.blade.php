@@ -9,6 +9,7 @@
 
     <!-- Favicon icons -->
     <link href="{{asset('assets/frontend/')}}//img/livestudyhub.jpg" rel="shortcut icon">
+    <link href="{{asset('assets/frontend/')}}/images/favicon.jpg" rel="shortcut icon">
 
     <!-- All CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/')}}/css/bootstrap.min.css">
@@ -23,9 +24,6 @@
 <body>
 
 <!-- Preloader -->
-<div id="preloader">
-    <div id="status"></div>
-</div>
 
 <!-- Header strat -->
 @yield('header')

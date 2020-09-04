@@ -42,7 +42,7 @@
         <!-- Logo -->
         <div class="header-left">
             <a href="index.html" class="logo">
-                <img src="{{asset('assets/admin/')}}/img/logo.png" alt="Logo">
+                <img src="{{asset('assets/admin/img/logo1.jpg')}}" alt="Logo" style="height: 200px; width: 100px">
             </a>
             <a href="index.html" class="logo logo-small">
                 <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="30">
@@ -214,6 +214,7 @@
                     <li>
                         <a href="{{route('teacher.testSeries')}}"><span>Test Series</span></a>
                     </li>
+                    
                      <li class="">
                         <a href="{{route('teacher.paper')}}"><span>Previous Papers</span></a>
                     </li>
