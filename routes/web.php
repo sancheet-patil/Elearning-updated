@@ -135,6 +135,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
          Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
          Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
 
+        
+
     });
 
 
@@ -197,6 +199,20 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/paper','Teacher\previouspapersController@index')->name('teacher.paper');
     Route::post('/paper-upload','Teacher\previouspapersController@import')->name('teacher.upload');
     Route::get('/export', 'Teacher\previouspapersController@export')->name('teacher.export');
+
+    //Notification
+    Route::get('/send','Teacher\NotificationController@sendrNotification')->name('teacher.send');
+    Route::get('/groupnotification','Teacher\NotificationController@groupNotification')->name('teacher.groupnotification');
+    Route::get('/RequestsubcoursesNotification','Teacher\NotificationController@RequestsubcoursesNotification')->name('teacher.RequestsubcoursesNotification');
+    Route::get('/BlogNotification','Teacher\NotificationController@BlogNotification')->name('teacher.BlogNotification');
+    Route::get('/TestNotification','Teacher\NotificationController@TestNotification')->name('teacher.TestNotification');
+    Route::get('/DeleteNotification','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
+
+
+
+
+
+
 
     
 });

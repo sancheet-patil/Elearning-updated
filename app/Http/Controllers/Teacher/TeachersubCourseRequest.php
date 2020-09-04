@@ -27,7 +27,7 @@ class TeachersubCourseRequest extends Controller
             $user->status =3;
             $user->save();
             $new_assign->save();
-            return back()->with('success','Request for subcourse is under review');
+            return redirect(route('teacher.RequestsubcoursesNotification'))->with('success','Request for subcourse is under review');
         }
 
         return back()->with('success','Already Requested');

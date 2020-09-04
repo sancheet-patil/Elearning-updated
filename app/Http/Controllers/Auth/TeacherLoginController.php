@@ -72,7 +72,7 @@ class TeacherLoginController extends Controller
             'password' => 'required|min:8'
         ]);
         if(Auth::guard('teacher')->attempt(['email'=>$request->email,'password'=>$request->password],$request->remember)){
-            return redirect(route('teacher.dashboard'));
+            return redirect(route('teacher.send'));
         }
 
         return redirect()->back();

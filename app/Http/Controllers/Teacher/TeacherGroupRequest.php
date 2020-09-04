@@ -25,7 +25,7 @@ class TeacherGroupRequest extends Controller
             $new_assign->group_name = $request->group_name;
             $new_assign->status=0;
             $new_assign->save();
-            return back()->with('success','Request for group is under review');
+            return redirect(route('teacher.groupnotification'));
         }else {
             return back()->with('success','Already Requested');
         }
