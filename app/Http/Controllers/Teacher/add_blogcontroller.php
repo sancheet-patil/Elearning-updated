@@ -62,7 +62,7 @@ class add_blogcontroller extends Controller
             $blog->image='';
         }
         $blog->save();
-        return redirect('teacher/addblog')->with('success','Your Blog Post Sucessfully');
+        return redirect(route('teacher.BlogNotification'));
         //$blog->save();
          //
 

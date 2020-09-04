@@ -7,7 +7,13 @@
             </div>
         </div>
     </div>
-
+@if (session('success'))
+    <div class="card-body">
+        <div class="alert alert-success">
+         <h5>  {{ session('success') }}</h5> 
+        </div>
+    </div>
+   @endif
 
     <div class="row">
         <div class="col-2"></div>
