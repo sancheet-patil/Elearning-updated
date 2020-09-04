@@ -29,7 +29,7 @@ class MotivationalVideosController extends Controller
                 'title'       =>$request->input('title'),
                 'description' =>$request->input('description')
                 
-            ],'unlisted');
+            ]);
             $imgUrl1= $video->getVideoId();
             $motivational_videos->video_file = $imgUrl1;
            
