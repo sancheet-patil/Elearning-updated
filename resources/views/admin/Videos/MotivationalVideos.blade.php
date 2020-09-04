@@ -59,6 +59,49 @@
       </div>
    </div>
 </div>
+<div class="row">
+   @foreach($motivational_videos as $video)
+<div class="col-12 col-md-6 col-lg-4 d-flex">
+   <div class="card flex-fill">
+      <iframe width="360" height="240"
+            src="https://www.youtube.com/embed/{{$video->video_file}}">
+      </iframe>
+      <div class="card-header">
+         <h5>Title: {{App\motivationalvideos::select('title')->where('title',$video->title)->first()->title}}
+         </h5>
+      </div>
+      <div class="card-body">
+      Description: {{App\motivationalvideos::select('description')->where('description',$video->description)->first()->description}}  <button class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#deletecourse{{$video->id}}"><i class="fa fa-trash"></i> </button>
+      </div>
+   </div>
+</div>
+<div class="modal fade" id="deletecourse{{$video->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Delete Course</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <form action="{{route('admin.Specialvideos.delete')}}" method="post">
+            @csrf
+            @method('DELETE')
+            <div class="modal-body">
+               <div class="form-group">
+                  are you sure to delete this course video ?
+                  <input type="hidden" class="form-control" name="delete_id" value="{{$video->id}}">
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+@endforeach
 
 
 

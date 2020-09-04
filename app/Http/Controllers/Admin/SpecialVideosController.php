@@ -10,8 +10,8 @@ class SpecialVideosController extends Controller
 {
     public function view()
     {
-       
-        return view('admin.videos.SpecialVideos');
+        $special_videos = specialvideos::select('description','title')->distinct()->orderBy('id','DESC')->paginate(20);
+        return view('admin.videos.SpecialVideos',compact('special_videos'));
     }
     public function save(Request $request)
     {

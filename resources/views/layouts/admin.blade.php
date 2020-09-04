@@ -28,6 +28,7 @@
     <script src="{{asset('assets/admin/')}}/js/html5shiv.min.js"></script>
     <script src="{{asset('assets/admin/')}}/js/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 <body>
 

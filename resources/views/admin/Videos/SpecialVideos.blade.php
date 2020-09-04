@@ -2,7 +2,7 @@
 @section('css')
 <style>
    .card {
-   width:50%;
+   width:90%;
    background-color: white;
    padding: 10px 10px;
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -33,13 +33,13 @@
                   
                   <div class="col-md-10">
 
-                     <input type="text" name="title" placeholder="Title" class="form-control">
+                     <input type="text" id="title_id" name="title" placeholder="Title" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <div class="col-md-10"> 
                     
-                  <input type="text" name="description" placeholder="Description" class="form-control">
+                  <input type="text" id="description_id" name="description" placeholder="Description" class="form-control">
                   </div>
                </div>
             
@@ -54,15 +54,15 @@
                
             </div>
             <div class="row">
-            <?php $Teachers=App\Teacher::where('status',3)->get(); ?>
+            <?php $Teachers=App\Teacher::where('status',4)->get(); ?>
             <div class="col-xl-3 col-sm-6 col-12">
             
             <div class="card" style="width:150%;">
             
             <p>All Teachers <input type="checkbox" onClick="selectall(this)" name="All_Teachers[]"> </p> 
             @foreach($Teachers as $Teacher)
-           <p> {{$Teacher->name}} <input type="checkbox" name="All_Teachers[]"></p>
-             @endforeach
+           <p> {{$Teacher->name}}<input type="checkbox" value="{{$Teacher->name}}" name="All_Teachers[]"></p>
+            @endforeach
             
            
            
@@ -74,7 +74,7 @@
            <?php $Students=App\User::all(); ?>
            <p>All Students <input type="checkbox" onClick="selectallstudents(this)" name="All_students[]"> </p> 
            @foreach($Students as $Student)
-           <p>{{$Students->name}} <input type="checkbox" name="All_students[]"></p>
+           <p>{{$Students->name}} <input type="checkbox" value="{{$Students->name}}" name="All_students[]"></p>
             
             @endforeach
           
@@ -85,12 +85,49 @@
          </form>
       </div>
    </div>
+   <div class="row">
+   @foreach($special_videos as $video)
+<div class="col-12 col-md-6 col-lg-4 d-flex">
+   <div class="card flex-fill">
+      <iframe width="360" height="240"
+            src="https://www.youtube.com/embed/{{$video->video_file}}">
+      </iframe>
+      <div class="card-header">
+         <h5>Title: {{App\specialvideos::select('title')->where('title',$video->title)->first()->title}}
+         </h5>
+      </div>
+      <div class="card-body">
+      Description: {{App\specialvideos::select('description')->where('description',$video->description)->first()->description}}  <button class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#deletecourse{{$video->id}}"><i class="fa fa-trash"></i> </button>
+      </div>
+   </div>
 </div>
-
-
-
-
-
+<div class="modal fade" id="deletecourse{{$video->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Delete Course</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <form action="{{route('admin.Specialvideos.delete')}}" method="post">
+            @csrf
+            @method('DELETE')
+            <div class="modal-body">
+               <div class="form-group">
+                  are you sure to delete this course video ?
+                  <input type="hidden" class="form-control" name="delete_id" value="{{$video->id}}">
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+@endforeach
 @stop
 @section('js')
 <script>function selectallstudents(source) {
@@ -149,6 +186,7 @@
     
    })();*/
 </script>
+
 
 
 @stop

@@ -75,7 +75,7 @@
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <iframe width="390" height="240"
+      <iframe width="360" height="240"
             src="https://www.youtube.com/embed/{{$video->video_file}}">
       </iframe>
       <div class="card-header">
