@@ -60,7 +60,7 @@
                                     <?php $course=\App\course::find($blog->course);?>
                                     <td>{{$course->course_name}}</td>
                                     <?php $subcourse=\App\subcourses::find($blog->subcourse);?>
-                                    <td></td>
+                                    <td>{{$subcourse->subCourses_name}}</td>
                                     
                                     <td>{{$blog->title}}</td>
                                     
