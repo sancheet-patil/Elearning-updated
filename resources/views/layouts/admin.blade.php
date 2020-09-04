@@ -206,12 +206,13 @@
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.Motivationalvideos.view')}}"><span>Motivational Videos</span></a>
                     </li>
-
-                   
-                    
                     </ul>
                     </li>
                 
+                    <li class="{{ Request::segment(2) === 'subscription_plans' ? 'active' : null }}">
+                        <a href="{{route('admin.subscription_plan.view')}}"><span>Subscription Managnement</span></a>
+                    </li>
+
                     <li class="{{ Request::segment(2) === 'payment-allocation' ? 'active' : null }}">
                         <a href="{{route('admin.payment_allocation.view')}}"><span>Payment Percentage</span></a>
                     </li>
