@@ -13,3 +13,4 @@ yarn-error.log
 /bootstrap
 /config
 /tests
+/public
