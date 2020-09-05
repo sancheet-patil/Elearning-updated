@@ -25,9 +25,8 @@ class testSeries implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
-        //dd($row['questions']);
         return new test([
-            'Goal_id'  => $this->goal,
+            'Goal_id'   => $this->goal,
             'course_id'   => $this->course,
             'subCourse_id'   => $this->subcourse,
             'Negative_marks'   => $this->negative_marks,

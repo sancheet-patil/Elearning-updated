@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('header')
+
     <header class="header abs-header">
         <div class="container">
             <nav class="navbar">
@@ -33,6 +34,7 @@
             </nav>
         </div>
     </header>
+
 @stop
 
 @section('front')
@@ -55,28 +57,28 @@
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="" required>
+                            <input type="text" class="form-control" name="name" placeholder="" >
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="" required>
+                            <input type="email" class="form-control" name="email" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="number" class="form-control" name="phone" placeholder="" required>
+                            <input type="number" class="form-control" name="phone" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Date Of Birth</label>
-                            <input type="date" class="form-control" name="dob" placeholder="" required>
+                            <input type="date" class="form-control" name="dob" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="" required id="password">
+                            <input type="password" class="form-control" name="password" placeholder="" id="password">
                             <input type="checkbox" onclick="myFunction1()">Show Password
                         </div>
                         <div class="form-group">
                             <label>Confirm Password</label>
-                            <input type="password" class="form-control" name="c_password" placeholder="" required id="confirmpassword">
+                            <input type="password" class="form-control" name="c_password" placeholder=""  id="confirmpassword">
                             <input type="checkbox" onclick="myFunction2()">Show Password
                             
                              <p class="text-danger text-center"></p>
@@ -89,4 +91,14 @@
             </div>
         </div>
     </section>
+    @if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
 @stop

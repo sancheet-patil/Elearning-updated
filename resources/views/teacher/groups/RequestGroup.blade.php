@@ -29,9 +29,19 @@
         </div>
     </div>
 @endif
-
-<center>
 <div>
+  @if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
+<center>
+
 <form method="post" action="{{ route('teacher.group.request')  }}">
             @csrf
            

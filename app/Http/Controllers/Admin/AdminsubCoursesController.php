@@ -15,6 +15,10 @@ class AdminsubCoursesController extends Controller
 
     public function subcourse_save(Request $request)
     {
+
+         $this->validate($request,[
+       'subcourse_name'=> 'required'
+      ]);
         $subcourse_exist = subcourses::where('subCourses_name',$request->subcourse_name)->first();
 
         if($subcourse_exist == null)

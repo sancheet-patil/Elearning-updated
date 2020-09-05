@@ -14,6 +14,13 @@ class TeacherGroupRequest extends Controller
     }
     public function request(Request $request)
     {
+
+
+         $this->validate($request,[
+      'group_name'=> 'required',
+      
+      
+            ]);
         $user =Auth::guard('teacher')->user();
         $exist =TeaGroup::where('group_name',$request->group_name)->first();
 

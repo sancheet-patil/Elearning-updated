@@ -8,6 +8,15 @@
       </div>
    </div>
 </div>
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+@endif
 <div class="row">
    <div class="col-md-12">
       <!-- Recent Orders -->
@@ -15,6 +24,7 @@
          <div class="card-header">
             <h4 class="card-title">Sub-Courses List</h4>
          </div>
+         
          <div class="card-body">
             <div class="table-responsive">
                <table class="table table-hover table-center mb-0">
@@ -135,7 +145,7 @@
                </div>
                <div class="form-group">
                   <label>Sub-Course Name</label>
-                  <input type="text" class="form-control" name="subcourse_name" required>
+                  <input type="text" class="form-control" name="subcourse_name" >
                </div>
             </div>
             <div class="modal-footer">

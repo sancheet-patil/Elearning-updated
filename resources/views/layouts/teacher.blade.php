@@ -211,6 +211,9 @@
                         <a href="{{route('teacher.addblog')}}"><span>Blog</span></a>
                     </li>
 
+                    <li>
+                        <a href="{{route('teacher.testSeries')}}"><span>Test Series</span></a>
+                    </li>
 
                     <li>
                         <a href="{{route('teacher.testSeries')}}"><span>Test Series</span></a>
