@@ -16,6 +16,9 @@ class AdminCoursesController extends Controller
 
     public function course_save(Request $request)
     {
+        $this->validate($request,[
+      'goal_name'=>'required', 'course_name'=> 'required'
+      ]);
         $course_exist = course::where('course_name',$request->course_name)->first();
 
         if($course_exist == null)
@@ -33,7 +36,11 @@ class AdminCoursesController extends Controller
         }
     }
     public function course_update(Request $request)
+
     {
+         $this->validate($request,[
+     'course_name'=> 'required'
+      ]);
         $update_course = course::where('id',$request->course_edit_id)->first();
         $update_course->course_name = strtolower($request->course_name);
         $update_course->save();

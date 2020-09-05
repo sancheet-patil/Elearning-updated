@@ -15,6 +15,16 @@ class uploadVideoController extends Controller
     public function save(Request $request)
     {
 
+
+
+        $this->validate($request,[
+      'goal_name'=> 'required',
+      'course_name'=> 'required',
+      'subcourse_name'=> 'required',
+      'video_file'=> 'required'
+ 
+            ]);
+
         if($request->hasFile('video_file'))
         {
             $teacher_videos = new free_videos();

@@ -16,6 +16,9 @@ class AdminControllersyllabus extends Controller
     public function save(Request $request)
     {
 
+         $this->validate($request,[
+       'goal_name'=> 'required','course_name'=> 'required','subcourse_name'=> 'required'
+      ]);
         $syllabus=new syllabus();
         $syllabus->goal_id=$request->goal_name;
         $syllabus->course_id=$request->course_name;

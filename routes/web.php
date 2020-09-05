@@ -167,7 +167,6 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
-    
     Route::post('/group-update', 'Teacher\TeacherGroupController@group_update')->name('teacher.group.update');
     Route::post('/group-delete', 'Teacher\TeacherGroupController@group_delete')->name('teacher.group.delete');
     Route::post('/groupAdmin-save', 'Teacher\TeacherGroupController@group_admin')->name('teacher.groupadmin.save');
