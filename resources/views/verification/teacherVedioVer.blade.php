@@ -9,7 +9,7 @@
     <title>LivestudyHub</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/frontend/')}}/images/livestudyhub-title.jpg">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -186,18 +186,18 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Document Upload  </label>
-                                            <input type="file" name="doc_file" class="form-control" required>
+                                            <input type="file" name="doc_file" class="form-control"  required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Demo Video </label>
-                                            <input type="file" name="video_file" class="form-control" required>
+                                            <input type="file" name="video_file" class="form-control"  required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Which equipment you are having? </label><br>
-                                            laptop &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
-                                            PC &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
-                                            Projector &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
-                                            Digital Board &nbsp<input type="checkbox" name="video_file" >&nbsp &nbsp
+                                            laptop &nbsp<input type="checkbox" name="laptop" >&nbsp &nbsp
+                                            PC &nbsp<input type="checkbox" name="PC" >&nbsp &nbsp
+                                            Projector &nbsp<input type="checkbox" name="Projector" >&nbsp &nbsp
+                                            Digital Board &nbsp<input type="checkbox" name="Digital_Board" >&nbsp &nbsp
                                         </div>
                                         <div class="form-group col-md-4">
                                             

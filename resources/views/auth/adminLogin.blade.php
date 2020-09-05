@@ -8,7 +8,7 @@
     <title>LivestudyHub- Login</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('blogfiles\img\livestudyhub.jpg')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub-title.jpg">
     <!-- Bootstrap CSS -->
 
     <!-- Bootstrap CSS -->

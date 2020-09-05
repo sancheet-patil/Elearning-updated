@@ -8,7 +8,7 @@
     <title>LivestudyHub - Dashboard</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/frontend/')}}/images/livestudyhub-title.jpg">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -41,11 +41,11 @@
 
         <!-- Logo -->
         <div class="header-left">
-            <a href="index.html" class="logo">
-                <img src="{{asset('assets/admin/img/logo1.jpg')}}" alt="Logo" style="height: 200px; width: 100px">
+            <a href="{{route('teacher.login.submit')}}" class="logo">
+                <img src="{{asset('assets/admin/img/logo1.jpg')}}" alt="Logo" style="height: 400px; width: 100px">
             </a>
-            <a href="index.html" class="logo logo-small">
-                <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="30">
+            <a href="{{route('teacher.login.submit')}}" class="logo logo-small">
+                <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="60">
             </a>
         </div>
         <!-- /Logo -->
@@ -177,24 +177,25 @@
                 <ul><?php
                 $status=App\Teacher::select('status','name')->where('id',Auth::guard('teacher')->user()->id)->first();
                 ?>
-                @if($status->status > 1)
+                @if($status->status > 0)
                     <li class="menu-title">
                         <span><i class="fe fe-home"></i> Main</span>
                     </li>
                     <li class="active">
                         <a href="{{route('teacher.dashboard')}}"><span>Dashboard</span></a>
                     </li>
-                @endif
+               
                     <li>
                         <a href="{{route('teacher.subcourses.view')}}"><span>Request SubCourse</span></a>
                     </li>
+                    @endif
                     <!--<li class="submenu">
                         <a href="#"><span> Reports</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="invoice-report.html">Invoice Reports</a></li>
                         </ul>
                     </li>-->
-                    @if($status->status > 3)
+                    @if($status->status >= 2)
                     <li>
                         <a href="{{route('teacher.group')}}"><span>Groups</span></a>
                     </li>

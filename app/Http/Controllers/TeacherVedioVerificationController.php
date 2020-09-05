@@ -23,6 +23,13 @@ class TeacherVedioVerificationController extends Controller
 
     public function video_verification_file_save(Request $request)
     {
+        $this->validate($request,[
+            'doc_file'=>'required|image|mimes:jpeg,bmp,png,doc,pdf|max:2048',
+            'video_file'  => 'mimes:mp4,mov,ogg | max:20000'
+            
+
+
+        ]);
         $teacher = Teacher::where('id',Auth::user()->id)->first();
         if($request->hasFile('doc_file')){
             @unlink($teacher->doc_file);
