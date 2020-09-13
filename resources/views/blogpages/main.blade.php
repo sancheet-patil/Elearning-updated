@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Elearning - Tutor, Education HTML Template</title>
-    <link rel="icon" href="{{asset('blogfiles\img\favicon.png')}}">
+    <link rel="icon" href="{{asset('blogfiles\img\livestudyhub.jpg')}}">
+    <link rel="icon" href="{{asset('blogfiles\img\favicon.jpg')}}">
     <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="{{asset('blogfiles\css\bootstrap.min.css')}}">
     <!-- animate CSS -->

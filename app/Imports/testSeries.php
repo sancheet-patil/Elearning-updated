@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\test;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class testSeries implements ToModel
+class testSeries implements ToModel,WithHeadingRow
 {
     public $goal,$course,$subcourse,$negative_marks,$time;
 
@@ -30,12 +31,12 @@ class testSeries implements ToModel
             'subCourse_id'   => $this->subcourse,
             'Negative_marks'   => $this->negative_marks,
             'time'   => $this->time,
-            'Questions'    => $row[0],
-            'Option1'    => $row[1],
-            'Option2'    => $row[2],
-            'Option3'    => $row[3],
-            'Option4'    => $row[4],
-            'Correct_option'    => $row[5],
+            'Questions'  => $row['questions'],
+            'Option1'    => $row['option1'],
+            'Option2'    => $row['option2'],
+            'Option3'    => $row['option3'],
+            'Option4'    => $row['option4'],
+            'Correct_option'    => $row['correct_option'],
         ]);
     }
 }

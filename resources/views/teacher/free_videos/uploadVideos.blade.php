@@ -76,8 +76,8 @@
                      <div class="progress-bar bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <div class="percent">0%</div >
-               </div>
-               <input type="submit"  value="Submit" class="btn btn-success">
+               </div><br>
+               <input type="submit"  value="Submit" class="create_btn_dash">
             </div>
          </form>
       </div>
@@ -87,8 +87,8 @@
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <iframe width="320" height="240"
-            src="{{$video->video_file}}">
+      <iframe width="360" height="240"
+            src="https://www.youtube.com/embed/{{$video->video_file}}">
       </iframe>
       <div class="card-header">
          <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}

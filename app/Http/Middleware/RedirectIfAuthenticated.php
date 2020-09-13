@@ -26,7 +26,16 @@ class RedirectIfAuthenticated
                 break;
             case 'teacher':
                 if(Auth::guard($guard)->check()){
-                    return redirect()->route('teacher.dashboard');
+                     if(Auth::guard('teacher')->user()->status >=5)
+                    {
+                        return redirect()->route('paidteacher.dashboard'); 
+                    
+                    }
+                    else
+                    {
+                        return redirect()->route('teacher.dashboard');  
+                    }
+                  
                 }
                 break;
 

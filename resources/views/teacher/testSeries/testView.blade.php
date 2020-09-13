@@ -7,24 +7,11 @@
    </div>
 </div>
 @endif
-
-
-
-
-@if($errors->any())
-@foreach($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-
-
-
-@endif
     <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-header">
             Upload Test Series 
+            <a class="create_btn_dash btn-sm pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
         </div>
         <div class="card-body">
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
@@ -59,15 +46,15 @@
             </div>
             <div class="form-group">
                         <label>Time For each Question(in Min)</label>
-                        <input type="text" class="form-control" name="time" >
+                        <input type="text" class="form-control" name="time" required>
                     </div>
                     <div class="form-group">
                         <label>Negative marks for each question</label>
-                        <input type="text" class="form-control" name="negative_marks" >
+                        <input type="text" class="form-control" name="negative_marks" required>
                     </div>
                 <input type="file" name="file" class="form-control">
                 <br>
-                <button class="btn btn-success">Upload test Series</button>
+                <button class="create_btn_dash">Upload test Series</button>
             </form>
         </div>
     </div>
@@ -77,53 +64,9 @@
 @section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="https://malsup.github.com/jquery.form.js"></script>
-<script type="text/javascript">
-
-  /* function validate(formData, jqForm, options) {
-       var form = jqForm[0];
-       if (!form.video_file.value) {
-           alert('File not found');
-           return false;
-       }
-   }
-   
-   (function() {
-   
-   var bar = $('.bar');
-   var percent = $('.percent');
-   var status = $('#status');
-   
-   $('form').ajaxForm({
-       beforeSend: function() {
-           status.empty();
-           var percentVal = '0%';
-           var posterValue = $('input[name=video_file]').fieldValue();
-           bar.width(percentVal)
-           percent.html(percentVal);
-       },
-       uploadProgress: function(event, position, total, percentComplete) {
-           var percentVal = percentComplete + '%';
-           bar.width(percentVal)
-           percent.html(percentVal);
-       },
-       success: function() {
-           var percentVal = 'Wait, Saving';
-           bar.width(percentVal)
-           percent.html(percentVal);
-       },
-       complete: function(xhr) {
-           status.html(xhr.responseText);
-           window.location.href = "/teacher/free_videos";
-       }
-   });
-    
-   })();*/
-</script>
 <script type='text/javascript'>
-     // Department Change
+     // course Change
    function getCourse(course){
-       //alert('Value:'+course.options[course.selectedIndex].value);
-        // Department id
         var id = course.options[course.selectedIndex].value;
    
         // Empty the dropdown

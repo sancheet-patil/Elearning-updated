@@ -35,7 +35,7 @@ class uploadVideoController extends Controller
             $image->move($directory,$imageName);*/
             $video = Youtube::upload($request->file('video_file')->getPathName(), [
                 'title'       => course::find($request->input('course_name'))->course_name,
-                'description' => subcourse::find($request->input('subcourse_name'))->subCourses_name
+                'description' => subcourses::find($request->input('subcourse_name'))->subCourses_name
                 
             ]);
             $imgUrl1= $video->getVideoId();

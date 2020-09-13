@@ -18,7 +18,8 @@
     <title>LivestudyHub- Login</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub-title.jpg">
+    <!-- Bootstrap CSS -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -41,8 +42,8 @@
     <div class="login-wrapper">
         <div class="container">
             <div class="loginbox">
-                <div class="login-left">
-                    <img class="img-fluid" src="{{asset('assets/admin/')}}/img/logo-white.png" alt="Logo">
+                <div class="login-left" >
+                    <img class="img-fluid" src="{{asset('assets/admin/')}}/img/logo-white.jpg" alt="Logo">
                 </div>
                 <div class="login-right">
                     <div class="login-right-wrap">

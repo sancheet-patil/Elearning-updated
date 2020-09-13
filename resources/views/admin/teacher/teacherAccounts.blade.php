@@ -37,10 +37,10 @@
                                 <td>
                                     <h2 class="table-avatar">
                                         @if (!empty($teacher->profile_image))
-                                            <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset($teacher->profile_image)}}" style="height: 50px;width: 50px" alt="User Image"></a>
+                                            <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('assets/admin/')}}/img/teachers_profile.jpg" style="height: 50px;width: 50px" alt="User Image"></a>
                                             <a href="profile.html" style="margin-left: 20px">{{$teacher->name}}</a>
                                         @else
-                                            <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="https://www.speakersbank.org.au/wp-content/uploads/2016/01/photo-icon.png" style="height: 50px;width: 50px" alt="User Image"></a>
+                                            <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('assets/admin/')}}/img/teachers_profile.jpg" style="height: 50px;width: 50px" alt="User Image"></a>
                                             <a href="profile.html" style="margin-left: 20px">{{$teacher->name}}</a>
                                         @endif
 

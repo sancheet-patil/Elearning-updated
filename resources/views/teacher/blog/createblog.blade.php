@@ -7,13 +7,13 @@
             </div>
         </div>
     </div>
-@if($errors->any())
-@foreach($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-
+@if (session('success'))
+    <div class="card-body">
+        <div class="alert alert-success">
+         <h5>  {{ session('success') }}</h5> 
+        </div>
+    </div>
+   @endif
 
 
 @endif
@@ -26,7 +26,7 @@
                     <h4 class="card-title" style="text-align: center">Create Blog</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
                         {{csrf_field() }}
                                 
                             

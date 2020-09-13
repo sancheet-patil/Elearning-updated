@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Create groups</h3>
-                 <a href="{{route('teacher.group.view')}}"><button class="btn btn-success btn-sm pull-right" >Request for Group</button></a>
+                 <a href="{{route('teacher.group.view')}}"><button class="create_btn_dash btn-sm " >Request for Group</button></a>
             </div>
         </div>
     </div>
-
+<br> 
     @if (session('success'))
     <div class="card-body">
         <div class="alert alert-success">
@@ -47,17 +47,17 @@
                 <div class="card-header">
                     <h4 class="card-title">Group List</h4>
                 </div>
-                <div class="card-body">
+                <div class="table-cerificate">
                     <div class="table-responsive">
-                        <table class="table table-hover table-center mb-0">
+                        <table class="table ucp-table table-center mb-0">
                             <thead>
                             <tr>
                             
-                            <th>Group Name</th>
-                            <th>Admin Name</th>
+                            <th class="text-center">Group Name</th>
+                            <th class="text-center"> Admin Name</th>
                             
-                            <th>Created at</th>
-                                <th class="text-right">Action</th>
+                            <th class="text-center">Created at</th>
+                                <th class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,18 +70,18 @@
                                  $Group_admin= \App\group_admins::all();
                                  $teachers= \App\Teacher::all();
                                 ?>
-                                    <td>{{$G_name->group_name}}</td>
+                                    <td class="text-center">{{$G_name->group_name}}</td>
                                     <?php $Admin_name=App\group_admins::where('group_id',$G_name->id)->get(); ?>
-                                    <td>@foreach($Admin_name as $adminNames)
+                                    <td class="text-center">@foreach($Admin_name as $adminNames)
                                         {{$adminNames->Admin_name}}<br>
                                         @endforeach
-                                    </td>
-                                    <td>{{$G_name->created_at}}</td>
-                                    <td class="text-right">
+                                    </td class="text-center">
+                                    <td class="text-center">{{$G_name->created_at}}</td>
+                                    <td class="text-center">
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#groupadmin{{$G_name->id}}"><i class="fa fa-user"></i></button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newgroupmembers{{$G_name->id}}"><i class="fa fa-users"></i></button>
                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgroup{{$G_name->id}}"><i class="fa fa-edit"></i> </button>
-                                    <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletegroup{{$G_name->id}}"><i class="fa fa-trash"></i> </button>
+                                    <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletegroup{{$G_name->id}}"><i class="uil uil-trash-alt"></i> </button>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="editgroup{{$G_name->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -187,11 +187,13 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="{{route('teacher.groupadmin.save')}}" method="post" enct>l
+                                            <form action="{{route('teacher.groupadmin.save')}}" method="post" >
                                               @csrf
                                                 <div class="modal-body">
                                                
                                                <div class="form-group">
+                                             
+                                               
                                                  <select name="group_name" id="" class="form-control" enctype="multipart/form-data">
                         
                        
@@ -199,21 +201,21 @@
                         
                                                 </select><br>
 
-                                                <select  multiple="multiple"  name="group_members" id="" class="form-control" >
-                                                 <option>-- Select Group Admin --</option>
+                                        
                                                  <?php 
                                                     $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
                                                   ?>
                                                    @foreach($Group_members as $members)
-                                                    <option  value="{{$members->id}}">{{$members->group_members}}</option>
+                                                   <input type="hidden" value="{{$members->id}}" name="group_members" class="form-control">
+                                                    
                                                    @endforeach
-                                                </select><br>
+                                               
                         
                                                  <select  multiple="multiple"  name="group_admin" id="" class="form-control" >
                                                  <option>-- Select Group Admin --</option>
                                                  <?php 
                                                     $Group_members=App\group_members::where('group_id',$G_name->id)->get(); 
-                                                  ?>
+                                                ?>
                                                    @foreach($Group_members as $members)
                                                     <option  value="{{$members->group_members}}">{{$members->group_members}}</option>
                                                    @endforeach
@@ -240,7 +242,7 @@
         </div>
     </div>
 
-
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
 
     
  

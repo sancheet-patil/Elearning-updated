@@ -6,10 +6,9 @@
 
 <div class="col-12 col-md-6 col-lg-4 d-flex">
     <div class="card flex-fill">
-    <video width="320" height="240" controls>
-      <source src="{{asset($video->video_file)}}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+    <iframe width="390" height="240"
+            src="https://www.youtube.com/embed/{{$video->video_file}}">
+      </iframe>
         <div class="card-header">
             <h5 class="card-title mb-0">By {{$teacher_name[$i++]->name}}
             <button class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#deletecourse{{$video->id}}"><i class="fa fa-trash"></i> </button>

@@ -7,6 +7,13 @@
             </div>
         </div>
     </div>
+@if (session('success'))
+    <div class="card-body">
+        <div class="alert alert-success">
+         <h5>  {{ session('success') }}</h5> 
+        </div>
+    </div>
+   @endif
 
 @if($errors->any())
 @foreach($errors->all() as $error)
@@ -26,7 +33,7 @@
                     <h4 class="card-title" style="text-align: center">Create Blog</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Adminblog.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                         {{csrf_field() }}
 
                     <div class="row">
@@ -65,8 +72,8 @@
                             <div class="col-md-1"></div>
                             <div class="form-group col-md-10">
                                 <label>Blog Title</label>
-                                <input type="text" name="title" value="" class="form-control">
-                                <input type="text" name="teacher_id" value="0" class="form-control"> 
+                                <input type="text" name="title" value="" class="form-control" required>
+                                <input type="hidden" name="teacher_id" value="0" class="form-control" required> 
                          
                         
                             </div>
