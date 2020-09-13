@@ -12,5 +12,5 @@ npm-debug.log
 yarn-error.log
 /bootstrap
 /config
-/public
+
 /tests
