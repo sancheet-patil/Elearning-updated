@@ -15,6 +15,7 @@
         <link rel="icon" type="image/png" href="{{asset('assets/Ntheme/images/livestudyHub.jpg')}}">
         @yield('css')
         <!-- Stylesheets -->
+        
         <link rel="stylesheet" href="{{asset('assets/admincss/font-awesome.min.css')}}">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
         <link href="{{asset('assets/Ntheme/vendor/unicons-2.0.1/css/unicons.css')}}" rel='stylesheet'>
@@ -163,9 +164,9 @@
                         </div>
                         <a href="{{route('teacher.dashboard')}}" class="item channel_item">Dashboard</a>                      
                         <a href="membership.html" class="item channel_item">Paid Memberships</a>
-                        <a href="setting.html" class="item channel_item">Setting</a>
+                        <a href="{{route('teacher.TeacherSetting')}}" class="item channel_item">Setting</a>
                         <a href="help.html" class="item channel_item">Help</a>
-                        <a href="feedback.html" class="item channel_item">Send Feedback</a>
+                        <a href="{{route('teacher.TeacherFeedback')}}" class="item channel_item">Send Feedback</a>
                         <a href="{{url('teacher/logout')}}" class="item channel_item">logout</a>
                     </div>
                 </li>
@@ -184,7 +185,7 @@
                             <span class="menu--label">Dashboard</span>
                         </a>
                     </li>
-                    <li class="menu--item">
+                    <li  class="{{ Request::segment(2) === 'Request-subcourses' ? 'active' : null }}">
                         <a href="{{route('teacher.subcourses.view')}}" class="menu--link" title="Request SubCourse">
                             <i class='uil uil-book-alt menu--icon'></i>
                             <span class="menu--label">Request SubCourse</span>
@@ -198,14 +199,14 @@
                     </li>
                     <li class="menu--item">
                         <a href="{{route('teacher.free_videos.view')}}" class="menu--link" title="Analyics">
-                            <i class='uil fa fa-youtube-square menu--icon'></i>
-                                <span>Upload videos</span>
+                         &nbsp &nbsp &nbsp <i class='fa fa-video-camera'></i>
+                         &nbsp &nbsp &nbsp <span>Upload videos</span>
                         </a>
                     </li>
                     <li class="menu--item">
                         <a href="{{route('blog.addblog')}}" class="menu--link" title="Create Course">
-                            <i class='uil uil-plus-circle menu--icon'></i>
-                             <span>Blog</span>
+                        &nbsp &nbsp &nbsp &nbsp <i class='fa fa-pencil' aria-hidden="true"></i>
+                         &nbsp &nbsp &nbsp<span>Blog</span>
                         </a>
                     </li>
                    
@@ -303,7 +304,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                            <p>© 2020 <strong>LivestudyHub</strong>. All Rights Reserved.</p>
                                         </li>
                                     </ul>
                                 </div>

@@ -11,7 +11,7 @@
     <div class="card bg-light mt-3">
         <div class="card-header">
             Upload Test Series 
-            <a class="create_btn_dash btn-sm pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
+            <a class="create_btn_dash  pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
         </div>
         <div class="card-body">
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">

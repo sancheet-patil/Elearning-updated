@@ -148,7 +148,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
 
   
-// Paid teacher section
+//teacher section
  Route::prefix('teacher')->group(function (){
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
     Route::post('/register-submit', 'Auth\TeacherLoginController@register_submit')->name('teacher.register.submit');
