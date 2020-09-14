@@ -80,7 +80,7 @@
                             <p class="text-muted mb-0">Administrator</p>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="{{url('teacher/logout')}}">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->

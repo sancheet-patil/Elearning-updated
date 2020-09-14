@@ -76,8 +76,8 @@
                      <div class="progress-bar bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <div class="percent">0%</div >
-               </div>
-               <input type="submit"  value="Submit" class="btn btn-success">
+               </div><br>
+               <input type="submit"  value="Submit" class="create_btn_dash">
             </div>
          </form>
       </div>

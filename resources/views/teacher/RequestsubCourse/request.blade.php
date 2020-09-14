@@ -3,7 +3,8 @@
 @section('css')
 <style>
 .card {
-   width:35%;
+   width:45%;
+   
     background-color: white;
     padding: 10px 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -40,6 +41,7 @@
 
 
 @endif
+  <br>  <br>
 <center>
 <div>
 
@@ -81,12 +83,12 @@
 
 
 
-            <button type="submit" class="btn btn-success">Send Request</button>
+            <button type="submit" class="create_btn_dash">Send Request</button>
             </div> 
          </form>
          </div>
          </center>
-         
+         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
 @stop
 
 @section('js')

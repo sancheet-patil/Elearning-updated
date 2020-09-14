@@ -145,8 +145,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     
 });
+
+
   
-//teacher section
+// Paid teacher section
  Route::prefix('teacher')->group(function (){
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
     Route::post('/register-submit', 'Auth\TeacherLoginController@register_submit')->name('teacher.register.submit');
@@ -155,6 +157,22 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/logout', 'Auth\TeacherLoginController@logout')->name('teacher.logout');
     Route::get('/video-verification', 'TeacherVedioVerificationController@video_verification')->name('teacher.video.verification');
     Route::post('/video-verification-file-save', 'TeacherVedioVerificationController@video_verification_file_save')->name('teacher.video.file.upload');
+
+     //teacher Review
+     Route::get('/teacher-review', 'Teacher\TeacherReviewController@review')->name('teacher.TeacherReview');
+
+     //teacher Earning
+     Route::get('/teacher-earning', 'Teacher\TeacherReviewController@earning')->name('teacher.TeacherEarning');
+     //teacher Payout
+     Route::get('/teacher-payout', 'Teacher\TeacherReviewController@payout')->name('teacher.TeacherPayout');
+     //teacher Statements
+     Route::get('/teacher-Statements', 'Teacher\TeacherReviewController@statement')->name('teacher.TeacherStatements');
+     //teacher Verifiction
+     Route::get('/teacher-Verification', 'Teacher\TeacherReviewController@verification')->name('teacher.TeacherVerification');
+     //teacher Setting
+     Route::get('/teacher-Setting', 'Teacher\TeacherReviewController@setting')->name('teacher.TeacherSetting');
+     //teacher Feedback
+     Route::get('/teacher-Feedback', 'Teacher\TeacherReviewController@feedback')->name('teacher.TeacherFeedback');
 
     //teacher profile
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
@@ -179,6 +197,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::post('/Upload-free_videos','Teacher\uploadVideoController@save')->name('teacher.free_videos.save');
     Route::get('/free_videos','Teacher\uploadVideoController@view')->name('teacher.free_videos.view');
     Route::delete('/teacher-playerfree-videos-delete','Teacher\uploadVideoController@delete')->name('teacher.free_videos.delete');
+
     //Request sub-courses
     Route::get('/Request-subcourses','Teacher\TeachersubCourseRequest@view')->name('teacher.subcourses.view');
     Route::post('/Request-subcourses-approve','Teacher\TeachersubCourseRequest@request')->name('teacher.subcourses.request');
@@ -189,7 +208,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
     //for blog 
   Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
   Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
-  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('teacher.addblog');
+  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
   Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
   Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
   Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
@@ -225,6 +244,13 @@ Route::group(['middleware' => ['auth:admin']], function() {
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
     Route::prefix('teacher')->group(function() {
         Route::get('/', 'Teacher\TeacherController@index')->name('teacher.dashboard');
+
+    });
+    });
+
+    Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
+    Route::prefix('free-teacher')->group(function() {
+        Route::get('/', 'Free_TeacherController\TeacherController@index')->name('paidteacher.dashboard');
 
 
     });
