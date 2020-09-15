@@ -163,15 +163,22 @@
                             </a>
                         </div>
                         <a href="{{route('teacher.dashboard')}}" class="item channel_item">Dashboard</a>                      
-                        <a href="membership.html" class="item channel_item">Paid Memberships</a>
                         <a href="{{route('teacher.TeacherSetting')}}" class="item channel_item">Setting</a>
-                        <a href="help.html" class="item channel_item">Help</a>
+
                         <a href="{{route('teacher.TeacherFeedback')}}" class="item channel_item">Send Feedback</a>
                         <a href="{{url('teacher/logout')}}" class="item channel_item">logout</a>
                     </div>
-                </li>
-            </ul>
-        </div>
+                    
+            </li>
+            <!-- /User Menu -->
+
+        </ul>
+        <!-- /Header Right Menu -->
+
+    </div>
+    <!-- /Header -->
+
+    <!-- Sidebar -->
     </header>
     <!-- Header End -->
     <!-- Left Sidebar Start -->
