@@ -28,13 +28,20 @@ class TeacherVedioVerificationController extends Controller
             'doc_file'=>'required|image|mimes:jpeg,bmp,png,doc,pdf|max:2048',
             'video_file'  => 'mimes:mp4,mov,ogg | max:20000',
             'private_coaching'=>'required',
+            'Coaching_Address'=>'required',
             'gov_teaching'=>'required',
+            'gov_Address' =>'required',
             'youtube'=>'required',
+            'youtube_link' =>'required',
+            
             'telegram_admin'=>'required',
+            'telegram_link'  =>'required',
             'book_publish'=>'required',
+            'book_publisher_name' =>'required',
             'stat_new_teaching'=>'required',
+            'c_address' =>'required',
             'certification'=>'required',
-            'equipment'=>'required',
+            
 
             
 
@@ -69,7 +76,8 @@ class TeacherVedioVerificationController extends Controller
         $teacher->book_publish = $request->book_publish;
         $teacher->stat_new_teaching = $request->stat_new_teaching;
         $teacher->certification = $request->certification;
-        $teacher->equipment= implode($request->equipment);
+
+        $teacher->equipment= implode(",",$request->get('checkbox'));
 
         $teacher->save();
 

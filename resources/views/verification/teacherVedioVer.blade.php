@@ -144,43 +144,43 @@
                                             <label>Private Coaching </label><br>
                                             Yes <input type="radio" name="private_coaching" id="p1" onclick="myFunction2()">&nbsp
                                            No <input type="radio" name="private_coaching" id="p2" onclick="myFunction1()"><br>
-                                           <input type="text" placeholder="coaching name" class="form-control" name="private_coaching[]" id="coaching_name" required><br>
-                                           <input type="text" placeholder="Address" class="form-control" name="private_coaching[]" id="coaching_address" required>
+                                           <input type="text" placeholder="coaching name" class="form-control" name="private_coaching" id="coaching_name" required><br>
+                                           <input type="text" placeholder="Address" class="form-control" name="Coaching_Address" id="coaching_address" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Government Teaching </label><br>
                                             Yes <input type="radio" name="Government_Teaching" id="g1" onclick="myFunction3()">&nbsp
                                            No <input type="radio" name="Government_Teaching" id="g2" onclick="myFunction4()"><br>
-                                            <input type="text" placeholder="Government Teaching centre"  name="gov_teaching[]" class="form-control" id="gov_teaching" required ><br>
-                                           <input type="text" placeholder="Address" class="form-control" name="gov_teaching[]" id="gov_teaching_address" required>
+                                            <input type="text" placeholder="Government Teaching centre"  name="gov_teaching" class="form-control" id="gov_teaching" required ><br>
+                                           <input type="text" placeholder="Address" class="form-control" name="gov_Address" id="gov_teaching_address" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>YouTube </label><br>
                                             Yes <input type="radio" name="YouTube" onclick="myFunction6()">&nbsp
                                            No <input type="radio" name="YouTube" onclick="myFunction5()"><br>
-                                            <input type="text" placeholder="Channel Name" name="youtube[]" id="youtube" class="form-control" required><br>
-                                           <input type="text" placeholder="Channel Link" name="youtube[]" id="youtubechannel" class="form-control" required>
+                                            <input type="text" placeholder="Channel Name" name="youtube" id="youtube" class="form-control" required><br>
+                                           <input type="text" placeholder="Channel Link" name="youtube_link" id="youtubechannel" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Telegram Admin </label><br>
                                             Yes <input type="radio" name="Telegram_Admin" onclick="myFunction7()">&nbsp
                                            No <input type="radio" name="Telegram_Admin" onclick="myFunction8()"><br>
-                                            <input type="text" placeholder="Channel Name" name="telegram_admin[]" id="telegram_admin" class="form-control" required><br>
-                                           <input type="text" placeholder="Channel Link" name="telegram_admin[]" id="telegram_channel" class="form-control" required>
+                                            <input type="text" placeholder="Channel Name" name="telegram_admin" id="telegram_admin" class="form-control" required><br>
+                                           <input type="text" placeholder="Channel Link" name="telegram_link" id="telegram_channel" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Book Publish </label><br>
                                             Yes <input type="radio" name="Book_Publish" onclick="myFunction10()">&nbsp
                                            No <input type="radio" name="Book_Publish" onclick="myFunction9()"><br>
-                                            <input type="text" placeholder="Book Name" name="book_publish[]" id="book_publish" class="form-control" required><br>
-                                           <input type="text" placeholder="Publisher" name="book_publish[]"  id="publishername" class="form-control" required>
+                                            <input type="text" placeholder="Book Name" name="book_publish" id="book_publish" class="form-control" required><br>
+                                           <input type="text" placeholder="Publisher" name="book_publisher_name"  id="publishername" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Start New Teaching </label><br>
                                             Yes <input type="radio" name="New_Teaching" onclick="myFunction11()">&nbsp
                                            No <input type="radio" name="New_Teaching" onclick="myFunction12()"><br>
-                                            <input type="text" name="stat_new_teaching[]" id="stat_new_teaching" class="form-control" required><br>
-                                           <input type="text" placeholder="coaching name" name="stat_new_teaching[]" id="stat_new_teaching_name" class="form-control" required>
+                                            <input type="text" placeholder="coaching name" name="stat_new_teaching" id="stat_new_teaching" class="form-control" required><br>
+                                           <input type="text" placeholder="coaching Address" name="c_address" id="stat_new_teaching_name" class="form-control" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Certification </label>
@@ -196,10 +196,10 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Which equipment you are having? </label><br>
-                                            laptop &nbsp<input type="checkbox" name="laptop" >&nbsp &nbsp
-                                            PC &nbsp<input type="checkbox" name="PC" >&nbsp &nbsp
-                                            Projector &nbsp<input type="checkbox" name="Projector" >&nbsp &nbsp
-                                            Digital Board &nbsp<input type="checkbox" name="Digital_Board" >&nbsp &nbsp
+                                            laptop &nbsp<input type="checkbox" name="checkbox[]" value="laptop" >&nbsp &nbsp
+                                            PC &nbsp<input type="checkbox" name="checkbox[]" value="PC" >&nbsp &nbsp
+                                            Projector &nbsp<input type="checkbox" name="checkbox[]" value="Projector" >&nbsp &nbsp
+                                            Digital Board &nbsp<input type="checkbox" name="checkbox[]" value="Digital_Board" >&nbsp &nbsp
                                         </div>
                                         <div class="form-group col-md-4">
                                             

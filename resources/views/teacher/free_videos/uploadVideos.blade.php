@@ -1,5 +1,18 @@
 @extends('layouts.teacher')
 @section('css')
+<link href="{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+		<link href="{{asset('assets/Ntheme')}}/css/vertical-responsive-menu.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/style.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/responsive.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/night-mode.css" rel="stylesheet">
+		
+		<!-- Vendor Stylesheets -->
+		<link href="{{asset('assets/Ntheme')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{asset('assets/Ntheme')}}/vendor/semantic/semantic.min.css">		
+		
 <style>
    .card {
    width:50%;
@@ -47,7 +60,7 @@
                      ?>
                   <div class="col-md-10">
 
-                     <select id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
+                     <select class="_dlor1" id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
                         <option>Select Goals</option>
                         @foreach($goals as $goal)
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
@@ -57,14 +70,14 @@
                </div>
                <div class="form-group row">
                   <div class="col-md-10"> 
-                     <select id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
+                     <select class="_dlor1" id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
                      <option value="-1">Select Course</option>
                      </select>
                   </div>
                </div>
             <div class="form-group row">
                <div class="col-md-10">
-                  <select id="subCourse_id" name="subcourse_name" class="form-control" disabled>
+                  <select class="_dlor1" id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                      <option value="-1">Select SubCourse</option>
                   </select>
                </div>

@@ -225,6 +225,12 @@
                         </a>
                     </li>
                     <li class="menu--item">
+                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
+                          <i class='uil   uil-presentation-play menu--icon'></i>
+                           <span>Live Stream</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
                         <a href="{{route('teacher.paper')}}" class="{{ Request::segment(2) === 'paper' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
                           <i class='uil  uil-files-landscapes-alt menu--icon'></i>
                            <span>Previous Papers</span>
