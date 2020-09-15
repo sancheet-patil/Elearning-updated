@@ -163,15 +163,12 @@
                             </a>
                         </div>
                         <a href="{{route('teacher.dashboard')}}" class="item channel_item">Dashboard</a>                      
-                        <a href="membership.html" class="item channel_item">Paid Memberships</a>
                         <a href="{{route('teacher.TeacherSetting')}}" class="item channel_item">Setting</a>
-                        <a href="help.html" class="item channel_item">Help</a>
+
                         <a href="{{route('teacher.TeacherFeedback')}}" class="item channel_item">Send Feedback</a>
                         <a href="{{url('teacher/logout')}}" class="item channel_item">logout</a>
                     </div>
-                    <a class="dropdown-item" href="{{route('teacher.teacherProfile')}}">My Profile</a>
-                    <a class="dropdown-item" href="{{url('teacher/LogoutNotification')}}">Logout</a>
-                </div>
+                    
             </li>
             <!-- /User Menu -->
 
@@ -182,18 +179,6 @@
     <!-- /Header -->
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-inner slimscroll">
-            <div id="sidebar-menu" class="sidebar-menu">
-                <ul><?php
-                $status=App\Teacher::select('status','name')->where('id',Auth::guard('teacher')->user()->id)->first();
-                ?>
-                @if($status->status > 1)
-                    <li class="menu-title">
-                        <span><i class="fe fe-home"></i> Main</span>
-                </li>
-            </ul>
-        </div>
     </header>
     <!-- Header End -->
     <!-- Left Sidebar Start -->
