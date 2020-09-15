@@ -3,6 +3,26 @@
 
 <!-- Mirrored from demo.themeies.com/elearning/home-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jul 2020 14:39:11 GMT -->
 <head>
+<style type="text/css">
+    .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+
+    background: linear-gradient(to right, #ef3e0f, #ffb800)
+
+}
+
+.my-float{
+    margin-top:22px;
+} 
+</style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,8 +38,9 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/')}}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{asset('assets/frontend/')}}/css/nice-select.css">
     <link rel="stylesheet" href="{{asset('assets/frontend/')}}/css/style.css">
-
+    
     <title>Elearning - Tutor, Education HTML Template</title>
+
 </head>
 <body>
 

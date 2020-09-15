@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RequestSubcoursesNotification extends Notification
 {
-     use Queueable;
+    use Queueable;
     protected $Teacher;
 
 
@@ -55,8 +55,9 @@ class RequestSubcoursesNotification extends Notification
     public function toArray($notifiable)
     {
         
-            return  Auth::guard('teacher')->user()->name;
-            //
+            
+              return Auth::guard('teacher')->user()->name.'('.Auth::guard('teacher')->user()->email.') is send request for Subcourse';
+        
         
     }
 }

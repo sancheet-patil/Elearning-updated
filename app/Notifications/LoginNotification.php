@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginNotification extends Notification
 {
     use Queueable;
-     protected $Teacher;
+    protected $Teacher;
 
 
     
@@ -55,8 +55,11 @@ class LoginNotification extends Notification
     public function toArray($notifiable)
     {
         
-            return  Auth::guard('teacher')->user()->name;
-            //
+           return Auth::guard('teacher')->user()->name.'('.Auth::guard('teacher')->user()->email.') is Login At';
+        
+            
+    
+       
         
     }
 }

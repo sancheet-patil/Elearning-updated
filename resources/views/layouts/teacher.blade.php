@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <a class="dropdown-item" href="{{route('teacher.teacherProfile')}}">My Profile</a>
-                    <a class="dropdown-item" href="{{url('teacher/logout')}}">Logout</a>
+                    <a class="dropdown-item" href="{{url('teacher/LogoutNotification')}}">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->
@@ -204,8 +204,9 @@
 
                     <li>
 
-                        <a href="https://solutions.agora.io/education/web/?_ga=2.113566215.184414609.1597420959-482435269.1596626319&_gac=1.261705599.1596683766.CjwKCAjwsan5BRAOEiwALzomX2k8YKitn0lIWH4oZP26lbOgh_4SYTC0FHRSQa7z4LSKOuDwDa0fDxoCkPIQAvD_BwE#/"><span>Live stream</span></a>
+                        <a href="{{route('teacher.LiveStreamNotification')}}"><span>Live stream</span></a>
                     </li>
+
                     <li>
                         <a href="{{route('teacher.addblog')}}"><span>Blog</span></a>
                     </li>

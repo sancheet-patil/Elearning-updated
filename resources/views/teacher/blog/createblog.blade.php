@@ -9,7 +9,7 @@
     </div>
 @if (session('success'))
     <div class="card-body">
-        <div class="alert alert-success">
+        <div class="alert alert-success" style="text-align: center">
          <h5>  {{ session('success') }}</h5> 
         </div>
     </div>

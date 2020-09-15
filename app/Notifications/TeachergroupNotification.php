@@ -55,8 +55,10 @@ class TeachergroupNotification extends Notification
     public function toArray($notifiable)
     {
         
-            return  Auth::guard('teacher')->user()->name;
-            //
+            
+           return Auth::guard('teacher')->user()->name.'('.Auth::guard('teacher')->user()->email.') is send request for group';
+        
+         //
         
     }
 }

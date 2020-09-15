@@ -32,6 +32,15 @@ class teacherProfileController extends Controller
          $teacher_details->book_publish=      $request->book_publish;
          $teacher_details->stat_new_teaching= $request->stat_new_teaching;
          $teacher_details->certification=     $request->certification;
+         if($request->hasfile('image'))
+            {
+            $file=$request->file('image');
+            $extension=$file->getClientOriginalExtension();
+            $filename=time().".".$extension;
+            $file->move('teacherProfile',$filename);
+            $teacher_details->profile_image=$filename;
+            
+        }
          $teacher_details->save();
         return view('teacher.teacherProfile',compact('teacher_details'));
     }

@@ -59,18 +59,27 @@
                                 <label>Certification </label>
                                 <input type="text" name="certification" value="{{$teacher_details->certification}}" class="form-control" required>
                             </div>
+                             <div class="form-group col-md-4">
+                                <label>Profile Image </label>
+                                <input type="file" name="image" value="" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                            <img src="{{asset('blogfiles\upload/'.$teacher_details->profile_image)}}" height="100px" width="100px"></td>
+                             
+                            </div>
+                             
+                                    
 
-                           
-                           
 
-                           
-
+                
+                            
+                        </div>
+                        <div class="row">
                             <div class="form-group col-md-2">
                                 <button class="btn btn-primary btn-block" type="submit">Update</button>
                             </div>
 
                         </div>
-
 
                     </form>
                 </div>

@@ -5,21 +5,23 @@
             <nav class="navbar">
                 <!-- Site logo -->
                 <a href="{{asset(route('front'))}}" class="logo">
-                    <img src="{{asset('assets/frontend/')}}/images/logo.jpg" alt="">
+                    <img src="{{asset('assets/frontend/')}}/images/logo.png" alt="">
                 </a>
                 <a href="javascript:void(0);" id="mobile-menu-toggler">
                     <i class="ti-align-justify"></i>
                 </a>
                 <ul class="navbar-nav">
                     <li><a href="{{route('front')}}">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="has-menu-child">
-                        <a href="javascript:void(0);">Courses</a>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Teachers</a></li>
+                    
+                    <!-- <li class="has-menu-child">
+                        <a href="javascript:void(0);">Classroom</a>
                         <ul class="sub-menu">
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="course-details.html">Course Details</a></li>
+                            <li><a href="https://solutions.agora.io/education/web/?_ga=2.113566215.184414609.1597420959-482435269.1596626319&_gac=1.261705599.1596683766.CjwKCAjwsan5BRAOEiwALzomX2k8YKitn0lIWH4oZP26lbOgh_4SYTC0FHRSQa7z4LSKOuDwDa0fDxoCkPIQAvD_BwE#/">External Teacher</a></li>
+                            <li><a href="{{route('teacher.login')}}">Register Teacher</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li><a href="{{route('blog')}}">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li class="has-menu-child">
@@ -33,6 +35,8 @@
             </nav>
         </div>
     </header>
+    
+
 @stop
 @section('front')
 
@@ -43,6 +47,8 @@
             <div class="slide slide-1" style="background-image: url({{asset('assets/frontend/')}}/images/slider/2.jpg);"></div>
             <div class="slide slide-2" style="background-image: url({{asset('assets/frontend/')}}/images/slider/1.jpg);"></div>
         </div>
+       
+<!-- Download Button -->
         <div class="container">
             <div class="col-md-11 slider-content m-auto text-center">
                 <h2><span>Educate!</span> Smart is Great</h2>
@@ -59,7 +65,7 @@
             </div>
         </div>
     </section>
-    <!-- Slider section end -->
+    
 
     <!-- Feature Box section start -->
     <section class="featureBox">
@@ -97,60 +103,21 @@
             <div class="row">
                 <div class="col-lg-7 col-md-9 m-auto text-center">
                     <div class="sec-heading">
-                        <span class="tagline">Top categories</span>
+                        <span class="tagline"></span>
                         <h3 class="sec-title">Pick the right category Build your career</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
+                <?php $goal=App\goals::all();?>
+                @foreach($goal as $goal)
                 <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
+                    <a href="{{route('front.goal',$goal->id)}}" class="icon-list-block">
                         <img src="{{asset('assets/frontend/')}}/images/icons/categories/1.png" alt="">
-                        <span>IT & Software</span>
+                        <span>{{$goal->goal_name}}</span>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/2.png" alt="">
-                        <span>Data science</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/3.png" alt="">
-                        <span>Development</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/4.png" alt="">
-                        <span>Graphics design</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/5.png" alt="">
-                        <span>Marketing</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/6.png" alt="">
-                        <span>Music</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/7.png" alt="">
-                        <span>Photography</span>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#" class="icon-list-block">
-                        <img src="{{asset('assets/frontend/')}}/images/icons/categories/8.png" alt="">
-                        <span>Self Development</span>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -180,6 +147,12 @@
         </div>
     </section>
     <!-- Trial section end -->
+
+    <!--Download Button-->
+    <a href="https://play.google.com/store/apps?hl=en_IN" class="float" style="color:#fff">
+        <i class="fa fa-download my-float" aria-hidden="true"></i>
+    </a>
+
 
     <!-- Courses section start -->
     <section class="courses">
@@ -311,8 +284,10 @@
                     </div>
                 </div>
             </div>
+        
         </div>
     </section>
+    
     <!-- Courses section end -->
 
 @stop

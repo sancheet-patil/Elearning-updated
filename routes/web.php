@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'FrontendController@index')->name('front');
+Route::get('/frontgoal/{id}', 'FrontendController@course')->name('front.goal');
+Route::get('/subcourses/{id}', 'FrontendController@subcourses')->name('front.subcourses');
 Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
-
 
 
 Auth::routes();
@@ -122,6 +123,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
 
         Route::get('getcourse/{id}','Admin\AdminCoursesController@getCourse');
+          
           //For Admin Blog
         Route::get('getSubcourse/{id}','Admin\admin_blogController@getSubcourse');
         Route::get('getcourse/{id}','Admin\admin_blogController@getCourse');
@@ -131,16 +133,19 @@ Route::group(['middleware' => ['auth:admin']], function() {
          Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
          Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
          Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
-         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
+          Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
 
          //Previous Papers
          Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
          Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
          Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
 
-        
 
-    });
+         //Notification
+        Route::get('/delete','Admin\ReadNotification@index')->name('admin.delete');
+        Route::get('/markAsRead','Admin\ReadNotification@read')->name('admin.markAsRead');
+        
+     });
 
 
     
@@ -204,19 +209,14 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/export', 'Teacher\previouspapersController@export')->name('teacher.export');
 
     //Notification
+    Route::get('/registerNotification','Teacher\NotificationController@registerNotification')->name('teacher.registerNotification');
+    
     Route::get('/send','Teacher\NotificationController@sendrNotification')->name('teacher.send');
     Route::get('/groupnotification','Teacher\NotificationController@groupNotification')->name('teacher.groupnotification');
     Route::get('/RequestsubcoursesNotification','Teacher\NotificationController@RequestsubcoursesNotification')->name('teacher.RequestsubcoursesNotification');
     Route::get('/BlogNotification','Teacher\NotificationController@BlogNotification')->name('teacher.BlogNotification');
-    Route::get('/TestNotification','Teacher\NotificationController@TestNotification')->name('teacher.TestNotification');
-    Route::get('/DeleteNotification','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
-
-
-
-
-
-
-
+    Route::get('/LiveStreamNotification','Teacher\NotificationController@LiveStreamNotification')->name('teacher.LiveStreamNotification');
+    Route::get('/LogoutNotification','Teacher\NotificationController@LogoutNotification')->name('teacher.LogoutNotification');
     
 });
 

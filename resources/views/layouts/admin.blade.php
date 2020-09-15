@@ -70,75 +70,55 @@
         <ul class="nav user-menu">
 
             <!-- Notifications -->
+             <?php $user = App\Admin::find('1');?>
             <li class="nav-item dropdown noti-dropdown">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                    <i class="fe fe-bell"></i> <span class="badge badge-pill">{{App\notifications::all()->count()}}</span>
+                    <i class="fe fe-bell"></i> 
+                     @if($user->unreadNotifications->count())
+               <span class="badge badge-pill">{{$user->unreadNotifications->count()}}</span>
+               @endif
                 </a>
+                
                 <div class="dropdown-menu notifications">
                     <div class="topnav-dropdown-header">
                         <span class="notification-title">Notifications</span>
-                        <?php $note=\App\notifications::Orderby('id','DESC')->get();?>
-                          <a href="" class="clear-noti"> Clear All </a>
+                          <a href="{{asset(route('admin.delete'))}}" class="clear-noti"> Clear All </a>
                     </div>
                     <div class="noti-content">
                         <ul class="notification-list">
-                            
-                            @foreach($note as $note)
-                                @if($note->type=='App\Notifications\LoginNotification')
-                            <li class="notification-message">
+                               <li class="notification-message"><a href="{{route('admin.markAsRead')}}" style="color: #32cd32">Mark all as read</a></li>                 
+                            @foreach($user->unreadNotifications   as $note)
+                             <li class="notification-message" st>
+                                <a href="#" style="background-color:#dcdcdc">
+                                    <div class="media">
+                        
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span></p>
+                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}</span></p>
+                                        </div>
+                                                                            
+                                    </div>
+                                </a>
+                            </li>
+                           @endforeach
+                            @foreach($user->readNotifications   as $note)
+                             <li class="notification-message">
                                 <a href="#">
                                     <div class="media">
-												
-                                        <div class="media-body">
+                        
+                                       <div class="media-body">
                                             <p class="noti-details"><span class="noti-title">{{$note->data}}</span> is <span class="noti-title">log in at</span></p>
-                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}}</span></p>
+                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}</span></p>
                                         </div>
-                                    </div>
+                                                                            
+                            </div>
                                 </a>
                             </li>
-                            @elseif($note->type=='App\Notifications\TeachergroupNotification')
-                            <li class="notification-message">
-                                <a href="#">
-                                    <div class="media">
-                                                
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span> is <span class="noti-title">requesting for group at</span></p>
-                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}}</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @elseif($note->type=='App\Notifications\RequestSubcoursesNotification')
-                            <li class="notification-message">
-                                <a href="#">
-                                    <div class="media">
-                                                
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span> is <span class="noti-title"> requesting for subcourse at</span></p>
-                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}}</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @elseif($note->type=='App\Notifications\BlogNotification')
-                            <li class="notification-message">
-                                <a href="#">
-                                    <div class="media">
-                                                
-                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span>is<span class="noti-title">Posted  a blog</span></p>
-                                            <p class="noti-time"><span class="notification-time">{{$note->created_at}}}</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-
                            @endforeach
                         </ul>
                     </div>
                     <div class="topnav-dropdown-footer">
-                        <a href="#">View all Notifications</a>
+                       
                     </div>
                 </div>
             </li>

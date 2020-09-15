@@ -19,7 +19,8 @@ class previouspapersController extends Controller
     {
 
         Excel::import(new Previous_import($request->year),$request->file);
-        return back()->with('Success','Your Papers Uploaded Successfully');
+       return back()->with('Success','Your Papers Uploaded Successfully');
+   
     }
     public function export() 
     {

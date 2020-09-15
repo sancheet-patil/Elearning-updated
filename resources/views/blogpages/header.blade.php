@@ -18,26 +18,19 @@
                                     <a class="nav-link" href="{{route('front')}}" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1;">HOME</a>
                                 </li>
-                                <li class="nav-item" style="">
-                                    <a class="nav-link" href="about.html" style="font-size: 13px; 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" style="font-size: 13px; 
     font-family:sans-serif; line-height:1">ABOUT</a>
                                 </li>
-                               <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">
-                                    COURSES
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="single-blog.html"style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1" >COURSES</a>
-                                        <a class="dropdown-item" href="elements.html" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">COURSE DETAILS</a>
-                                    </div>
-                                </li>
-                                 <li class="nav-item">
+                              <li class="nav-item">
                                     <a class="nav-link" href="{{route('blog')}}" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1">BLOG</a>
+                                </li>  
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="#" style="font-size: 13px; 
+    font-family:sans-serif; line-height: 1">TEACHERS</a>
                                 </li>
+                                 
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1">CONTACT</a>

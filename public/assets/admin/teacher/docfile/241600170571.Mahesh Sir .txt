@@ -1,0 +1,7 @@
+1. Message for students of play store.//download button
+2. Reviews for students as livestream.//testomonial
+3. profile of teacher Features as course wise//show teacher
+4. course completed 
+5. Features of Mobile App.
+6. external teacher For creating your class room.//set option for live stream
+7. Create your Classroom module.

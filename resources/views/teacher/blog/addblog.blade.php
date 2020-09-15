@@ -65,7 +65,7 @@
                                     <?php   $subcourses=\App\subcourses::find($blog->subcourse);?>
                                     <td>{{$subcourses->subCourses_name}}</td>
                                     <?php $subcourse=\App\subcourses::find($blog->subcourse);?>
-                                    <td>{{$subcourse->subCourses_name}}</td>
+                                    
                                     
                                     <td>{{$blog->title}}</td>
                                     
