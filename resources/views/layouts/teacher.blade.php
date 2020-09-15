@@ -180,13 +180,13 @@
             <div class="left_section">
                 <ul>
                     <li class="menu--item">
-                        <a href="{{route('teacher.dashboard')}}" class="menu--link active" title="Dashboard">
+                        <a href="{{route('teacher.dashboard')}}" class="{{ Request::segment(2) === null ? 'menu--link active' : 'menu--link' }}" title="Dashboard">
                             <i class="uil uil-apps menu--icon"></i>
                             <span class="menu--label">Dashboard</span>
                         </a>
                     </li>
-                    <li  class="{{ Request::segment(2) === 'Request-subcourses' ? 'active' : null }}">
-                        <a href="{{route('teacher.subcourses.view')}}" class="menu--link" title="Request SubCourse">
+                    <li  class="menu--item">
+                        <a href="{{route('teacher.subcourses.view')}}" class="{{ Request::segment(2) === 'Request-subcourses' ? 'menu--link active' : 'menu--link' }}" title="Request SubCourse">
                             <i class='uil uil-book-alt menu--icon'></i>
                             <span class="menu--label">Request SubCourse</span>
                         </a>
