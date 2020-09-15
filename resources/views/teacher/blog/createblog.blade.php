@@ -16,7 +16,7 @@
    @endif
 
 
-@endif
+
 
     <div class="row">
         <div class="col-2"></div>
