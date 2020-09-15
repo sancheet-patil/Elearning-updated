@@ -2126,7 +2126,7 @@ table {
 
 .analysis_card .nav-tabs .nav-item.show .nav-link, .analysis_card .nav-tabs .nav-link.active {
     color: #333 !important;
-    background-color: #fff !important;
+    background-color: #fddb3a !important;
     border-color: transparent #efefef #fff !important;
 	border: 1px solid;
 }

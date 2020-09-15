@@ -68,7 +68,7 @@
                      <option value="-1">Select SubCourse</option>
                   </select>
                </div>
-            </div>
+            </div><br><br>
             <div class="form-group">
                <input name="video_file" id="poster" type="file" class="form-control" ><br/>
                <div class="progress">
@@ -82,7 +82,7 @@
          </form>
       </div>
    </div>
-</div>
+</div><br><br>
 <div class="row">
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">

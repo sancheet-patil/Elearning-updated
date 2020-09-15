@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Create groups</h3>
-                 <a href="{{route('teacher.group.view')}}"><button class="create_btn_dash btn-sm " >Request for Group</button></a>
+                 <a href="{{route('teacher.group.view')}}"><button class="create_btn_dash" >Request for Group</button></a>
             </div>
         </div>
     </div>

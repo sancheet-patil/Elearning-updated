@@ -41,7 +41,7 @@
         <!-- Logo -->
         <div class="header-left">
             <a href="{{route('admin.login.submit')}}" class="logo">
-                <img src="{{asset('assets/admin/')}}/img/logo1.jpg" alt="Logo" style="height: 200px; width: 100px">
+                <img src="{{asset('assets/admin/')}}/img/logo-small.jpg" alt="Logo" style="height: 200px; width: 100px">
             </a>
             <a href="{{route('admin.login.submit')}}" class="logo logo-small">
                 <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="30">

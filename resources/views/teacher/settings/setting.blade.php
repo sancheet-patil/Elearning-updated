@@ -42,7 +42,7 @@
 	
 	<!-- Left Sidebar End -->
 	<!-- Body Start -->
-	<div class="wrapper">
+
 		<div class="sa4d25">
 			<div class="container-fluid">			
 				<div class="row">
@@ -1162,7 +1162,7 @@
 			</div>
 		</div>
 	
-	</div>
+
 	<!-- Body End -->
 
 	<script src="js/vertical-responsive-menu.min.js"></script>
