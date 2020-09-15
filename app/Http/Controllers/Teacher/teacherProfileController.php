@@ -21,6 +21,19 @@ class teacherProfileController extends Controller
     public function edit(Request $request)
     {
 
+ $this->validate($request,[
+      'name'=> 'required',
+      'phone'=> 'required',
+      'private_coaching'=> 'required',
+      'gov_teaching'=> 'required',
+      'youtube'=> 'required',
+      'telegram_admin'=> 'required',
+      'book_publish'=> 'required',
+      'stat_new_teaching'=> 'required',
+      'certification'=> 'required',
+      'equipment'=> 'required'
+ 
+            ]);
 
          $teacher_details =Teacher::find(Auth::guard('teacher')->user()->id);
          $teacher_details->name =             $request->name;
@@ -41,6 +54,7 @@ class teacherProfileController extends Controller
             $teacher_details->profile_image=$filename;
             
         }
+         $teacher_details->equipment= implode($request->equipment);
          $teacher_details->save();
         return view('teacher.teacherProfile',compact('teacher_details'));
     }

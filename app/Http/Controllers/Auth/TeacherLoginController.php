@@ -35,6 +35,7 @@ class TeacherLoginController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'dob' => 'required',
             'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/',
             'Confirm_Password' => 'required|same:password'
         ]);

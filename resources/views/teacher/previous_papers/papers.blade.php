@@ -24,8 +24,8 @@
                   <br>
                 <input type="file" name="file" class="form-control">
                 <br>
-                <button class="btn btn-success">Upload Previous Papers</button>
-                <a class="btn btn-success" href="{{ route('teacher.export') }}">Download Template</a>
+                <button class="create_btn_dash">Upload Previous Papers</button>
+                <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
             </form>
         </div>
     </div>

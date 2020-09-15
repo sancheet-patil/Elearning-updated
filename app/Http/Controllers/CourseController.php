@@ -59,6 +59,11 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'course_name'=>'required',
+            'course_edit_id'=>'required',
+            ]);
+    
         $input = $request->all();
         $input['thumbnail'] = $request->file('thumbnail')->store('images');
         $input['user_id'] = Auth::id();

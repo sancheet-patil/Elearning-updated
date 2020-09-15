@@ -29,9 +29,19 @@
         </div>
     </div>
 @endif
-
-<center>
 <div>
+  @if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
+<center>
+
 <form method="post" action="{{ route('teacher.group.request')  }}">
             @csrf
            
@@ -43,7 +53,7 @@
 
 
 
-            <button type="submit" class="btn btn-success">Send Request</button>
+            <button type="submit" class="create_btn_dash">Send Request</button>
             </div> 
          </form>
          </div>

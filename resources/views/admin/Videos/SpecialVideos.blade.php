@@ -11,6 +11,27 @@
    border-radius: 10px; /* 5px rounded corners */
    }
 </style>
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
 @stop
 @section('admin')
 @if (session('success'))
@@ -57,11 +78,11 @@
             <?php $Teachers=App\Teacher::where('status',4)->get(); ?>
             <div class="col-xl-3 col-sm-6 col-12">
             
-            <div class="card" style="width:150%;">
+         <div class="card" style="width:150%;">
             
             <p>All Teachers <input type="checkbox" onClick="selectall(this)" name="All_Teachers[]"> </p> 
             @foreach($Teachers as $Teacher)
-           <p> {{$Teacher->name}}<input type="checkbox" value="{{$Teacher->name}}" name="All_Teachers[]"></p>
+           <p> {{$Teacher->name}}<input type="checkbox" name="All_Teachers[]"></p>
             @endforeach
             
            
@@ -74,7 +95,7 @@
            <?php $Students=App\User::all(); ?>
            <p>All Students <input type="checkbox" onClick="selectallstudents(this)" name="All_students[]"> </p> 
            @foreach($Students as $Student)
-           <p>{{$Students->name}} <input type="checkbox" value="{{$Students->name}}" name="All_students[]"></p>
+           <p>{{$Students->name}} <input type="checkbox" name="All_students[]"></p>
             
             @endforeach
           
@@ -85,7 +106,7 @@
          </form>
       </div>
    </div>
-   <div class="row">
+<div class="row">
    @foreach($special_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">

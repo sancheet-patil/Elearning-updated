@@ -9,7 +9,16 @@
         </div>
     </div>
 
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
 
+
+
+@endif
     <div class="row">
         <div class="col-md-12">
 
@@ -136,7 +145,7 @@
                </div>
                     <div class="form-group">
                         <label>Course Name</label>
-                        <input type="text" class="form-control" name="course_name" required>
+                        <input type="text" class="form-control" name="course_name">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -20,6 +20,18 @@
    </div>
 </div>
 @endif
+
+
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
 <center>
 <div class="container">
    <div class="card">
@@ -56,21 +68,21 @@
                      <option value="-1">Select SubCourse</option>
                   </select>
                </div>
-            </div>
+            </div><br><br>
             <div class="form-group">
-               <input name="video_file" id="poster" type="file" class="form-control" required><br/>
+               <input name="video_file" id="poster" type="file" class="form-control" ><br/>
                <div class="progress">
                   <div class="progress bar progress-lg">
                      <div class="progress-bar bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <div class="percent">0%</div >
-               </div>
-               <input type="submit"  value="Submit" class="btn btn-success">
+               </div><br>
+               <input type="submit"  value="Submit" class="create_btn_dash">
             </div>
          </form>
       </div>
    </div>
-</div>
+</div><br><br>
 <div class="row">
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">

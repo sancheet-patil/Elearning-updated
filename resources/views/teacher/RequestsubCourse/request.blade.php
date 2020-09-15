@@ -3,7 +3,8 @@
 @section('css')
 <style>
 .card {
-   width:35%;
+   width:45%;
+   
     background-color: white;
     padding: 10px 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -30,8 +31,20 @@
     </div>
 @endif
 
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
+  <br>  <br>
 <center>
 <div>
+
 <form method="post" action="{{ route('teacher.subcourses.request')  }}">
             @csrf
            
@@ -70,11 +83,12 @@
 
 
 
-            <button type="submit" class="btn btn-success">Send Request</button>
+            <button type="submit" class="create_btn_dash">Send Request</button>
             </div> 
          </form>
          </div>
          </center>
+         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
 @stop
 
 @section('js')

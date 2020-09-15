@@ -15,6 +15,9 @@ class AdmingoalsController extends Controller
     }
     public function goal_save(Request $request)
     {
+          $this->validate($request,[
+      'goal_name'=> 'required',
+      ]);
         $goal_exist = goals::where('goal_name',$request->goal_name)->first();
 
         if($goal_exist == null)
@@ -32,6 +35,12 @@ class AdmingoalsController extends Controller
     }
     public function goal_update(Request $request)
     {
+
+         $this->validate($request,[
+      'goal_name'=> 'required',
+      
+      
+            ]);
         $update_goal = goals::where('id',$request->goal_edit_id)->first();
         $update_goal->goal_name = strtolower($request->goal_name);
         $update_goal->save();

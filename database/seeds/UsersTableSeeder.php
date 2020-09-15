@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 // use Hash;
 
 class UsersTableSeeder extends Seeder
@@ -14,9 +15,10 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert(
             [
+                
                 'name' => 'admin',
                 'email' => 'sunny.ramrakhiani@wisdmlabs.com',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('12345678'),
             ]
         );
     }

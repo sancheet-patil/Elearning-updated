@@ -8,7 +8,7 @@
     <title>LivestudyHub - Dashboard</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/')}}/img/livestudyhub-title.jpg">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/admin/')}}/css/bootstrap.min.css">
@@ -40,10 +40,10 @@
 
         <!-- Logo -->
         <div class="header-left">
-            <a href="index.html" class="logo">
-                <img src="{{asset('assets/admin/')}}/img/logo1.jpg" alt="Logo" style="height: 200px; width: 100px">
+            <a href="{{route('admin.login.submit')}}" class="logo">
+                <img src="{{asset('assets/admin/')}}/img/logo-small.jpg" alt="Logo" style="height: 200px; width: 100px">
             </a>
-            <a href="index.html" class="logo logo-small">
+            <a href="{{route('admin.login.submit')}}" class="logo logo-small">
                 <img src="{{asset('assets/admin/')}}/img/logo-small.png" alt="Logo" width="30" height="30">
             </a>
         </div>
@@ -180,17 +180,17 @@
                         </ul>
                     </li>
 
-                    <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                    <li class="submenu {{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                    
+                    <li class="submenu {{ Request::segment(2) === 'videos' ? 'active' : null }}">
                         <a href="#"><span>Videos</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;" >
                     <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
                         <a href="{{route('admin.free_videos.view')}}"><span>Free Videos</span></a>
                     </li>
-                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'Specialvideos' ? 'active' : null }}">
                         <a href="{{route('admin.Specialvideos.view')}}"><span>Special Videos</span></a>
                     </li>
-                    <li class="{{ Request::segment(2) === 'teacher-free-videos' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'Motivationalvideos' ? 'active' : null }}">
                         <a href="{{route('admin.Motivationalvideos.view')}}"><span>Motivational Videos</span></a>
                     </li>
                     </ul>

@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('header')
+
     <header class="header abs-header">
         <div class="container">
             <nav class="navbar">
@@ -33,6 +34,7 @@
             </nav>
         </div>
     </header>
+
 @stop
 
 @section('front')
@@ -53,11 +55,11 @@
                         @csrf
                         <div class="form-group">
                             <label>Email or Username</label>
-                            <input type="email" name="email" placeholder="example@gmail.com" required>
+                            <input type="email" name="email" placeholder="example@gmail.com">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password">
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input">
@@ -69,5 +71,16 @@
                 </div>
             </div>
         </div>
+
     </section>
+    @if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
 @stop

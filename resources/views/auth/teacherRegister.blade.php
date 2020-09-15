@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('header')
+
     <header class="header abs-header">
         <div class="container">
             <nav class="navbar">
@@ -33,6 +34,7 @@
             </nav>
         </div>
     </header>
+
 @stop
 
 @section('front')
@@ -71,20 +73,19 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="" >
+                            <input type="email" class="form-control" name="email" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="number" class="form-control" name="phone" placeholder="" >
+                            <input type="number" class="form-control" name="phone" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Date Of Birth</label>
-                            <input type="date" class="form-control" name="dob" placeholder="" >
+                            <input type="date" class="form-control" name="dob" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder=""  id="password" title="
-        Your password must be more than 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.">
+                            <input type="password" class="form-control" name="password" placeholder="" id="password">
                             <input type="checkbox" onclick="myFunction1()">Show Password
                             <p id="passwordHelpBlock" class="form-text text-muted">
         Your password must be more than 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.
@@ -109,4 +110,14 @@
             </div>
         </div>
     </section>
+    @if($errors->any())
+@foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+
+
+
+@endif
 @stop

@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Blog</h3>
-                <a href="{{route('teacher.createblog')}}"><button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#createnewgroup">Add New Blog</button></a>
+                <a href="{{route('teacher.createblog')}}"><button class="create_btn_dash btn-sm pull-right" data-toggle="modal" data-target="#createnewgroup">Add New Blog</button></a>
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@
             <!-- /Recent Orders -->
 
         </div>
-    </div>
+    </div><br><br><br><br><br><br><br>
 
 
 
