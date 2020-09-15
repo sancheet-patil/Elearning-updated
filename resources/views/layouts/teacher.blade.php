@@ -214,62 +214,67 @@
                         </a>
                     </li>
                      <li class="menu--item">
-                        <a href="{{route('teacher.group')}}" class="menu--link" title="Groups">
+                        <a href="{{route('teacher.group')}}" class="{{ Request::segment(2) === 'Teacher-groups' ? 'menu--link active' : 'menu--link' }}" title="Groups">
                             <i class='uil uil-comments menu--icon'></i>
                             <span class="menu--label">Groups</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.free_videos.view')}}" class="menu--link" title="Analyics">
-                         &nbsp &nbsp &nbsp <i class='fa fa-video-camera'></i>
-                         &nbsp &nbsp &nbsp <span>Upload videos</span>
+                        <a href="{{route('teacher.free_videos.view')}}" class="{{ Request::segment(2) === 'free_videos' ? 'menu--link active' : 'menu--link' }}" title="Analyics">
+                        <i class='uil uil-youtube menu--icon'></i>
+                       <span>Upload videos</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('blog.addblog')}}" class="menu--link" title="Create Course">
-                        &nbsp &nbsp &nbsp &nbsp <i class='fa fa-pencil' aria-hidden="true"></i>
-                         &nbsp &nbsp &nbsp<span>Blog</span>
+                        <a href="{{route('blog.addblog')}}" class="{{ Request::segment(2) === 'addblog' ? 'menu--link active' : 'menu--link' }}" title="Create Course">
+                        <i class='uil uil-comment-edit menu--icon'></i>  
+                         <span>Blog</span>
                         </a>
                     </li>
                    
                     <li class="menu--item">
-                        <a href="{{route('teacher.testSeries')}}" class="menu--link" title="Notifications">
-                          <i class='uil uil-bell menu--icon'></i>
+                        <a href="{{route('teacher.testSeries')}}" class="{{ Request::segment(2) === 'testSeries' ? 'menu--link active' : 'menu--link' }}" title="Notifications">
+                          <i class='uil  uil-clipboard-alt menu--icon'></i>
                           <span>Test Series</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.paper')}}" class="menu--link" title="My Certificates">
-                          <i class='uil uil-award menu--icon'></i>
+                        <a href="{{route('teacher.paper')}}" class="{{ Request::segment(2) === 'paper' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
+                          <i class='uil  uil-file-copy-alt menu--icon'></i>
                            <span>Previous Papers</span>
+                        </a>
+                    </li>  <li class="menu--item">
+                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
+                          <i class='uil   uil-presentation-play menu--icon'></i>
+                           <span>Live Stream</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherReview')}}" class="menu--link" title="Reviews">
+                        <a href="{{route('teacher.TeacherReview')}}" class="{{ Request::segment(2) === 'teacher-review' ? 'menu--link active' : 'menu--link' }}" title="Reviews">
                           <i class='uil uil-star menu--icon'></i>
                           <span class="menu--label">Reviews</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherEarning')}}" class="menu--link" title="Earning">
+                        <a href="{{route('teacher.TeacherEarning')}}" class="{{ Request::segment(2) === 'teacher-earning' ? 'menu--link active' : 'menu--link' }}" title="Earning">
                           <i class='uil uil-dollar-sign menu--icon'></i>
                           <span class="menu--label">Earning</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherPayout')}}" class="menu--link" title="Payout">
+                        <a href="{{route('teacher.TeacherPayout')}}" class="{{ Request::segment(2) === 'teacher-payout' ? 'menu--link active' : 'menu--link' }}" title="Payout">
                           <i class='uil uil-wallet menu--icon'></i>
                           <span class="menu--label">Payout</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherStatements')}}" class="menu--link" title="Statements">
+                        <a href="{{route('teacher.TeacherStatements')}}" class="{{ Request::segment(2) === 'teacher-Statements' ? 'menu--link active' : 'menu--link' }}" title="Statements">
                           <i class='uil uil-file-alt menu--icon'></i>
                           <span class="menu--label">Statements</span>
                         </a>
                     </li>
                     <li class="{{route('teacher.TeacherVerification')}}">
-                        <a href="instructor_verification.html" class="menu--link" title="Verification">
+                        <a href="instructor_verification.html" class="{{ Request::segment(2) === 'teacher-Verification' ? 'menu--link active' : 'menu--link' }}" title="Verification">
                           <i class='uil uil-check-circle menu--icon'></i>
                           <span class="menu--label">Verification</span>
                         </a>
@@ -279,13 +284,13 @@
             <div class="left_section pt-2">
                 <ul>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherSetting')}}" class="menu--link" title="Setting">
+                        <a href="{{route('teacher.TeacherSetting')}}" class="{{ Request::segment(2) === 'teacher-Setting' ? 'menu--link active' : 'menu--link' }}" title="Setting">
                             <i class='uil uil-cog menu--icon'></i>
                             <span class="menu--label">Setting</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.TeacherFeedback')}}" class="menu--link" title="Send Feedback">
+                        <a href="{{route('teacher.TeacherFeedback')}}" class="{{ Request::segment(2) === 'teacher-Feedback' ? 'menu--link active' : 'menu--link' }}" title="Send Feedback">
                             <i class='uil uil-comment-alt-exclamation menu--icon'></i>
                             <span class="menu--label">Send Feedback</span>
                         </a>
