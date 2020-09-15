@@ -303,7 +303,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                            <p>© 2020 <strong>LivestudyHub</strong>. All Rights Reserved.</p>
                                         </li>
                                     </ul>
                                 </div>

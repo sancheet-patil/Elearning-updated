@@ -17,26 +17,25 @@ Route::get('/', 'FrontendController@index')->name('front');
 Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
-
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 //admin section
-Route::prefix('admin')->group(function (){
+
+Route::prefix('admin')->group(function ()
+{
     Route::get('/login', 'Auth\AdminLoginController@showLoginform')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 
-Route::group(['middleware' => ['auth:admin']], function() {
-    Route::prefix('admin')->group(function() {
-        Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+Route::group(['middleware' => ['auth:admin']], function() 
+{
+    Route::prefix('admin')->group(function() 
+    {
 
+        Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+        
         //free-videos        
         Route::get('/teacher-free-videos','Admin\FreevideosController@view')->name('admin.free_videos.view');
         Route::get('/teacher-playfree-videos/{course_id}/{subcourse_id}','Admin\FreevideosController@getVideo')->name('admin.free_videos.playvideo');
@@ -126,17 +125,17 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('getSubcourse/{id}','Admin\admin_blogController@getSubcourse');
         Route::get('getcourse/{id}','Admin\admin_blogController@getCourse');
         Route::get('/Adminblog','Admin\admin_blogController@index')->name('admin.Adminblog');
-         Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
-         Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
-         Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
-         Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
-         Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
-         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
+        Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
+        Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
+        Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
+        Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
+        Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
+        Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
 
-         //Previous Papers
-         Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
-         Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
-         Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
+        //Previous Papers
+        Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
+        Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
+        Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
 
         
 
@@ -144,12 +143,12 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
 
     
-});
+}); 
 
-
-  
 // Paid teacher section
- Route::prefix('teacher')->group(function (){
+Route::prefix('teacher')->group(function ()
+{
+    
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
     Route::post('/register-submit', 'Auth\TeacherLoginController@register_submit')->name('teacher.register.submit');
     Route::get('/login', 'Auth\TeacherLoginController@showLoginform')->name('teacher.login');
@@ -157,31 +156,36 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/logout', 'Auth\TeacherLoginController@logout')->name('teacher.logout');
     Route::get('/video-verification', 'TeacherVedioVerificationController@video_verification')->name('teacher.video.verification');
     Route::post('/video-verification-file-save', 'TeacherVedioVerificationController@video_verification_file_save')->name('teacher.video.file.upload');
-
-     //teacher Review
-     Route::get('/teacher-review', 'Teacher\TeacherReviewController@review')->name('teacher.TeacherReview');
-
-     //teacher Earning
-     Route::get('/teacher-earning', 'Teacher\TeacherReviewController@earning')->name('teacher.TeacherEarning');
-     //teacher Payout
-     Route::get('/teacher-payout', 'Teacher\TeacherReviewController@payout')->name('teacher.TeacherPayout');
-     //teacher Statements
-     Route::get('/teacher-Statements', 'Teacher\TeacherReviewController@statement')->name('teacher.TeacherStatements');
-     //teacher Verifiction
-     Route::get('/teacher-Verification', 'Teacher\TeacherReviewController@verification')->name('teacher.TeacherVerification');
-     //teacher Setting
-     Route::get('/teacher-Setting', 'Teacher\TeacherReviewController@setting')->name('teacher.TeacherSetting');
-     //teacher Feedback
-     Route::get('/teacher-Feedback', 'Teacher\TeacherReviewController@feedback')->name('teacher.TeacherFeedback');
+    
+    //teacher Review
+    Route::get('/teacher-review', 'Teacher\TeacherReviewController@review')->name('teacher.TeacherReview');
+    
+    //teacher Earning
+    Route::get('/teacher-earning', 'Teacher\TeacherReviewController@earning')->name('teacher.TeacherEarning');
+    
+    //teacher Payout
+    Route::get('/teacher-payout', 'Teacher\TeacherReviewController@payout')->name('teacher.TeacherPayout');
+    
+    //teacher Statements
+    Route::get('/teacher-Statements', 'Teacher\TeacherReviewController@statement')->name('teacher.TeacherStatements');
+    
+    //teacher Verifiction
+    Route::get('/teacher-Verification', 'Teacher\TeacherReviewController@verification')->name('teacher.TeacherVerification');
+    
+    //teacher Setting
+    Route::get('/teacher-Setting', 'Teacher\TeacherReviewController@setting')->name('teacher.TeacherSetting');
+    
+    //teacher Feedback
+    Route::get('/teacher-Feedback', 'Teacher\TeacherReviewController@feedback')->name('teacher.TeacherFeedback');
 
     //teacher profile
     Route::get('/teacher-profile', 'Teacher\teacherProfileController@view')->name('teacher.teacherProfile');
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
-        //TestSeries
-        Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
-        Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
-         Route::get('/testSeries-export','Teacher\testSeriescontroller@export')->name('teacher.testexport');
+    //TestSeries
+    Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
+    Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
+    Route::get('/testSeries-export','Teacher\testSeriescontroller@export')->name('teacher.testexport');
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
@@ -206,15 +210,15 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('getcourse/{id}','Teacher\TeachersubCourseRequest@getCourse');
 
     //for blog 
-  Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
-  Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
-  Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
-  Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
-  Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
-  Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
-  Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
-  Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
-  Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
+    Route::get('getSubcourse/{id}','Teacher\add_blogcontroller@getSubcourse');
+    Route::get('getcourse/{id}','Teacher\add_blogcontroller@getCourse');
+    Route::get('/addblog','Teacher\add_blogcontroller@index')->name('blog.addblog');
+    Route::get('/createblog','Teacher\add_blogcontroller@create')->name('teacher.createblog');
+    Route::post('/createblog','Teacher\add_blogcontroller@store')->name('teacher.store');
+    Route::get('/edit/{id}','Teacher\add_blogcontroller@edit')->name('teacher.edit');
+    Route::post('/update/{id}','Teacher\add_blogcontroller@update')->name('update1');
+    Route::delete('/delete/{id}','Teacher\add_blogcontroller@delete')->name('delete');
+    Route::get('/singleblog/{id}', 'Teacher\add_blogcontroller@singleblog')->name('teacher.singleblog');
 
     //Previous Papers
     Route::get('/paper','Teacher\previouspapersController@index')->name('teacher.paper');
@@ -229,12 +233,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/TestNotification','Teacher\NotificationController@TestNotification')->name('teacher.TestNotification');
     Route::get('/DeleteNotification','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
 
+    //livestream
+    Route::get('livestream-schedule','Teacher\livestreamController@view')->name('livestream.schedule');
+    Route::post('livestream-schedule-save','Teacher\livestreamController@save')->name('livestream.save');
 
-
-
-
-
-
+    
     
 });
 
@@ -242,16 +245,19 @@ Route::group(['middleware' => ['auth:admin']], function() {
   
 
 Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
-    Route::prefix('teacher')->group(function() {
+    
+    Route::prefix('teacher')->group(function() 
+    {
         Route::get('/', 'Teacher\TeacherController@index')->name('teacher.dashboard');
 
     });
-    });
+});
 
-    Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
-    Route::prefix('free-teacher')->group(function() {
+Route::group(['middleware' => ['auth:teacher','TVedioVer']], function() {
+Route::prefix('free-teacher')->group(function() 
+{
         Route::get('/', 'Free_TeacherController\TeacherController@index')->name('paidteacher.dashboard');
 
 
-    });
+});
 });
