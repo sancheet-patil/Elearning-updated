@@ -22,10 +22,11 @@
    </div>
 </div>
 @endif
-    <div class="container">
-    <div class="card bg-light mt-3">
+    <div class="container"><center>
+    <div class="col-lg-6 col-md-8">	
+    <div class="sign_form">
         <div class="card-header">
-            Upload Test Series 
+           <h3>Upload Test Series </h3> 
             <a class="create_btn_dash  pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
         </div>
         <div class="card-body">
@@ -35,7 +36,7 @@
                   <?php 
                      $goals= \App\goals::all();
                      ?>
-                  <div class="col-md-10">
+                 
 
                      <select class="_dlor1" id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
                         <option>Select Goals</option>
@@ -43,21 +44,21 @@
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
                      </select>
-                  </div>
+                 
                </div>
                <div class="form-group row">
-                  <div class="col-md-10"> 
+                 
                      <select class="_dlor1" id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
                      <option value="-1">Select Course</option>
                      </select>
-                  </div>
+                  
                </div>
             <div class="form-group row">
-               <div class="col-md-10">
+              
                   <select class="_dlor1" id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                      <option value="-1">Select SubCourse</option>
                   </select>
-               </div>
+              
             </div>
             <div class="form-group">
                         <label>Time For each Question(in Min)</label>
@@ -67,12 +68,19 @@
                         <label>Negative marks for each question</label>
                         <input type="text" class="form-control" name="negative_marks" required>
                     </div>
-                <input type="file" name="file" class="form-control"><br>
+                    <div class="image-upload-wrap">
+                <input class="file-upload-input" type="file" name="file" class="form-control"><br>
+                <div class="drag-text">
+									  <i class="fas fa-cloud-upload-alt"></i>
+									  <div class="applyfile">Choose File</div>
+									</div>
+                </div>
                 <br>
                 <button class="create_btn_dash">Upload test Series</button>
             </form>
         </div>
     </div>
+    </div></center>
 </div>
 @stop
 

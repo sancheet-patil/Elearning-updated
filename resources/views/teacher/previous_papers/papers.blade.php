@@ -20,8 +20,9 @@
    </div>
 </div>
 @endif
-    <div class="container">
-    <div class="card bg-light mt-3">
+    <div class="container"><center>
+    <div class="col-lg-6 col-md-8">	
+    <div class="sign_form">
         <div class="card-header">
             Upload Question Papers 
         </div>
@@ -35,14 +36,20 @@
                      @endfor
                   </select>
                   <br><br><br>
-                <input type="file" name="file" class="form-control">
+                  <div class="image-upload-wrap">
+                <input class="file-upload-input"  type="file" name="file" class="form-control">
+                <div class="drag-text">
+									  <i class="fas fa-cloud-upload-alt"></i>
+									  <div class="applyfile">Choose File</div>
+                                    </div>
+                                    </div>
                 <br>
                 <button class="create_btn_dash">Upload Previous Papers</button>
                 <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
             </form><br>
         </div><br><br></div><br><br>
     </div>
-
+    </div></center>
 @stop
 
 @section('js')

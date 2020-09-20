@@ -47,7 +47,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Group List</h4>
                 </div>
-                <div class="table-cerificate">
+                <div class="sign_form">
                     <div class="table-responsive">
                         <table class="table ucp-table table-center mb-0">
                             <thead>

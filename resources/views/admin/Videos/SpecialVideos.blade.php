@@ -80,9 +80,9 @@
             
          <div class="card" style="width:150%;">
             
-            <p>All Teachers <input type="checkbox" onClick="selectall(this)" name="All_Teachers[]"> </p> 
+            <p>All Teachers <input type="checkbox" onClick="selectall(this)" > </p> 
             @foreach($Teachers as $Teacher)
-           <p> {{$Teacher->name}}<input type="checkbox" name="All_Teachers[]"></p>
+           <p> {{$Teacher->name}}<input type="checkbox" ></p>
             @endforeach
             
            
@@ -93,9 +93,9 @@
           
            <div class="card" style="width:150%;">
            <?php $Students=App\User::all(); ?>
-           <p>All Students <input type="checkbox" onClick="selectallstudents(this)" name="All_students[]"> </p> 
+           <p>All Students <input type="checkbox" onClick="selectallstudents(this)" > </p> 
            @foreach($Students as $Student)
-           <p>{{$Students->name}} <input type="checkbox" name="All_students[]"></p>
+           <p>{{$Students->name}} <input type="checkbox" ></p>
             
             @endforeach
           

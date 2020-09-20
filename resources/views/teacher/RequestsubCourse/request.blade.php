@@ -60,15 +60,18 @@
 
 <form method="post" action="{{ route('teacher.subcourses.request')  }}">
             @csrf
-           
-            <div class="card">
+            <div class="col-lg-6 col-md-8">
+          <div class="sign_form">
+          <div class="card-header">
+         <h3>Request Subcourse</h3>
+      </div>
             
             <div class="modal-body">
                <div class="form-group row">
                   <?php 
                      $goals= \App\goals::all();
                      ?>
-                  <div class="col-md-10">
+                  
                   
                      <select class="_dlor1" id="goal_id"  name="goal_name" class="form-control"  onchange="getCourse(this)">
                         <option>Select Goals</option>
@@ -76,21 +79,21 @@
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
                      </select>
-                  </div>
+                  
                </div>
                <div class="form-group row">
-                  <div class="col-md-10"> 
+                   
                      <select  class="_dlor1"  id="course_id" name="course_name" class="form-control"  onchange="getSubcourse(this)" disabled>
                      <option value="-1">Select Course</option>
                      </select>
-                  </div>
+               
                </div>
                <div class="form-group row">
-                  <div class="col-md-10">
+                  
                       <select class="_dlor1" id="subCourse_id" name="subcourse_name"  class="form-control"  disabled>
                         <option value="-1">Select SubCourse</option>
                      </select>    
-                  </div>
+                
                </div>
             </div>
 
@@ -99,9 +102,10 @@
             <button type="submit" class="create_btn_dash">Send Request</button>
             </div> 
          </form>
+         </div> <br>  <br>  <br>  <br>  <br> <br>  <br>  <br>  <br>
          </div>
          </center>
-         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
+         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> <br>  <br>  <br>  <br>
 @stop
 
 @section('js')

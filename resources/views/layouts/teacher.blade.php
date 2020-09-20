@@ -182,10 +182,14 @@
     </header>
     <!-- Header End -->
     <!-- Left Sidebar Start -->
+    
     <nav class="vertical_nav">
         <div class="left_section menu_left" id="js-menu" >
             <div class="left_section">
-                <ul>
+                <ul> 
+                    
+       
+   
                     <li class="menu--item">
                         <a href="{{route('teacher.dashboard')}}" class="{{ Request::segment(2) === null ? 'menu--link active' : 'menu--link' }}" title="Dashboard">
                             <i class="uil uil-apps menu--icon"></i>
@@ -198,6 +202,13 @@
                             <span class="menu--label">Request SubCourse</span>
                         </a>
                     </li>
+                    <li class="menu--item">
+                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
+                          <i class='uil   uil-presentation-play menu--icon'></i>
+                           <span>Live Stream</span>
+                        </a>
+                    </li>
+                   
                      <li class="menu--item">
                         <a href="{{route('teacher.group')}}" class="{{ Request::segment(2) === 'Teacher-groups' ? 'menu--link active' : 'menu--link' }}" title="Groups">
                             <i class='uil uil-comments menu--icon'></i>
@@ -224,12 +235,7 @@
                           <span>Test Series</span>
                         </a>
                     </li>
-                    <li class="menu--item">
-                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
-                          <i class='uil   uil-presentation-play menu--icon'></i>
-                           <span>Live Stream</span>
-                        </a>
-                    </li>
+                   
                     <li class="menu--item">
                         <a href="{{route('teacher.paper')}}" class="{{ Request::segment(2) === 'paper' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
                           <i class='uil  uil-files-landscapes-alt menu--icon'></i>

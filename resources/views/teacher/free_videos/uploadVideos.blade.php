@@ -46,10 +46,14 @@
 
 @endif
 <center>
+
 <div class="container">
-   <div class="card">
+
+<div class="row justify-content-lg-center justify-content-md-center">
+<div class="col-lg-6 col-md-8">		
+   <div class="sign_form">
       <div class="card-header">
-         <h2>Free Video</h2>
+        <h3>Free Video</h3> 
       </div>
       <div class="card-body">
          <form method="POST" action="{{ route('teacher.free_videos.save')  }}" enctype="multipart/form-data">
@@ -58,32 +62,38 @@
                   <?php 
                      $goals= \App\goals::all();
                      ?>
-                  <div class="col-md-10">
+                 
 
-                     <select class="_dlor1" id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
+                     <select class="_dlor1"  name="goal_name"   class="form-control" id="goal_id" onchange="getCourse(this)">
                         <option>Select Goals</option>
                         @foreach($goals as $goal)
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
                      </select>
-                  </div>
+                 
                </div>
                <div class="form-group row">
-                  <div class="col-md-10"> 
+                 
                      <select class="_dlor1" id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
                      <option value="-1">Select Course</option>
                      </select>
-                  </div>
+                 
                </div>
             <div class="form-group row">
-               <div class="col-md-10">
+              
                   <select class="_dlor1" id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                      <option value="-1">Select SubCourse</option>
                   </select>
-               </div>
+               
             </div><br><br>
             <div class="form-group">
-               <input name="video_file" id="poster" type="file" class="form-control" ><br/>
+            <div class="image-upload-wrap">
+               <input class="file-upload-input"  name="video_file" id="poster" type="file" class="form-control" >
+               <div class="drag-text">
+					<i class="fas fa-cloud-upload-alt"></i>
+				   <div class="applyfile">Choose File</div>
+               </div>
+            </div><br/>
                <div class="progress">
                   <div class="progress bar progress-lg">
                      <div class="progress-bar bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -95,17 +105,20 @@
          </form>
       </div>
    </div>
+</div>
+</div><!-- container close -->
 </div><br><br>
+
 <div class="row">
 @foreach($free_videos as $video)
 <div class="col-12 col-md-6 col-lg-4 d-flex">
    <div class="card flex-fill">
-      <iframe width="360" height="240"
+      <iframe width="320" height="240"
             src="https://www.youtube.com/embed/{{$video->video_file}}">
       </iframe>
       <div class="card-header">
-         <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}
-         </h5>
+         <h5>Course:  {{App\course::select('course_name')->where('id',$video->course_id)->first()->course_name}}</h5>
+        
       </div>
       <div class="card-body">
          Sub-Course:  {{App\subcourses::select('subCourses_name')->where('id',$video->subcourse_id)->first()->subCourses_name}} 

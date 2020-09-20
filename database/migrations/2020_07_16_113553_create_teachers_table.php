@@ -30,11 +30,10 @@ class CreateTeachersTable extends Migration
             $table->text('book_publish')->nullable();
             $table->text('stat_new_teaching')->nullable();
             $table->text('certification')->nullable();
-            $table->string('equipment')->nullable();
-
             $table->text('doc_file')->nullable();
             $table->text('video_file')->nullable();
             $table->text('profile_image')->nullable();
+            $table->string('equipment')->nullable();
             $table->timestamps();
         });
     }
