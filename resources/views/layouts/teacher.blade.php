@@ -182,10 +182,14 @@
     </header>
     <!-- Header End -->
     <!-- Left Sidebar Start -->
+    
     <nav class="vertical_nav">
         <div class="left_section menu_left" id="js-menu" >
             <div class="left_section">
-                <ul>
+                <ul> 
+                    
+       
+   
                     <li class="menu--item">
                         <a href="{{route('teacher.dashboard')}}" class="{{ Request::segment(2) === null ? 'menu--link active' : 'menu--link' }}" title="Dashboard">
                             <i class="uil uil-apps menu--icon"></i>
@@ -198,6 +202,13 @@
                             <span class="menu--label">Request SubCourse</span>
                         </a>
                     </li>
+                    <li class="menu--item">
+                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
+                          <i class='uil   uil-presentation-play menu--icon'></i>
+                           <span>Live Stream</span>
+                        </a>
+                    </li>
+                   
                      <li class="menu--item">
                         <a href="{{route('teacher.group')}}" class="{{ Request::segment(2) === 'Teacher-groups' ? 'menu--link active' : 'menu--link' }}" title="Groups">
                             <i class='uil uil-comments menu--icon'></i>
@@ -207,13 +218,14 @@
                     <li class="menu--item">
                         <a href="{{route('teacher.free_videos.view')}}" class="{{ Request::segment(2) === 'free_videos' ? 'menu--link active' : 'menu--link' }}" title="Analyics">
                         <i class='uil uil-youtube menu--icon'></i>
-                       <span>Upload videos</span>
+
+                         <span>Upload videos</span>
                         </a>
-                    </li>
+                    </li> 
                     <li class="menu--item">
                         <a href="{{route('blog.addblog')}}" class="{{ Request::segment(2) === 'addblog' ? 'menu--link active' : 'menu--link' }}" title="Create Course">
-                        <i class='uil uil-comment-edit menu--icon'></i>  
-                         <span>Blog</span>
+                        <i class='uil uil-comment-edit menu--icon'></i>
+                        <span>Blog</span>
                         </a>
                     </li>
                    
@@ -223,15 +235,11 @@
                           <span>Test Series</span>
                         </a>
                     </li>
+                   
                     <li class="menu--item">
                         <a href="{{route('teacher.paper')}}" class="{{ Request::segment(2) === 'paper' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
-                          <i class='uil  uil-file-copy-alt menu--icon'></i>
+                          <i class='uil  uil-files-landscapes-alt menu--icon'></i>
                            <span>Previous Papers</span>
-                        </a>
-                    </li>  <li class="menu--item">
-                        <a href="{{route('livestream.schedule')}}" class="{{ Request::segment(2) === 'livestream-schedule' ? 'menu--link active' : 'menu--link' }}" title="My Certificates">
-                          <i class='uil   uil-presentation-play menu--icon'></i>
-                           <span>Live Stream</span>
                         </a>
                     </li>
                     <li class="menu--item">

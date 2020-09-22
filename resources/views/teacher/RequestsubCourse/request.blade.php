@@ -1,6 +1,19 @@
 @extends('layouts.teacher')
 
 @section('css')
+<link href="{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+		<link href="{{asset('assets/Ntheme')}}/css/vertical-responsive-menu.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/style.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/responsive.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/night-mode.css" rel="stylesheet">
+		
+		<!-- Vendor Stylesheets -->
+		<link href="{{asset('assets/Ntheme')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{asset('assets/Ntheme')}}/vendor/semantic/semantic.min.css">		
+		
 <style>
 .card {
    width:45%;
@@ -47,37 +60,40 @@
 
 <form method="post" action="{{ route('teacher.subcourses.request')  }}">
             @csrf
-           
-            <div class="card">
+            <div class="col-lg-6 col-md-8">
+          <div class="sign_form">
+          <div class="card-header">
+         <h3>Request Subcourse</h3>
+      </div>
             
             <div class="modal-body">
                <div class="form-group row">
                   <?php 
                      $goals= \App\goals::all();
                      ?>
-                  <div class="col-md-10">
-
-                     <select id="goal_id" name="goal_name" class="form-control" onchange="getCourse(this)">
+                  
+                  
+                     <select class="_dlor1" id="goal_id"  name="goal_name" class="form-control"  onchange="getCourse(this)">
                         <option>Select Goals</option>
                         @foreach($goals as $goal)
                         <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                         @endforeach
                      </select>
-                  </div>
+                  
                </div>
                <div class="form-group row">
-                  <div class="col-md-10"> 
-                     <select id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
+                   
+                     <select  class="_dlor1"  id="course_id" name="course_name" class="form-control"  onchange="getSubcourse(this)" disabled>
                      <option value="-1">Select Course</option>
                      </select>
-                  </div>
+               
                </div>
                <div class="form-group row">
-                  <div class="col-md-10">
-                      <select id="subCourse_id" name="subcourse_name" class="form-control" disabled>
+                  
+                      <select class="_dlor1" id="subCourse_id" name="subcourse_name"  class="form-control"  disabled>
                         <option value="-1">Select SubCourse</option>
                      </select>    
-                  </div>
+                
                </div>
             </div>
 
@@ -86,9 +102,10 @@
             <button type="submit" class="create_btn_dash">Send Request</button>
             </div> 
          </form>
+         </div> <br>  <br>  <br>  <br>  <br> <br>  <br>  <br>  <br>
          </div>
          </center>
-         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
+         <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> <br>  <br>  <br>  <br>
 @stop
 
 @section('js')

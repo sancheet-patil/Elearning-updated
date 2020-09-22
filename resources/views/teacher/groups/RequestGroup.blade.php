@@ -1,6 +1,18 @@
 @extends('layouts.teacher')
 
 @section('css')
+<link href="{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+		<link href="{{asset('assets/Ntheme')}}/css/vertical-responsive-menu.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/style.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/responsive.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/css/night-mode.css" rel="stylesheet">
+		
+		<!-- Vendor Stylesheets -->
+		<link href="{{asset('assets/Ntheme')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+		<link href="{{asset('assets/Ntheme')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{asset('assets/Ntheme')}}/vendor/semantic/semantic.min.css">	
 <style>
 .card {
    width:35%;
@@ -41,23 +53,30 @@
 
 @endif
 <center>
-
-<form method="post" action="{{ route('teacher.group.request')  }}">
+<div class="col-lg-6 col-md-8">
+<div class="sign_form">
+        <form method="post" action="{{ route('teacher.group.request')  }}">
             @csrf
+        
            
-            <div class="card">
+            <div class="card-header">
+           <h3>Request for group </h3> 
+           </div>
+         
             
-            <div class="modal-body">
+            <div class="card-body">
                <input type="text" class="form-control" placeholder="Enter Group Name" id="group_id" name="group_name">
+          
             </div>
 
 
-
             <button type="submit" class="create_btn_dash">Send Request</button>
-            </div> 
+            
          </form>
+         </div><br><br><br><br><br><br><br><br><br>
          </div>
-         </center>
+        
+         </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 @stop
 
 @section('js')

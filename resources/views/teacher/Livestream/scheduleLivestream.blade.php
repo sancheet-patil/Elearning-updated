@@ -1,6 +1,6 @@
 @extends('layouts.teacher')
 @section('css')
-<link href='{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+<link href="{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
 		<link href="{{asset('assets/Ntheme')}}/css/vertical-responsive-menu.min.css" rel="stylesheet">
 		<link href="{{asset('assets/Ntheme')}}/css/style.css" rel="stylesheet">
 		<link href="{{asset('assets/Ntheme')}}/css/responsive.css" rel="stylesheet">
