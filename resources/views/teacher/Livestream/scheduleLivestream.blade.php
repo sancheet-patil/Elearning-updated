@@ -76,8 +76,8 @@
                                 <input class="_dlor1" name="duration" type="text" placeholder="Half hour 0.5 and an hour 1">
                             </div>
                          
-                            <button type="submit" class="create_btn_dash"><i class='uil uil-video'></i>Schedule</button>
-                            <button type="submit" class="_145d1"><i class='uil uil-video'></i>Go Live</button>
+                            <button type="submit" name="button" value="schedule" class="create_btn_dash"><i class='uil uil-video'></i>Schedule</button>
+                            <button type="submit" name="button" value="Live" class="create_btn_dash"><i class='uil uil-video'></i>Go Live</button>
                         </form>
                     </div>
                 </div>
