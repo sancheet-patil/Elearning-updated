@@ -22,7 +22,6 @@
             <div class="card_dash">
               <div class="card_dash_left">
                 <h5>Sub-courses Assigned</h5>
-                <h2></h2>
                 <span class="crdbg_1">{{$assigned_course}}</span>
               </div>
               <div class="card_dash_right">
@@ -30,11 +29,11 @@
               </div>
             </div>
           </div>
+          
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="card_dash">
               <div class="card_dash_left">
                 <h5>Pending Request</h5>
-                <h2></h2>
                 <span class="crdbg_1">{{$pending_course}}</span>
               </div>
               <div class="card_dash_right">

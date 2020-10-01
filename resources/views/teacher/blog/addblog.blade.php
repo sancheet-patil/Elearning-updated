@@ -17,7 +17,9 @@
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
-                <h3 class="page-title">Blog</h3>
+            <div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-comment-edit"></i>Blog</h2>
+					</div>
                 <a href="{{route('teacher.createblog')}}"><button class="create_btn_dash pull-right" data-toggle="modal" data-target="#createnewgroup">Add New Blog</button></a>
             </div>
         </div>
@@ -29,13 +31,14 @@
         <div class="col-md-12">
 
             <!-- Recent Orders -->
-            <div class="card card-table">
-                <div class="card-header">
-                    <h4 class="card-title">Blog List</h4>
-                </div>
+            <div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-comment-edit"></i>Blog List</h2>
+					</div>
+           
+                
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-center mb-0">
+                        <table class="table ucp-table">
                             <thead>
                             <tr>
                             <th><h5>Sr.No</h5></th>
@@ -101,7 +104,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+           
             <!-- /Recent Orders -->
 
         </div>

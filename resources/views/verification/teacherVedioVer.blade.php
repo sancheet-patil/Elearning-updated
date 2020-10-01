@@ -76,8 +76,8 @@
                             <img src="{{asset('assets/admin/')}}/img/profiles/avatar-12.jpg" alt="User Image" class="avatar-img rounded-circle">
                         </div>
                         <div class="user-text">
-                            <h6>Allen Davis</h6>
-                            <p class="text-muted mb-0">Administrator</p>
+                          <h6>{{Auth::guard('teacher')->user()->name}}</h6>
+                            <p class="text-muted mb-0">Teacher</p>
                         </div>
                     </div>
                     <a class="dropdown-item" href="{{url('teacher/logout')}}">Logout</a>
@@ -200,6 +200,8 @@
                                             PC &nbsp<input type="checkbox" name="checkbox[]" value="PC" >&nbsp &nbsp
                                             Projector &nbsp<input type="checkbox" name="checkbox[]" value="Projector" >&nbsp &nbsp
                                             Digital Board &nbsp<input type="checkbox" name="checkbox[]" value="Digital_Board" >&nbsp &nbsp
+                                            Wifi &nbsp<input type="checkbox" name="checkbox[]" value="Digital_Board" >&nbsp &nbsp
+                                            Mobile &nbsp<input type="checkbox" name="checkbox[]" value="Digital_Board" >&nbsp &nbsp
                                         </div>
                                         <div class="form-group col-md-4">
                                             

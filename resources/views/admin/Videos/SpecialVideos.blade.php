@@ -82,7 +82,7 @@
             
             <p>All Teachers <input type="checkbox" onClick="selectall(this)" > </p> 
             @foreach($Teachers as $Teacher)
-           <p> {{$Teacher->name}}<input type="checkbox" ></p>
+           <p> {{$Teacher->}}<input type="checkbox" ></p>
             @endforeach
             
            
@@ -95,7 +95,7 @@
            <?php $Students=App\User::all(); ?>
            <p>All Students <input type="checkbox" onClick="selectallstudents(this)" > </p> 
            @foreach($Students as $Student)
-           <p>{{$Students->name}} <input type="checkbox" ></p>
+           <p>{{$Students->}} <input type="checkbox" ></p>
             
             @endforeach
           

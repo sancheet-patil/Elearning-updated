@@ -54,7 +54,7 @@ class teacherProfileController extends Controller
             $teacher_details->profile_image=$filename;
             
         }
-         $teacher_details->equipment= implode($request->equipment);
+         $teacher_details->equipment=$request->equipment;
          $teacher_details->save();
         return view('teacher.teacherProfile',compact('teacher_details'));
     }
