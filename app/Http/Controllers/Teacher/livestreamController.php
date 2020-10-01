@@ -36,18 +36,24 @@ class livestreamController extends Controller
             'topic' => 'required'
         ]);
         
-        $livestream = new livestream();
-        $livestream->goal_id = $request->goal_name;
-        $livestream->subcourse_id = $request->subcourse_name;
-        $livestream->course_id = $request->course_name;
-        $livestream->teacher_id = Auth::guard('teacher')->user()->id;
-        $livestream->Topic = $request->topic;
-        $livestream->Password = $this->getPassword();
-        $livestream->Duration = $request->duration;
-        $livestream->save(); 
-        $topic=$request->topic;
-        return view('teacher.Livestream.livestream',compact('topic'));
-
+        if($request->button == 'Live')
+        {
+            $topic=$request->topic;
+            $livestream = new livestream();
+            $livestream->goal_id = $request->goal_name;
+            $livestream->subcourse_id = $request->subcourse_name;
+            $livestream->course_id = $request->course_name;
+            $livestream->teacher_id = Auth::guard('teacher')->user()->id;
+            $livestream->Topic = $topic;
+            $livestream->Password = $this->getPassword();
+            $livestream->Duration = $request->duration;
+            $livestream->save(); 
+            return view('teacher.Livestream.livestream',compact('topic'));
+        }
+        else
+        {
+                return back()->with('Success','Successfully Schedule');
+        }
     }
 
      

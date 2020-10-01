@@ -14,6 +14,7 @@ class CreateTest extends Migration
     public function up()
     {
         Schema::create('test', function (Blueprint $table){
+            
             $table->id();
             $table->foreignId('Goal_id');
             $table->foreignId('course_id');

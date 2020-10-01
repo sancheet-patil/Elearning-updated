@@ -14,11 +14,12 @@ class CreatePreviousPapersTable extends Migration
     public function up()
     {
         Schema::create('previous_papers', function (Blueprint $table) {
+            
             $table->id();
-        
             $table->year('Year');
-            $table->string('Name');
-            $table->string('Subject');
+            $table->foreignId('goal_id');
+            $table->string('course_id');
+            $table->string('subcourse_id');
             $table->text('Question');
             $table->text('Option1');
             $table->text('Option2');
@@ -27,6 +28,21 @@ class CreatePreviousPapersTable extends Migration
             $table->text('Answer');
 
             $table->timestamps();
+            
+            $table->foreign('subcourse_id')
+            ->references('id')
+            ->on('subcourses')
+            ->onDelete('cascade');
+
+            $table->foreign('course_id')
+            ->references('id')
+            ->on('courses')
+            ->onDelete('cascade');
+
+            $table->foreign('goal_id')
+            ->references('id')
+            ->on('goals')
+            ->onDelete('cascade');
         });
     }
 
