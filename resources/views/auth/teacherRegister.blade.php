@@ -1,4 +1,40 @@
 @extends('layouts.frontend')
+@section('css')
+<style>
+input {
+  width: 250px;
+  padding: 15px 12px;
+  font-size:22px;
+}
+
+#validation-txt{
+  color:red;
+  font-size:18px;
+  width: 300px;
+}
+#password-3{
+  -webkit-text-security: disc;
+    -moz-text-security:circle;
+     text-security:circle;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+</style>
+<style>
+.form-group i{
+    margin: 100px;
+    margin-left: -30px;
+}
+
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+@stop
 @section('header')
 
     <header class="header abs-header">
@@ -69,36 +105,54 @@
                         @csrf
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="" >
+                            <input type="text" class="form-control" name="name"  placeholder="" required>
+                           
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="">
+                            <input type="email" class="form-control" name="email" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="number" class="form-control" name="phone" placeholder="">
+                            <input type="number" class="form-control" name="phone" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label>Date Of Birth</label>
-                            <input type="date" class="form-control" name="dob" placeholder="">
+                            <input type="date" class="form-control" name="dob" placeholder="" required>
                         </div>
+
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="" id="password">
-                            <input type="checkbox" onclick="myFunction1()">Show Password
-                            <p id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be more than 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.
-</p>
-                        </div>
-                        <div class="form-group">
-                            <label>Confirm Password</label>
-                            <input type="password" class="form-control" name="Confirm_Password" placeholder="" required id="confirmpassword">
-                            <input type="checkbox" onclick="myFunction2()">Show Password
+                        <div class="row">
+                        <label for="">&nbsp &nbsp  Password</label>
+                        <div class="form-group col-md-12" >
+                            <input type="password" class="form-control" required name="password" placeholder="Password" id="password"  onkeyup="validate();">
                             
+                            <div id="validation-txt">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <span style="margin-top:100px; margin:-45px;"><i class="far fa-eye" onclick="myFunction1()" ></i></span>
+                        </div>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <div class="row">
+                        <label for="">&nbsp &nbsp  Confirm Password</label>
+                        <div class="form-group col-md-12" >
+                           
+                            <input type="password" class="form-control" required name="Confirm_Password" placeholder="Confirm Password" required id="confirmpassword">
                              <p class="text-danger text-center"></p>
                           
                         </div>
+                        <div class="form-group " >
+                        <span style="margin-top:100px; margin:-45px;"><i class="far fa-eye" onclick="myFunction2()" ></i></span>
+                        </div>
+                        </div>
+                        </div>
+
+                       
                         <div class="form-group">
                             <label>Profile Image</label>
                             <input type="file" class="form-control" name="image" placeholder="">
@@ -121,3 +175,4 @@
 
 @endif
 @stop
+

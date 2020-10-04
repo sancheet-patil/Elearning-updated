@@ -151,7 +151,7 @@
     <!-- /Header -->
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar" style="width:18%;">
         <div class="sidebar-inner slimscroll">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
@@ -172,7 +172,7 @@
                     </li>
                     
                     <li class="submenu {{ Request::segment(2) === 'courses' ? 'active' : null }}">
-                        <a href="#"><span>Create Syllabus</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><span>Goal Management</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{route('admin.goals')}}">Create Goal</a></li>
                             <li><a href="{{route('admin.courses')}}">Courses</a></li>

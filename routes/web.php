@@ -78,9 +78,12 @@ Route::group(['middleware' => ['auth:admin']], function()
 
         //teacher
         Route::get('/teacher', 'Admin\AdminTeacherController@teachers')->name('admin.teacher');
+        Route::get('/teachersprofile/{id}', 'Admin\AdminTeacherController@teachersprofile')->name('admin.teacherprofile');
 
         Route::get('/teacher/search', 'Admin\AdminTeacherController@searchItem');
 
+        Route::delete('/teacher-delete','Admin\AdminTeacherController@delete')->name('admin.teacher.delete');
+       
         Route::get('/teacher-view-verification-data/{id}', 'Admin\AdminTeacherController@view_veri_doc_file')->name('teacher.view.doc');
         Route::post('/teacher-view-verification-data-update', 'Admin\AdminTeacherController@view_veri_doc_file_update')->name('admin.teacher.acc.ver.update');
 
@@ -173,7 +176,9 @@ Route::prefix('teacher')->group(function ()
     
     //teacher Payout
     Route::get('/teacher-payout', 'Teacher\TeacherReviewController@payout')->name('teacher.TeacherPayout');
-    
+    Route::post('/payment-initiate-request','Teacher\PaymentController@Initiate')->name('payment.initiate.request');
+    Route::post('/payment-complete','Teacher\PaymentController@complete')->name('payment.complete');
+
     //teacher Statements
     Route::get('/teacher-Statements', 'Teacher\TeacherReviewController@statement')->name('teacher.TeacherStatements');
     

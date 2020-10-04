@@ -38,10 +38,10 @@
                                     <h2 class="table-avatar">
                                         @if (!empty($teacher->profile_image))
                                             <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('assets/admin/')}}/img/teachers_profile.jpg" style="height: 50px;width: 50px" alt="User Image"></a>
-                                            <a href="profile.html" style="margin-left: 20px">{{$teacher->name}}</a>
+                                            <a href="{{route('admin.teacherprofile',$teacher->id)}}" style="margin-left: 20px">{{$teacher->name}}</a>
                                         @else
                                             <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('assets/admin/')}}/img/teachers_profile.jpg" style="height: 50px;width: 50px" alt="User Image"></a>
-                                            <a href="profile.html" style="margin-left: 20px">{{$teacher->name}}</a>
+                                            <a href="{{route('admin.teacherprofile',$teacher->id)}}" style="margin-left: 20px">{{$teacher->name}}</a>
                                         @endif
 
                                     </h2>
@@ -60,13 +60,39 @@
                                 </td>
                                 <td class="text-right">
                                    <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </button>
-                                   <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> </button>
+                                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteteacher{{$teacher->id}}"><i class="fa fa-trash"></i> </button>
                                     <a href="{{route('teacher.view.doc',$teacher->id)}}">
 
                                         <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </button>
                                     </a>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="deleteteacher{{$teacher->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Teacher</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{route('admin.teacher.delete')}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                      are you sure to delete this {{$teacher->name}} Teacher ?
+                                                        <input type="hidden" class="form-control" name="delete_id" value="{{$teacher->id}}">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
 
                             </tbody>

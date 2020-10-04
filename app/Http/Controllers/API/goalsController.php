@@ -13,7 +13,7 @@ class goalsController extends Controller
     {
 
     	$this->validate($request,[
-      'goal_name'=> 'required'
+       'goal_name'=> 'required'
  
             ]);
         $goals['data']=goals::all();

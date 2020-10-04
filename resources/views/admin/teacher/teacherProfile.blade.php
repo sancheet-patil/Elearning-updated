@@ -1,4 +1,5 @@
-@extends('layouts.teacher')
+@extends('layouts.admin')
+@section('admin')
 @section('css')
 <link href="{{asset('assets/Ntheme')}}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
 		<link href="{{asset('assets/Ntheme')}}/css/vertical-responsive-menu.min.css" rel="stylesheet">
@@ -13,7 +14,6 @@
 		<link href="{{asset('assets/Ntheme')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/Ntheme')}}/vendor/semantic/semantic.min.css">	
 @stop
-@section('teacher')
 @if($errors->any())
 @foreach($errors->all() as $error)
 <div class="alert alert-danger" role="alert">
@@ -34,7 +34,7 @@
                     <h4 class="card-title">Teacher Profile Data</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('teacher.teacherProfile')}}" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -98,19 +98,6 @@
 
                             
 
-                     <div class="form-group col-md-4">
-                     <div class="part_input mt-30 lbel25">
-										<label>Profile Image</label>
-										<div class="input-group">
-											<div class="custom-file">
-												<input type="file" name="image" class="custom-file-input" id="inputGroupFile06">
-												<label class="custom-file-label" for="inputGroupFile06">No Choose</label>
-											</div>
-										</div>
-									</div>
-                          
-                             
-                     </div>
 
                             <div class="form-group col-md-4">
                             <img src="{{asset('teacherProfile/'.$teacher_details->profile_image)}}" height="100px" width="100px"></td>
@@ -132,17 +119,14 @@
                 
                             
                         </div>
-                        <div class="row">
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block" type="submit">Update</button>
-                            </div>
-
-                        </div>
+                        
 
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 @stop

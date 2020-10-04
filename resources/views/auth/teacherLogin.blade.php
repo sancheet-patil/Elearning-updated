@@ -1,4 +1,13 @@
 @extends('layouts.frontend')
+@section('css')
+<style>
+.form-group i{
+    margin:10px;
+    padding:200px;
+}
+
+</style>
+@stop
 @section('header')
 
     <header class="header abs-header">
@@ -44,7 +53,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="content-box">
                         <h2>Login Account</h2>
                     </div>
@@ -55,12 +64,23 @@
                         @csrf
                         <div class="form-group">
                             <label>Email or Username</label>
-                            <input type="email" name="email" placeholder="example@gmail.com">
+                            <input type="email" name="email" placeholder="example@gmail.com" required>
                         </div>
+
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" placeholder="Password">
+                        <div class="row">
+                        <label> &nbsp &nbsp Password</label>
+                        <div class="form-group col-md-12" >
+                            
+                        <input type="password" name="password" placeholder="Password"  id="password" required>
                         </div>
+                        <div class="form-group" >
+                        <span style="margin-top:100px; margin:-45px;"><i class="far fa-eye" onclick="myFunction1()" ></i></span>
+                        </div>
+                        </div>
+                        </div>
+
+                       
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input">
                             <label class="form-check-label">Remember Password</label>
