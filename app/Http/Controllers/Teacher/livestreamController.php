@@ -35,9 +35,6 @@ class livestreamController extends Controller
             'duration'=>'required',
             'topic' => 'required'
         ]);
-        
-        if($request->button == 'Live')
-        {
             $topic=$request->topic;
             $livestream = new livestream();
             $livestream->goal_id = $request->goal_name;
@@ -48,11 +45,15 @@ class livestreamController extends Controller
             $livestream->Password = $this->getPassword();
             $livestream->Duration = $request->duration;
             $livestream->save(); 
+
+        if($request->button == 'Live')
+        {
+            
             return view('teacher.Livestream.livestream',compact('topic'));
         }
         else
         {
-                return back()->with('Success','Successfully Schedule');
+                return back()->with('success','Successfully Schedule');
         }
     }
 
