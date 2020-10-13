@@ -9,7 +9,7 @@ class course extends Model
 
     public function goals()
     {
-        return $this->belongsTo(goals::class,'id');
+        return $this->belongsTo(goals::class,'goal_id');
     }
 
     public function subcourse()

@@ -40,7 +40,8 @@ class Teacher extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function livestream(){
+    public function livestream()
+    {
         return $this->hasMany(livestream::class,'id');
     }
 }
