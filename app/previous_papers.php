@@ -20,7 +20,7 @@ class previous_papers extends Model
         return $this->belongsTo(course::class,'course_id');
     }
 
-    public function subcourse()
+    public function subcourses()
     {
         return $this->belongTo(subcourses::class,'subcourse_id');
     }
