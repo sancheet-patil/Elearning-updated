@@ -10,7 +10,7 @@ class subcourseController extends Controller
 {
     public function subcourses()
     {
-        $subcourses['data']=subcourses::all();
+        $subcourses['data']=subcourses::with('goals','course')->get();
         return response()->json($subcourses);
     }
 

@@ -26,7 +26,9 @@ Route::group(['prefix' => 'student'], function () {
     });
 });
 
-Route::get('goals','API\coursesController@goals');
+Route::get('goals','API\goalsController@goals');
+
+Route::get('previous-year','API\previousPaper@data');
 
 Route::get('livestream','API\LivestreamController@view');
 
