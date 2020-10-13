@@ -21,6 +21,6 @@ class test extends Model
 
     public function subcourses()
     {
-        return $this->belongTo(subcourses::class,'subcourse_id');
+        return $this->belongTo(subcourses::class,'subCourse_id');
     }
 }
