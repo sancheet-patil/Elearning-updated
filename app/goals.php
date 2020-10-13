@@ -11,4 +11,9 @@ class goals extends Model
     {
         return $this->hasMany(course::class,'id');
     }
+    
+    public function livestream()
+    {
+        return $this->hasMany(livestream::class,'id');
+    }
 }

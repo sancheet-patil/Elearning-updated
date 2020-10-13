@@ -9,7 +9,7 @@ class LivestreamController extends Controller
 {
     public function view ()
     {
-        $livestream['data']=livestream::all();
+        $livestream['data']=livestream::with('goals','course','subcourse','teacher')->get();
         return response()->json($livestream);
     }
 }

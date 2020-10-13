@@ -19,4 +19,6 @@ class subcourseController extends Controller
         $subcourse['data']=subcourses::where('subCourse_id',$id)->get();
         return response()->json($course);
     }
+
+    
 }

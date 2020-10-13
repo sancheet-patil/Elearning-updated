@@ -15,4 +15,9 @@ class subcourses extends Model
     {
         return $this->belongsTo(course::class,'id');
     }
+
+    public function livestream()
+    {
+        return $this->hasMany(livestream::class,'id');
+    }
 }

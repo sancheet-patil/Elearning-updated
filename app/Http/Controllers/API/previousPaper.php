@@ -8,10 +8,10 @@ use App\previous_papers;
 
 class previousPaper extends Controller
 {
-    //
+    //data 
     public function data()
     {
-        $previousPaper['data']=previous_papers::all();
+        $previousPaper['data']=previous_papers::with()->get();
         return response()->json($previousPaper);
     }
 }
