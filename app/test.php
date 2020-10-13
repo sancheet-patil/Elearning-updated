@@ -11,7 +11,7 @@ class test extends Model
 
     public function goals()
     {
-        return $this->belongsTo(goals::class,'goal_id');
+        return $this->belongsTo(goals::class,'Goal_id');
     }
 
     public function course()
@@ -19,7 +19,7 @@ class test extends Model
         return $this->belongsTo(course::class,'course_id');
     }
 
-    public function subcourses()
+    public function subCourses()
     {
         return $this->belongTo(subcourses::class,'subCourse_id');
     }
