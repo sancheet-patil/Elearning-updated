@@ -19,7 +19,7 @@ Route::group(['prefix' => 'student'], function () {
     Route::post('signup', 'API\studentApicontroller@signup');
   
     Route::group([
-      'middleware' => 'auth:api'
+        'middleware' => 'auth:api'
     ], function() {
         Route::get('logout', 'API\studentApicontroller@logout');
         Route::get('user', 'API\studentApicontroller@user');

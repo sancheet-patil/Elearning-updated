@@ -11,7 +11,7 @@ class previousPaper extends Controller
     //data 
     public function data()
     {
-        $previousPaper['data']=previous_papers::with()->get();
+        $previousPaper['data']=previous_papers::with('goals','course','subcourse')->get();
         return response()->json($previousPaper);
     }
 }

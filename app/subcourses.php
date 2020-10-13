@@ -20,4 +20,9 @@ class subcourses extends Model
     {
         return $this->hasMany(livestream::class,'subcourse_id');
     }
+
+    public function previous_year()
+    {
+        return $this->hasMany(previous_papers::class,'id');   
+    }
 }
