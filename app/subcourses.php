@@ -18,11 +18,16 @@ class subcourses extends Model
 
     public function livestream()
     {
-        return $this->hasMany(livestream::class,'subcourse_id');
+        return $this->hasMany(livestream::class,'id');
     }
 
     public function previous_year()
     {
         return $this->hasMany(previous_papers::class,'id');   
+    }
+
+    public function testSeries()
+    {
+        return $this->hasMany(test::class,'id');
     }
 }
