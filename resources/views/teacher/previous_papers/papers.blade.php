@@ -10,7 +10,10 @@
     <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-header">
-            Upload Question Papers 
+          
+            Upload Question Papers
+            <a href="{{ route('teacher.export') }}"><button class="create_btn_dash " style="  float: right;" >Download Template</button></a>
+
         </div>
         <div class="card-body">
             <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
@@ -25,8 +28,9 @@
                 <input type="file" name="file" class="form-control">
                 <br>
                 <button class="create_btn_dash">Upload Previous Papers</button>
-                <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
+                
             </form>
+
         </div>
     </div>
 </div><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -1,6 +1,5 @@
 @extends('layouts.frontend')
 @section('header')
-
     <header class="header abs-header">
         <div class="container">
             <nav class="navbar">
@@ -13,28 +12,27 @@
                 </a>
                 <ul class="navbar-nav">
                     <li><a href="{{route('front')}}">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="{{route('front.about')}}">About</a></li>
                     <li class="has-menu-child">
-                        <a href="javascript:void(0);">Courses</a>
+                        <a href="javascript:void(0);">Classroom</a>
                         <ul class="sub-menu">
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="course-details.html">Course Details</a></li>
+                            <li><a href="#">External Teacher</a></li>
+                            <li><a href="{{route('teacher.login')}}">Register Teacher</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="has-menu-child">
+                    <li><a href="{{route('blog')}}">Blog</a></li>
+                    <!-- <li><a href="contact.html">Contact</a></li> -->
+                   <!--  <li class="has-menu-child">
                         <a href="javascript:void(0);">Account</a>
                         <ul class="sub-menu">
                             <li><a href="{{route('teacher.login')}}">Teacher Login</a></li>
                         </ul>
                     </li>
-
+ -->
                 </ul>
             </nav>
         </div>
     </header>
-
 @stop
 
 @section('front')
@@ -55,11 +53,11 @@
                         @csrf
                         <div class="form-group">
                             <label>Email or Username</label>
-                            <input type="email" name="email" placeholder="example@gmail.com">
+                            <input type="email" name="email" placeholder="example@gmail.com" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Password">
+                            <input type="password" name="password" placeholder="Password" required>
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input">
@@ -71,16 +69,5 @@
                 </div>
             </div>
         </div>
-
     </section>
-    @if($errors->any())
-@foreach($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-
-
-
-@endif
 @stop

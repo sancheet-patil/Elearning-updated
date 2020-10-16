@@ -1,10 +1,5 @@
 @extends('layouts.admin')
 @section('admin')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @if(session('successMsg'))
    <div class="alert alert-info" role="alert" style="font-size:20px; text-align: center;"> 
         {{session('successMsg')}}
@@ -62,12 +57,21 @@
                                     
                                     <td>
                                         <img src="{{asset('blogfiles\upload/'.$blog->image)}}" height="70px" width="70px"></td>
+<<<<<<< Updated upstream
 
                                     <td class="text-right">
                                        <a href="{{route('admin.editblog',$blog->id)}}"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button></a>
                                    </td>
                                    <td class="text-right">
                                     <form id="delete-form{{$blog->id}}" action="{{ route('admin.delete', $blog->id)}}" method="POST">
+=======
+                                    
+                                    <td>
+                                       <a href="{{route('admin.editblog',$blog->id)}}"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button></a>
+                                   </td>
+                                   <td>
+                                       <form id="delete-form{{$blog->id}}" action="{{ route('admin.deleteblog', $blog->id)}}" method="POST">
+>>>>>>> Stashed changes
                                            {{csrf_field()}}
                                            {{method_field('delete')}}
 
@@ -84,7 +88,11 @@
                                         class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletegoal"><i class="fa fa-trash"></i> </button>
                                            
                                     </td>
+<<<<<<< Updated upstream
                                     <td style="text-align: center;" class="text-right"><a href="{{route('admin.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+=======
+                                    <td><a href="{{route('admin.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+>>>>>>> Stashed changes
                                 </tr>
                                 <?php $sr++;?>
                                 @endforeach

@@ -46,6 +46,7 @@
                                 <td>@foreach($Admin_name as $adminNames)
                                         {{$adminNames->Admin_name}}<br>
                                         @endforeach</td>
+
                                 
                         <td class="text-right">
                         
@@ -69,7 +70,7 @@
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                       are you sure to approve this teacher group to {{$teacherGroup->group_name}}?
-                                                        <input type="hidden" class="form-control" name="approve_id" value="{{$teacherGroup->id}}">
+                                                        <input type="hidden" class="form-control" name="approve_id" value="{{$teacherGroup->id}}">  
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

@@ -92,7 +92,7 @@
                                         class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletegoal"><i class="fa fa-trash"></i> </button>
                                            
                                     </td>
-                                    <td><a href="{{route('teacher.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 35px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                                    <td><a href="{{route('teacher.singleblog',$blog->id)}}"><button class="btn-sm" data-toggle="modal" data-target="#deletegoal" style="background-color: #1e90ff; color: #fff; height: 30px"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
                                 </tr>
                                 <?php $sr++;?>
                                 @endforeach

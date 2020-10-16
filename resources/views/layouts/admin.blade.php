@@ -77,8 +77,12 @@
                 <div class="dropdown-menu notifications">
                     <div class="topnav-dropdown-header">
                         <span class="notification-title">Notifications</span>
+<<<<<<< Updated upstream
                         <?php $note=\App\notifications::Orderby('id','DESC')->get();?>
                           <a href="" class="clear-noti"> Clear All </a>
+=======
+                          <a href="{{asset(route('admin.delete',$user))}}" class="clear-noti"> Clear All </a>
+>>>>>>> Stashed changes
                     </div>
                     <div class="noti-content">
                         <ul class="notification-list">

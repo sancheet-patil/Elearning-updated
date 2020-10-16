@@ -98,40 +98,56 @@
                         <a class="vbm_btn" href="instructor_messages.html">View All <i class='uil uil-arrow-right'></i></a>
                     </div>
                 </li>
+            <?php $note=Auth::guard('teacher')->user()->id;
+                $user = App\Teacher::find($note);?>
+                
                 <li class="ui dropdown">
-                    <a href="#" class="option_links"><i class='uil uil-bell'></i><span class="noti_count">3</span></a>
+                    <a href="#" class="option_links"><i class='uil uil-bell'></i>
+                         @if($user->unreadNotifications->count())
+                    <span class="noti_count">{{$user->unreadNotifications->count()}}</span>
+                    @endif
+                </a>
+
+                    
                     <div class="menu dropdown_mn">
-                        <a href="#" class="channel_my item">
+                       <a href="{{route('teacher.DeleteNotification',$note)}}" class="channel_my item" >
+                        <div class="pd_content" style="color: red">
+                            Clear All
+                        </div>
+                                               
+                        </a>
+                        @foreach ($user->unreadNotifications as $notification)
+                        <a href="#" class="channel_my item"   style="background-color:#dcdcdc">
                             <div class="profile_link">
-                                <img src="{{asset('assets/Ntheme/images/left-imgs/img-1.jpg')}}" alt="">
+                                <!--<img src="{{asset('assets/Ntheme/images/left-imgs/img-1.jpg')}}" alt="">-->
                                 <div class="pd_content">
-                                    <h6>Rock William</h6>
-                                    <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
-                                    <span class="nm_time">2 min ago</span>
+                                    <h6>{{Auth::guard('teacher')->user()->name}}</h6>
+                                    <p>{{$notification->data}}.</p>
+                                    <span class="nm_time">{{$notification->created_at}}</span>
                                 </div>                          
                             </div>                          
                         </a>
+                        @endforeach
+                         @foreach ($user->readNotifications as $notification)
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="{{asset('assets/Ntheme/images/left-imgs/img-2.jpg')}}" alt="">
+                                <!--<img src="{{asset('assets/Ntheme/images/left-imgs/img-1.jpg')}}" alt="">-->
                                 <div class="pd_content">
-                                    <h6>Jassica Smith</h6>
-                                    <p>Added New Review In Video <strong>Full Stack PHP Developer</strong>.</p>
-                                    <span class="nm_time">12 min ago</span>
+                                    <h6>{{Auth::guard('teacher')->user()->name}}</h6>
+                                    <p>{{$notification->data}}.</p>
+                                    <span class="nm_time">{{$notification->created_at}}</span>
                                 </div>                          
                             </div>                          
                         </a>
-                        <a href="#" class="channel_my item">
-                            <div class="profile_link">
-                                <img src="images/left-imgs/img-9.jpg" alt="">
-                                <div class="pd_content">
-                                    <p> Your Membership Approved <strong>Upload Video</strong>.</p>
-                                    <span class="nm_time">20 min ago</span>
-                                </div>                          
-                            </div>                          
-                        </a>
-                        <a class="vbm_btn" href="instructor_notifications.html">View All <i class='uil uil-arrow-right'></i></a>
+                       
+                        @endforeach
+
+                        
+                        <a class="vbm_btn" href="{{route('teacher.markAsRead')}}">Mark All as Read <i class='uil uil-arrow-right'></i></a>
+
+
                     </div>
+                                   
                 </li>
                 <li class="ui dropdown">
                     <a href="#" class="opts_account">
@@ -162,11 +178,18 @@
                             </a>
                         </div>
                         <a href="{{route('teacher.dashboard')}}" class="item channel_item">Dashboard</a>                      
+<<<<<<< Updated upstream
                         <a href="membership.html" class="item channel_item">Paid Memberships</a>
                         <a href="setting.html" class="item channel_item">Setting</a>
                         <a href="help.html" class="item channel_item">Help</a>
                         <a href="feedback.html" class="item channel_item">Send Feedback</a>
                         <a href="{{url('teacher/logout')}}" class="item channel_item">logout</a>
+=======
+                        <a href="{{route('teacher.TeacherSetting')}}" class="item channel_item">Setting</a>
+
+                        <a href="{{route('teacher.TeacherFeedback')}}" class="item channel_item">Send Feedback</a>
+                        <a href="{{route('teacher.LogoutNotification')}}" class="item channel_item">logout</a>
+>>>>>>> Stashed changes
                     </div>
                 </li>
             </ul>
@@ -203,9 +226,15 @@
                         </a>
                     </li>
                     <li class="menu--item">
+<<<<<<< Updated upstream
                         <a href="{{route('blog.addblog')}}" class="menu--link" title="Create Course">
                             <i class='uil uil-plus-circle menu--icon'></i>
                              <span>Blog</span>
+=======
+                        <a href="{{route('blog.addblog')}}" class="menu--link" title="Create blog">
+                        &nbsp &nbsp &nbsp &nbsp <i class='fa fa-pencil' aria-hidden="true"></i>
+                         &nbsp &nbsp &nbsp<span>Blog</span>
+>>>>>>> Stashed changes
                         </a>
                     </li>
                    
@@ -216,7 +245,7 @@
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="{{route('teacher.paper')}}" class="menu--link" title="My Certificates">
+                        <a href="{{route('teacher.paper')}}" class="menu--link" title="Previous Papers">
                           <i class='uil uil-award menu--icon'></i>
                            <span>Previous Papers</span>
                         </a>

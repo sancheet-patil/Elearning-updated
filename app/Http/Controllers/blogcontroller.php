@@ -13,21 +13,9 @@ class blogcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-$this->validate($request,[
-                'teacher_id'=>'required',
-
-          'goal_name'=> 'required',
- 'title'=> 'required',
-      'content'=> 'required',
-      'image'=> 'required'
- 
-            ]);
-
-
         $blog=blog::all();
-
         return view('frontblog',compact('blog'));
        
     }

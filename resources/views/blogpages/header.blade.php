@@ -22,6 +22,7 @@
                                     <a class="nav-link" href="about.html" style="font-size: 13px; 
     font-family:sans-serif; line-height:1">ABOUT</a>
                                 </li>
+<<<<<<< Updated upstream
                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1">
@@ -38,6 +39,18 @@
                                     <a class="nav-link" href="{{route('blog')}}" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1">BLOG</a>
                                 </li>
+=======
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="#" style="font-size: 13px; 
+    font-family:sans-serif; line-height: 1">TEACHERS</a>
+                                </li>
+                                
+                              <li class="nav-item">
+                                    <a class="nav-link" href="{{route('blog')}}" style="font-size: 13px; 
+    font-family:sans-serif; line-height: 1">BLOG</a>
+                                </li>  
+                                 
+>>>>>>> Stashed changes
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html" style="font-size: 13px; 
     font-family:sans-serif; line-height: 1">CONTACT</a>

@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'FrontendController@index')->name('front');
+Route::get('/front-teacher', 'FrontendController@teacher')->name('front.teacher');
+Route::get('/front-teacher_details/{id}', 'FrontendController@teacherdetails')->name('front.teacher.details');
 Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
+Route::get('/about', 'FrontendController@about')->name('front.about');
+
 
 
 
@@ -126,18 +130,25 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('getSubcourse/{id}','Admin\admin_blogController@getSubcourse');
         Route::get('getcourse/{id}','Admin\admin_blogController@getCourse');
         Route::get('/Adminblog','Admin\admin_blogController@index')->name('admin.Adminblog');
-         Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
-         Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
-         Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
-         Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
-         Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
-         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
+        Route::get('/createblog','Admin\admin_blogController@create')->name('admin.createblog');
+        Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
+        Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
+        Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
+        Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.deleteblog');
 
-         //Previous Papers
-         Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
-         Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
-         Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
+        Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
 
+        //Previous Papers
+        Route::get('/paper','Admin\PreviousPaperController@index')->name('admin.paper');
+        Route::post('/paper-upload','Admin\PreviousPaperController@import')->name('admin.upload');
+        Route::get('/export', 'Admin\PreviousPaperController@export')->name('admin.export');
+
+
+         //Notification
+        Route::get('/delete/{id}','Admin\ReadNotification@index')->name('admin.delete');
+        Route::get('/markAsRead','Admin\ReadNotification@read')->name('admin.markAsRead');
+        Route::get('/GroupRequestNotification/{id}','Admin\ReadNotification@GroupRequestNotification')->name('admin.GroupNote');
+        Route::get('/subcourseRequestAccept/{id}','Admin\ReadNotification@subcourseRequestAccept')->name('admin.subcoursenote');
         
 
     });
@@ -226,8 +237,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/groupnotification','Teacher\NotificationController@groupNotification')->name('teacher.groupnotification');
     Route::get('/RequestsubcoursesNotification','Teacher\NotificationController@RequestsubcoursesNotification')->name('teacher.RequestsubcoursesNotification');
     Route::get('/BlogNotification','Teacher\NotificationController@BlogNotification')->name('teacher.BlogNotification');
-    Route::get('/TestNotification','Teacher\NotificationController@TestNotification')->name('teacher.TestNotification');
-    Route::get('/DeleteNotification','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
+    Route::get('/LogoutNotification','Teacher\NotificationController@LogoutNotification')->name('teacher.LogoutNotification');
+   
+    Route::get('/DeleteNotification/{id}','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
+        Route::get('/markAsRead','Teacher\NotificationController@markasread')->name('teacher.markAsRead');
+       
 
 
 

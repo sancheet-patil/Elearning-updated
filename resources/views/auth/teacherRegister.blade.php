@@ -1,6 +1,5 @@
 @extends('layouts.frontend')
 @section('header')
-
     <header class="header abs-header">
         <div class="container">
             <nav class="navbar">
@@ -13,28 +12,27 @@
                 </a>
                 <ul class="navbar-nav">
                     <li><a href="{{route('front')}}">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="{{route('front.about')}}">About</a></li>
                     <li class="has-menu-child">
-                        <a href="javascript:void(0);">Courses</a>
+                        <a href="javascript:void(0);">Classroom</a>
                         <ul class="sub-menu">
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="course-details.html">Course Details</a></li>
+                            <li><a href="#">External Teacher</a></li>
+                            <li><a href="{{route('teacher.login')}}">Register Teacher</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="has-menu-child">
+                    <li><a href="{{route('blog')}}">Blog</a></li>
+                    <!-- <li><a href="contact.html">Contact</a></li> -->
+                   <!--  <li class="has-menu-child">
                         <a href="javascript:void(0);">Account</a>
                         <ul class="sub-menu">
                             <li><a href="{{route('teacher.login')}}">Teacher Login</a></li>
                         </ul>
                     </li>
-
+ -->
                 </ul>
             </nav>
         </div>
     </header>
-
 @stop
 
 @section('front')
@@ -61,19 +59,20 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="">
+                            <input type="email" class="form-control" name="email" placeholder="" >
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="number" class="form-control" name="phone" placeholder="">
+                            <input type="number" class="form-control" name="phone" placeholder="" >
                         </div>
                         <div class="form-group">
                             <label>Date Of Birth</label>
-                            <input type="date" class="form-control" name="dob" placeholder="">
+                            <input type="date" class="form-control" name="dob" placeholder="" >
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="" id="password">
+                            <input type="password" class="form-control" name="password" placeholder=""  id="password" title="
+        Your password must be more than 8 characters long, should contain at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.">
                             <input type="checkbox" onclick="myFunction1()">Show Password
                         </div>
                         <div class="form-group">
@@ -84,21 +83,21 @@
                              <p class="text-danger text-center"></p>
                           
                         </div>
-                        <button class="btn btn-filled btn-round"><span class="bh"></span> <span>Register</span></button>
+<<<<<<< Updated upstream
+                       
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input type="file" class="form-control" name="image" placeholder=""  id="image">
+                            
+                            
+                        </div>
+                        
+                        <button class="btn btn-filled btn-round" type="submit"><span class="bh"></span> <span>Register</span></button>
+>>>>>>> Stashed changes
                         <p class="notice">Already have an account? <a href="{{route('teacher.login')}}">SignIn Now</a></p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    @if($errors->any())
-@foreach($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-
-
-
-@endif
 @stop
