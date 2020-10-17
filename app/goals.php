@@ -21,4 +21,9 @@ class goals extends Model
     {
         return $this->hasMany(user_goal::class,'id');
     }
+
+    public function homeVideo()
+    {
+        return $this->hasMany(homeVideo::class,'id');
+    }
 }
