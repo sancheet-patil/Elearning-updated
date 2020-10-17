@@ -11,7 +11,7 @@ class homescreenController extends Controller
     //
     public function data()
     {
-        $video['data']=homeVideo::all();
+        $video['data']=homeVideo::with('goals','course','subcourse')->get();
         return response()->json($video);
     }
 }

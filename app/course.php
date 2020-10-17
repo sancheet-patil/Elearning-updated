@@ -21,4 +21,9 @@ class course extends Model
     {
         return $this->hasMany(livestream::class,'id');
     }
+
+    public function homeVideo()
+    {
+        return $this->hasMany(homeVideo::class,'id');
+    }
 }

@@ -30,4 +30,9 @@ class subcourses extends Model
     {
         return $this->hasMany(test::class,'id');
     }
+
+    public function homeVideo()
+    {
+        return $this->hasMany(homeVideo::class,'id');
+    }
 }
