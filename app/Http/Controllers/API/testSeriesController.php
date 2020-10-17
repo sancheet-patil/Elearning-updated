@@ -11,7 +11,7 @@ class testSeriesController extends Controller
     //
     public function data()
     {
-        $testSeries['data']=test::with('goals','course')->get();
+        $testSeries['data']=test::with('goals','course','subcourses')->get();
         return response()->json($testSeries);
     }
 }
