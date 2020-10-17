@@ -57,7 +57,8 @@ class AdminTeacherSubCourses extends Controller
         $teacher=Teacher::where('id',$update_assign->teacher_id)->first();
         $teacher->status =4;
         $teacher->save();
-        return back()->with('success','subcourse is assigned to Teacher Successfully');
+        return redirect(route('admin.subcoursenote',$update_assign->teacher_id));
+        //return back()->with('success','subcourse is assigned to Teacher Successfully');
     }
 
     public function disapprove(Request $request)

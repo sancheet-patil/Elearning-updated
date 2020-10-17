@@ -26,8 +26,8 @@
     <div class="col-lg-6 col-md-8">	
     <div class="sign_form">
         <div class="card-header">
-           <h3>Upload Test Series </h3> 
-            <a class="create_btn_dash  pull-right" href="{{ route('teacher.testexport') }}">Download Template</a>
+            Upload Test Series 
+             <a href="{{ route('teacher.testexport') }}"><button class="create_btn_dash " style="  float: right;" >Download Template</button></a>
         </div>
         <div class="card-body">
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">

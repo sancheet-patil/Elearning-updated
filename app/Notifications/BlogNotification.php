@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class BlogNotification extends Notification
 {
     use Queueable;
-     protected $Teacher;
+    protected $Teacher;
 
 
     

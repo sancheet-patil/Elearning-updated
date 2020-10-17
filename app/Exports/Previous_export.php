@@ -37,7 +37,6 @@ class Previous_export implements WithHeadings
             $previous_papers->Option1,
             $previous_papers->Option2,
             $previous_papers->Option3,
-            
             $previous_papers->Option4,
             $previous_papers->Answer,
             Date::dateTimeToExcel($previous_papers->created_at),

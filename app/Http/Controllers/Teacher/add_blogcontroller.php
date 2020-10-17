@@ -29,13 +29,12 @@ class add_blogcontroller extends Controller
          $this->validate($request,[
             'teacher_id'=>'required',
             'goal'=>'required',
-            'course_name'=>'required',
+            'course'=>'required',
             'subcourse'=>'required',
             'title'=>'required',
             'content'=>'required',
             'image'=>'required',
             
-
 
         ]);
         $blog=new blog;
@@ -119,7 +118,7 @@ class add_blogcontroller extends Controller
      public function singleblog($id)
     {
         $blog=blog::all()->where('id','=',$id);
-        return view('teacher.blog.teacherblogpreview',compact('blog'));
+        return view('singleblog',compact('blog'));
         //
     }
     
