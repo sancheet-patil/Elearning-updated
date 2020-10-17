@@ -21,6 +21,8 @@ Route::group(['prefix' => 'student'], function () {
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
+        Route::post('add-goal','API\user_goalController@add');
+        Route::get('user-goal','API\user_goalController@data');
         Route::get('logout', 'API\studentApicontroller@logout');
         Route::get('user', 'API\studentApicontroller@user');
     });
