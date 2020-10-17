@@ -113,7 +113,7 @@ public function store(Request $request){
     public function singleblog($id)
     {
         $blog=blog::all()->where('id','=',$id);
-        return view('admin.blog.blogpreview',compact('blog'));
+        return view('singleblog',compact('blog'));
         //
     }
     

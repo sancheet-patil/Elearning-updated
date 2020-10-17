@@ -126,7 +126,8 @@
 <script src="{{asset('assets/frontend/')}}/js/jquery.nice-select.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxYLtelXg0PGjeTiFDtlN7nrH_47buDWo"></script>
 <script src="{{asset('assets/frontend/')}}/js/scripts.js"></script>
-<script>function myFunction1() {
+<script>
+    function myFunction1() {
   var x = document.getElementById("password");
   if (x.type === "password") {
     x.type = "text";
@@ -135,7 +136,8 @@
   }
 }
 </script>
-<script>function myFunction2() {
+<script>
+    function myFunction2() {
   var x = document.getElementById("confirmpassword");
   if (x.type === "password") {
     x.type = "text";

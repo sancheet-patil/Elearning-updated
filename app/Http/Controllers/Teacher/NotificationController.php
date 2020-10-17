@@ -114,6 +114,27 @@ class NotificationController extends Controller
    
         return redirect(route('teacher.logout'));
     }
+     public function markasread()
+    {
+        $note=Auth::guard('teacher')->user()->id;
+
+        $user=Teacher::find($note);
+        $user->unreadNotifications->markAsRead();
+        return redirect()->back();
+    }
+     public function DeleteNotification($id)
+    {
+        $user=Auth::guard('teacher')->user()->id;
+        $teacher=notifications::where('notifiable_id',$user)->where('notifiable_type','=','App\Teacher')->delete();
+
+        //notifications::find($teacher)->delete();
+        
+       // $user=notification::find($teacher);
+        
+
+        return back();
+            }
+    
    
      
     

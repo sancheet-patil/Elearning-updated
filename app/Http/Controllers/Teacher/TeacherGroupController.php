@@ -5,7 +5,6 @@ use App\group_members;
 use App\group_admins;
 use App\group_name;
 use App\Teachers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

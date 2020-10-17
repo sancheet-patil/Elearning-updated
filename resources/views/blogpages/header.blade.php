@@ -1,57 +1,66 @@
- <header class="main_menu single_page_menu">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand logo_1" href="{{asset(route('front'))}}"> <img src="{{asset('blogfiles\img\logo.png')}}" alt="logo" height="110px" width="110px"> </a>
-                        <a class="navbar-brand logo_2" href="{{asset(route('front'))}}"> <img src="{{asset('blogfiles\img\logo.png')}}" alt="logo"height="110px" width="110px"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+<header class="top_panel_wrap bg_tint_dark"  style="background-image: url({{url('assets/frontend/homepage/images/green.jpg')}})">
+                <!-- User menu -->
+                <!-- /User menu -->
+                <!-- Main menu -->
+                <div class="menu_main_wrap logo_left">                  
+                    <div class="content_wrap clearfix">
 
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
-                            id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{route('front')}}" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1;">HOME</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" style="font-size: 13px; 
-    font-family:sans-serif; line-height:1">ABOUT</a>
-                                </li>
-                              <li class="nav-item">
-                                    <a class="nav-link" href="{{route('blog')}}" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">BLOG</a>
-                                </li>  
-                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">TEACHERS</a>
-                                </li>
-                                 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">CONTACT</a>
-                                </li>
-                                  <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1">
-                                    ACCOUNT
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('teacher.login')}}"style="font-size: 13px; 
-    font-family:sans-serif; line-height: 1" >TEACHER LOGIN</a>
-                                       
-                                    </div>
-                                </li>
-                             
-                            </ul>
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="{{route('front')}}">
+                                <img src="{{url('assets\frontend\homepage\images\logo.jpg')}}" class="logo_main" alt="" style="width: 100px">
+                                <img src="{{url('assets\frontend\homepage\images\logo.jpg')}}" class="logo_fixed" alt="" style="width: 100px">
+                            </a>
                         </div>
-                    </nav>
+                        <!-- Logo -->
+                        <!-- Search -->
+                        <div class="search_wrap search_style_regular search_ajax" title="Open/close search form">
+                            <a href="#" class="search_icon icon-search-2"></a>
+                            <div class="search_form_wrap">
+                                <form method="get" class="search_form" action="#">
+                                    <button type="submit" class="search_submit icon-zoom-1" title="Start search"></button>
+                                    <input type="text" class="search_field" placeholder="" value="" name="s" title="" />
+                                </form>
+                            </div>
+                            <div class="search_results widget_area bg_tint_light">
+                                <a class="search_results_close icon-delete-2"></a>
+                                <div class="search_results_content">
+                            </div>
+                            </div>
+                        </div>
+                        <!-- /Search -->
+                        <!-- Navigation -->
+                        <a href="#" class="menu_main_responsive_button icon-menu-1"></a>
+                        <nav class="menu_main_nav_area">
+                            <ul id="menu_main" class="menu_main_nav">
+                                <li class="menu-item menu-item-has-children"><a href="{{route('front')}}">Home</a>
+                                   
+                                </li>
+                                <li class="menu-item menu-item-has-children"><a href="{{route('front.about')}}">About</a>
+                                   
+                                </li>
+                               <!--  <li class="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="#">Teachers Team</a></li>
+                                        <li class="menu-item"><a href="#">Teacher&#8217;s Personal Page</a></li>
+                                    </ul>
+                                </li>
+                                -->  <li class="menu-item menu-item-has-children"><a href="team-members.html">Classroom</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="">External Teacher</a></li>
+                                        <li class="menu-item"><a href="{{route('teacher.login')}}">Register Teacher</a></li>
+                                    </ul>
+                                </li>
+                               
+                                <li class="menu-item menu-item-has-children"><a href="{{route('blog')}}">Blog</a>
+                                   
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                        <!-- /Navigation -->
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
-   
+                <!-- /Main menu -->
+</header>
+                    

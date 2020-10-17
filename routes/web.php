@@ -19,6 +19,8 @@ Route::get('/subcourses/{id}', 'FrontendController@subcourses')->name('front.sub
 Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
+Route::get('/about', 'FrontendController@about')->name('front.about');
+
 
 
 Auth::routes();
@@ -137,7 +139,8 @@ Route::group(['middleware' => ['auth:admin']], function()
         Route::post('/createblog','Admin\admin_blogController@store')->name('admin.store');
         Route::get('/edit/{id}','Admin\admin_blogController@edit')->name('admin.editblog');
         Route::post('/update/{id}','Admin\admin_blogController@update')->name('admin.update');
-        Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.delete');
+        Route::delete('/delete/{id}','Admin\admin_blogController@delete')->name('admin.deleteblog');
+
         Route::get('/singleblog/{id}', 'Admin\admin_blogController@singleblog')->name('admin.singleblog');
 
         //Previous Papers
@@ -147,8 +150,10 @@ Route::group(['middleware' => ['auth:admin']], function()
 
 
          //Notification
-        Route::get('/delete','Admin\ReadNotification@index')->name('admin.delete');
+        Route::get('/delete/{id}','Admin\ReadNotification@index')->name('admin.delete');
         Route::get('/markAsRead','Admin\ReadNotification@read')->name('admin.markAsRead');
+        Route::get('/GroupRequestNotification/{id}','Admin\ReadNotification@GroupRequestNotification')->name('admin.GroupNote');
+        Route::get('/subcourseRequestAccept/{id}','Admin\ReadNotification@subcourseRequestAccept')->name('admin.subcoursenote');
         
      });
 
@@ -245,10 +250,11 @@ Route::prefix('teacher')->group(function ()
     Route::get('/groupnotification','Teacher\NotificationController@groupNotification')->name('teacher.groupnotification');
     Route::get('/RequestsubcoursesNotification','Teacher\NotificationController@RequestsubcoursesNotification')->name('teacher.RequestsubcoursesNotification');
     Route::get('/BlogNotification','Teacher\NotificationController@BlogNotification')->name('teacher.BlogNotification');
-    Route::get('/LiveStreamNotification','Teacher\NotificationController@LiveStreamNotification')->name('teacher.LiveStreamNotification');
     Route::get('/LogoutNotification','Teacher\NotificationController@LogoutNotification')->name('teacher.LogoutNotification');
-    Route::get('/TestNotification','Teacher\NotificationController@TestNotification')->name('teacher.TestNotification');
-    Route::get('/DeleteNotification','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
+    Route::get('/LiveStreamNotification','Teacher\NotificationController@LiveStreamNotification')->name('teacher.LiveStreamNotification');
+    Route::get('/DeleteNotification/{id}','Teacher\NotificationController@DeleteNotification')->name('teacher.DeleteNotification');
+    Route::get('/markAsRead','Teacher\NotificationController@markasread')->name('teacher.markAsRead');
+       
 
     //livestream
     Route::get('livestream-schedule','Teacher\livestreamController@view')->name('livestream.schedule');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\group_name;
 use App\group_admins;
+use App\Teacher;
 class AdminTeacherGroupController extends Controller
 {
     public function teacherGroups()
@@ -14,7 +15,7 @@ class AdminTeacherGroupController extends Controller
         return view('admin.groups.teacherGroups',compact('teacherGroups'));
     }
     public function approve(Request $request)
-    {
+    {   
         $update_assign = group_name::where('id',$request->approve_id)->first();
         $update_assign->status = 1;
         $update_assign->save();
