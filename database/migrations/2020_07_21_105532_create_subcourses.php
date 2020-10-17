@@ -17,7 +17,7 @@ class CreateSubcourses extends Migration
             $table->id();
             $table->foreignId('goal_id');
             $table->foreignId('course_id');
-            $table->string('subCourses_name',100);
+            $table->string('subCourses_name');
             $table->timestamps();
 
             $table->foreign('course_id')

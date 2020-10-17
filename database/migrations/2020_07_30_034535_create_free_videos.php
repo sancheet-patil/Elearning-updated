@@ -32,6 +32,16 @@ class CreateFreeVideos extends Migration
             ->on('subcourses')
             ->onDelete('cascade');
 
+            $table->foreign('goal_id')
+            ->references('id')
+            ->on('goals')
+            ->onDelete('cascade');
+
+            $table->foreign('course_id')
+            ->references('id')
+            ->on('courses')
+            ->onDelete('cascade');
+
         });
     }
 

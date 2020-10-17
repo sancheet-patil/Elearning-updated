@@ -374,7 +374,7 @@
                                                                         </div>
                                                                         <div class="post_category">
                                                                             <?php $goal=\App\goals::find($course->goal_id);?>
-                                                                            <a href="javascript:void(0);">{{$goal->    goal_name}}</a>
+                                                                            <a href="javascript:void(0);">{{$goal->goal_name}}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

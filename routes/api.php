@@ -38,6 +38,8 @@ Route::get('special-video','API\specialvideos@data');
 
 Route::get('test-Series','API\testSeriesController@data');
 
+Route::get('homeVideo','API\homescreenController@data');
+
 Route::group(['prefix'=>'courses'],function(){
         Route::get('all_courses','API\coursesController@courses');
         Route::get('course/{id}','API\coursesController@course');
