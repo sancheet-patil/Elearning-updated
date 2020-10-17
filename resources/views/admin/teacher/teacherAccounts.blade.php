@@ -59,7 +59,7 @@
                                    @endif
                                 </td>
                                 <td class="text-right">
-                                   <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </button>
+                                  
                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteteacher{{$teacher->id}}"><i class="fa fa-trash"></i> </button>
                                     <a href="{{route('teacher.view.doc',$teacher->id)}}">
 

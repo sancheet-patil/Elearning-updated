@@ -69,7 +69,7 @@
                                         <img src="{{asset('blogfiles\upload/'.$blog->image)}}" height="70px" width="70px"></td>
                                     
                                     <td>
-                                       <a href="{{route('teacher.edit',$blog->id)}}"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button></a>
+                                       <a href="{{route('admin.editblog',$blog->id)}}"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button></a>
                                    </td>
                                    <td>
                                        <form id="delete-form{{$blog->id}}" action="{{ route('admin.delete', $blog->id)}}" method="POST">

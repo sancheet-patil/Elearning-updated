@@ -25,17 +25,16 @@ class add_blogcontroller extends Controller
         //
     }
 
-        public function store(Request $request){
+         public function store(Request $request){
          $this->validate($request,[
             'teacher_id'=>'required',
             'goal'=>'required',
-            'course_name'=>'required',
+            'course'=>'required',
             'subcourse'=>'required',
             'title'=>'required',
             'content'=>'required',
             'image'=>'required',
             
-
 
         ]);
         $blog=new blog;
@@ -67,7 +66,7 @@ class add_blogcontroller extends Controller
          //
 
     }
-    public function edit($id)
+     public function edit($id)
     {
 
       $blog=blog::find($id);

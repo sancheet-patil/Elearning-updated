@@ -25,7 +25,11 @@
     <div class="sign_form">
         <div class="card-header">
             Upload Question Papers 
+           
+            
         </div>
+         <br>
+        <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
         <div class="card-body">
             <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -45,7 +49,7 @@
                                     </div>
                 <br>
                 <button class="create_btn_dash">Upload Previous Papers</button>
-                <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
+                
             </form><br>
         </div><br><br></div><br><br>
     </div>

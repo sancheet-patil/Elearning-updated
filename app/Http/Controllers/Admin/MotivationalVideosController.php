@@ -11,7 +11,7 @@ class MotivationalVideosController extends Controller
     public function view()
     {
         $motivational_videos = motivationalvideos::select('description','title')->distinct()->orderBy('id','DESC')->paginate(20);
-        return view('admin.videos.MotivationalVideos',compact('motivational_videos'));
+        return view('admin.Videos.MotivationalVideos',compact('motivational_videos'));
     }
     public function save(Request $request)
     {

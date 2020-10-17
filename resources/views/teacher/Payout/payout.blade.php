@@ -60,7 +60,11 @@
 			<div class="row justify-content-lg-center justify-content-md-center">
 			<div class="col-lg-6 col-md-8">
 			<div class="sign_form">
-			<div class="card-body">			
+			<div class="card-body">	
+			<div class="card-header">
+			    Payment Details	
+			</div><br>
+			
 			<form action="{{ route('payment.initiate.request') }}" method="POST">
                         <div class="row">
                             <input type="hidden" value="{{csrf_token()}}" name="_token" />
