@@ -18,8 +18,8 @@ class CreatePreviousPapersTable extends Migration
             $table->id();
             $table->year('Year');
             $table->foreignId('goal_id');
-            $table->string('course_id');
-            $table->string('subcourse_id');
+            $table->foreignId('course_id');
+            $table->foreignId('subcourse_id');
             $table->text('Question');
             $table->text('Option1');
             $table->text('Option2');
