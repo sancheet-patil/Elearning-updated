@@ -73,7 +73,7 @@
                                     <td>{{$blog->title}}</td>
                                     
                                     <td>
-                                        <img src="{{asset('blogfiles\upload/'.$blog->image)}}" height="70px" width="70px"></td>
+                                        <img src="{{asset('blogfiles\upload'.$blog->image)}}" height="70px" width="70px"></td>
                                     
                                     <td>
                                        <a href="{{route('teacher.edit',$blog->id)}}"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editgoal"><i class="fa fa-edit"></i> </button></a>

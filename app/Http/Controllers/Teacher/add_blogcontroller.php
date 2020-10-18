@@ -25,46 +25,46 @@ class add_blogcontroller extends Controller
         //
     }
 
-        public function store(Request $request){
-         $this->validate($request,[
-            'teacher_id'=>'required',
-            'goal'=>'required',
-            'course_name'=>'required',
-            'subcourse'=>'required',
-            'title'=>'required',
-            'content'=>'required',
-            'image'=>'required',
-            
+    public function store(Request $request){
+        $this->validate($request,[
+           'teacher_id'=>'required',
+           'goal'=>'required',
+           'course'=>'required',
+           'subcourse'=>'required',
+           'title'=>'required',
+           'content'=>'required',
+           'image'=>'required',
+           
 
+       ]);
+       $blog=new blog;
+       $blog->teacher_id=$request->teacher_id;
+       $blog->goal=$request->goal;
+       $blog->course=$request->course;
+       $blog->subcourse=$request->subcourse;
+       
+       $blog->title=$request->title;
+       $blog->content=$request->content;
+       
+       if($request->hasfile('image'))
+       {
+           $file=$request->file('image');
+           $extension=$file->getClientOriginalExtension();
+           $filename=time().".".$extension;
+           $file->move('blogfiles\upload',$filename);
+           $blog->image=$filename;
+           
+       }
+       else
+       {
+           return $request;
+           $blog->image='';
+       }
+       $blog->save();
+       return redirect(route('teacher.BlogNotification'));
+       //$blog->save();
+        //
 
-        ]);
-        $blog=new blog;
-        $blog->teacher_id=$request->teacher_id;
-        $blog->goal=$request->goal;
-        $blog->course=$request->course;
-        $blog->subcourse=$request->subcourse;
-        
-        $blog->title=$request->title;
-        $blog->content=$request->content;
-        
-        if($request->hasfile('image'))
-        {
-            $file=$request->file('image');
-            $extension=$file->getClientOriginalExtension();
-            $filename=time().".".$extension;
-            $file->move('blogfiles\upload',$filename);
-            $blog->image=$filename;
-            
-        }
-        else
-        {
-            return $request;
-            $blog->image='';
-        }
-        $blog->save();
-        return redirect(route('teacher.BlogNotification'));
-        //$blog->save();
-         //
 
     }
     public function edit($id)
