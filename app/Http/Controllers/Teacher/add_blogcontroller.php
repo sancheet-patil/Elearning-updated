@@ -119,7 +119,7 @@ class add_blogcontroller extends Controller
      public function singleblog($id)
     {
         $blog=blog::all()->where('id','=',$id);
-        return view('teacher.blog.teacherblogpreview',compact('blog'));
+        return view('singleblog',compact('blog'));
         //
     }
     

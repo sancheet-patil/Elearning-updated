@@ -12,12 +12,10 @@ use App\Notifications\RequestSubcoursesNotification;
 use App\Notifications\BlogNotification;
 use App\Notifications\TestNotification;
 use App\Notifications\PaperNotification;
-use App\Notifications\AdminToTeacher;
+use App\Notifications\SubCourseRequestAceept;
 use Illuminate\Support\Facades\Auth;
 use App\notifications;
 use Illuminate\Support\Facades\DB;
-use App\group_name;
-use App\group_admins;
 use App\Admin;
 
 
@@ -25,10 +23,12 @@ use App\Admin;
 
 class ReadNotification extends Controller
 {
-	 public function index()
+	 public function index($id)
     {
-        notifications::truncate();
+        $user=Auth::guard('admin')->user()->id;
+        $teacher=notifications::where('notifiable_id',$user)->where('notifiable_type','=','App\Admin')->delete();
         return back();
+
     }
      
      public function read()
@@ -37,18 +37,32 @@ class ReadNotification extends Controller
         $user->unreadNotifications->markAsRead();
         return redirect()->back();
     }
-      public function group() {
-       $userSchema = Teacher::first('id');
+    
+      public function GroupRequestNotification($id) {
+       $userSchema = Teacher::all()->where('id',$id)->first();
   
         $offerData = 
             Auth::guard('admin')->user()->id
             
         ;
-         Notification::send($userSchema, new AdminToTeacher($offerData));
+         Notification::send($userSchema, new GroupRequestAcceptNotification($offerData));
          
    
         return dd('done');
     }
+    public function subcourseRequestAccept($id) {
+       $userSchema = Teacher::all()->where('id',$id)->first();
+  
+        $offerData = 
+            Auth::guard('admin')->user()->id
+            
+        ;
+         Notification::send($userSchema, new SubCourseRequestAceept($offerData));
+         
+   
+        return back()->with('success','subcourse is assigned to Teacher Successfully');
+    }
+
 
 
     

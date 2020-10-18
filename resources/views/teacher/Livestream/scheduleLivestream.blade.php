@@ -16,15 +16,16 @@
 @stop
 @section('teacher')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+
+@if (session('success'))
+    <div class="card-body">
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     </div>
 @endif
+
+
 
 <div class="row justify-content-md-center">
     <div class="col-lg-8 col-md-10">
@@ -55,29 +56,55 @@
                                       <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                                       @endforeach
                                    </select>
+                                   @if ($errors->has('goal_name'))
+                                        <span class="invalid-feedback">
+                                        <strong>error:{{ $errors->first('goal_name') }}</strong>
+                                    </span>
+                                    @endif
                              </div>
                              <div class="group-form"> 
                                    <select class="_dlor1" id="course_id" name="course_name" onchange="getSubcourse(this)" class="form-control" disabled>
                                    <option value="-1">Select Course</option>
                                    </select>
+                                   @if ($errors->has('course_name'))
+                                   <span class="invalid-feedback">
+                                   <strong>{{ $errors->first('course_name') }}</strong>
+                               </span>
+                               @endif
+
                              </div>
                              <div class="group-form">
                                     <select class="_dlor1" id="subCourse_id" name="subcourse_name" class="form-control" disabled>
                                       <option value="-1">Select SubCourse</option>
-                                   </select>    
+                                   </select>  
+                                   @if ($errors->has('subcourse_name'))
+                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('subcourse_name') }}</strong>
+                                    </span>
+                                    @endif  
                              </div>
 
                             <div class="group-form">
                                 <label>Topic</label>
                                 <input class="_dlor1" name="topic" type="text" placeholder="Topic">
+                                @if ($errors->has('topic'))
+                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('topic') }}</strong>
+                                    </span>
+                                    @endif
                             </div>
                             <div class="group-form">
                                 <label>Duration</label>
                                 <input class="_dlor1" name="duration" type="text" placeholder="Half hour 0.5 and an hour 1">
+                                @if ($errors->has('duration'))
+                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('duration') }}</strong>
+                                    </span>
+                                    @endif
                             </div>
                          
-                            <button type="submit" name="button" value="schedule" class="create_btn_dash"><i class='uil uil-video'></i>Schedule</button>
-                            <button type="submit" name="button" value="Live" class="create_btn_dash"><i class='uil uil-video'></i>Go Live</button>
+                            <button type="submit" name="button" value="schedule" class="create_btn_dash _145d1"><i class='uil uil-video'></i>Schedule</button>
+                            <button type="submit" name="button" value="Live" class="create_btn_dash _145d1"><i class='uil uil-video'></i>Go Live</button>
                         </form>
                     </div>
                 </div>

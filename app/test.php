@@ -9,4 +9,18 @@ class test extends Model
    protected $table='test';
     protected  $fillable=['Goal_id','course_id','subCourse_id','time','Negative_marks','Questions','Option1','Option2','Option3','Option4','Correct_option'];
 
+    public function goals()
+    {
+        return $this->belongsTo(goals::class,'Goal_id');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(course::class,'course_id');
+    }
+
+    public function subCourses()
+    {
+        return $this->belongTo(subcourses::class,'subCourse_id');
+    }
 }

@@ -70,7 +70,7 @@
         <ul class="nav user-menu">
 
             <!-- Notifications -->
-             <?php $user = App\Admin::find('1');?>
+            <?php $user = App\Admin::find('1');?>
             <li class="nav-item dropdown noti-dropdown">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                     <i class="fe fe-bell"></i> 
@@ -82,7 +82,7 @@
                 <div class="dropdown-menu notifications">
                     <div class="topnav-dropdown-header">
                         <span class="notification-title">Notifications</span>
-                          <a href="{{asset(route('admin.delete'))}}" class="clear-noti"> Clear All </a>
+                          <a href="{{asset(route('admin.delete',$user))}}" class="clear-noti"> Clear All </a>
                     </div>
                     <div class="noti-content">
                         <ul class="notification-list">
@@ -107,7 +107,7 @@
                                     <div class="media">
                         
                                        <div class="media-body">
-                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span> is <span class="noti-title">log in at</span></p>
+                                            <p class="noti-details"><span class="noti-title">{{$note->data}}</span> is <span class="noti-title"></span></p>
                                             <p class="noti-time"><span class="notification-time">{{$note->created_at}}</span></p>
                                         </div>
                                                                             

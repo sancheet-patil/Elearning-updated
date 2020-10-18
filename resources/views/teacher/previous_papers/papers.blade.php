@@ -24,7 +24,10 @@
     <div class="col-lg-6 col-md-8">	
     <div class="sign_form">
         <div class="card-header">
-            Upload Question Papers 
+          
+            Upload Question Papers
+            <a href="{{ route('teacher.export') }}"><button class="create_btn_dash " style="  float: right;" >Download Template</button></a>
+
         </div>
         <div class="card-body">
             <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
@@ -45,9 +48,10 @@
                                     </div>
                 <br>
                 <button class="create_btn_dash">Upload Previous Papers</button>
-                <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
-            </form><br>
-        </div><br><br></div><br><br>
+                
+            </form>
+
+        </div>
     </div>
     </div></center>
 @stop

@@ -31,9 +31,10 @@ class previouspapersController extends Controller
        return back()->with('Success','Your Papers Uploaded Successfully');
    
     }
-    public function export() 
+   public function export() 
     {
         return Excel::download(new Previous_export, 'samplePapers.xlsx');
     }
+   
     //
 }

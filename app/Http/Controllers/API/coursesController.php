@@ -10,7 +10,7 @@ class coursesController extends Controller
 {
     public function courses()
     {
-        $courses['data']=course::all();
+        $courses['data']=course::with('goals')->get();
         return response()->json($courses);
     }
 

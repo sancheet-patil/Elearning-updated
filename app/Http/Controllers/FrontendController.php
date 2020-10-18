@@ -13,12 +13,18 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
-    public function teacher()
+    
+    public function about()
     {
     	$teacher=Teacher::all();
-        return view('teacher', compact('teacher'));
+        return view('frontend.about', compact('teacher'));
     }
-    public function course($id)
+    public function teacherdetails($id)
+    {
+        $teacherdetails=Teacher::where('id',$id)->get();
+        return view('frontend.teacher_details', compact('teacherdetails'));
+    }
+    public function goal($id)
     {
     	$goal=course::where('goal_id',$id)->get();
         return view('frontend.courses', compact('goal'));
@@ -28,13 +34,17 @@ class FrontendController extends Controller
     	$subcourses=subcourses::where('course_id',$id)->get();
         return view('frontend.subcourses', compact('subcourses'));
     }
-    public function teacherdetail($id)
+     public function course()
     {
-        $teacherdetail=Teacher::where('id',$id)->get();
-        return view('frontend.teacher_details',compact('teacherdetail'));
+        $course=course::all();
+        return view('frontend.course_all', compact('course'));
     }
-   public function about()
+     public function subcoursesdetails($id)
     {
-        return view('frontend.about');
+        $subcoursedetails=subcourses::where('id',$id)->get();
+        return view('frontend.subcoursesDetails', compact('subcoursedetails'));
     }
+    
+  
+
 }

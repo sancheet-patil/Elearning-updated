@@ -14,24 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::group(['prefix' => 'student'], function () {
     Route::post('login', 'API\studentApicontroller@login');
     Route::post('signup', 'API\studentApicontroller@signup');
   
     Route::group([
-      'middleware' => 'auth:api'
+        'middleware' => 'auth:api'
     ], function() {
+        Route::post('add-goal','API\user_goalController@add');
+        Route::get('user-goal','API\user_goalController@data');
         Route::get('logout', 'API\studentApicontroller@logout');
         Route::get('user', 'API\studentApicontroller@user');
     });
 });
 
-Route::get('goals','API\coursesController@goals');
+Route::get('goals','API\goalsController@goals');
+
+Route::get('previous-year','API\previousPaper@data');
+
+Route::get('livestream','API\LivestreamController@view');
 
 Route::get('free_videos','API\freevideosController@videos');
+
+Route::get('special-video','API\specialvideos@data');
+
+Route::get('test-Series','API\testSeriesController@data');
+
+Route::get('homeVideo','API\homescreenController@data');
 
 Route::group(['prefix'=>'courses'],function(){
         Route::get('all_courses','API\coursesController@courses');
