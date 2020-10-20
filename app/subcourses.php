@@ -26,7 +26,7 @@ class subcourses extends Model
         return $this->hasMany(previous_papers::class,'id');   
     }
 
-    public function testSeries()
+    public function test()
     {
         return $this->hasMany(test::class,'id');
     }
