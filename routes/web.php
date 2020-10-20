@@ -164,7 +164,8 @@ Route::group(['middleware' => ['auth:admin']], function()
 // Paid teacher section
 Route::prefix('teacher')->group(function ()
 {
-    
+    Route::get('/forgotPass', 'Auth\TeacherForgotPassController@index')->name('teacher.forgotPass');
+    Route::post('/forgotPass', 'Auth\TeacherForgotPassController@password')->name('teacher.forgotPassword');
     Route::get('/register', 'Auth\TeacherLoginController@showRegisterform')->name('teacher.register');
     Route::post('/register-submit', 'Auth\TeacherLoginController@register_submit')->name('teacher.register.submit');
     Route::get('/login', 'Auth\TeacherLoginController@showLoginform')->name('teacher.login');

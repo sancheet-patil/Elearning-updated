@@ -30,7 +30,7 @@ class Previous_export implements WithHeadings
     {
         return [
             $previous_papers->id,
-             $previous_papers->Year,
+            $previous_papers->Year,
             $previous_papers->Name,
             $previous_papers->Subject,
             $previous_papers->Question,

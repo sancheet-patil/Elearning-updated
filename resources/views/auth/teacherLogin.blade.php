@@ -78,11 +78,25 @@
                         </div>
                         </div>
 
-                       
-                        <div class="form-check">
+                        <div class="form-group col-md-8" >
+                        <div class="form-group">
+                        <div class="row">
                             <input type="checkbox" class="form-check-input">
                             <label class="form-check-label">Remember Password</label>
                         </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group col-md-8" >
+                        <div class="form-group">
+                        <div class="row">
+                                  <label class="form-check-label">
+                                      <a href="{{route('teacher.forgotPass')}}">Forgot Password</a>
+                                  </label>
+                              </div>
+                              </div>
+                        </div>
+
                         <button class="btn btn-filled btn-round"><span class="bh"></span> <span>Login</span></button>
                         <p class="notice">Don’t have an account? <a href="{{route('teacher.register')}}">Signup Now</a></p>
                     </form>
