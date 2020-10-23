@@ -39,7 +39,7 @@
 
                                     <option>Select Goals</option>
                                     @foreach($goal as $goal)
-                                    <option value="{{$goal->id }}">{{$goal->goal_name}}</option>
+                                    <option value="{{$goal->id}}">{{$goal->goal_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

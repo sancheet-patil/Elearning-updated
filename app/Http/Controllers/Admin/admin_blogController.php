@@ -20,7 +20,7 @@ class admin_blogController extends Controller
 	{
 		return view('admin.blog.newblog');
 	}
-	public function store(Request $request){
+public function store(Request $request){
          $this->validate($request,[
             'goal'=>'required',
             'course'=>'required',
@@ -70,7 +70,7 @@ class admin_blogController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+     public function update(Request $request, $id)
     {
           $this->validate($request,[
             

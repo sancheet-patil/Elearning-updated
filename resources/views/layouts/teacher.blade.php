@@ -45,7 +45,7 @@
             <span class="collapse_menu--label"></span>
         </button>
         <div class="main_logo" id="logo">
-            <a href="{{route('teacher.dashboard')}}"><img src="{{asset('assets/Ntheme/images/left-imgs/livestudyhub.jpg')}}" alt=""></a>
+           <a href="{{route('teacher.dashboard')}}"><img src="{{asset('assets/Ntheme/images/left-imgs/livestudyHub.jpg')}}" alt=""></a>
            
         </div>
         <div class="search120">

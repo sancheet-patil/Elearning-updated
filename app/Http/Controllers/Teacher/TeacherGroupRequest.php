@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Teacher;
-use App\Group_Name as TeaGroup;
+use App\group_name as TeaGroup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +10,7 @@ class TeacherGroupRequest extends Controller
 {
     public function view()
     {
-        return view('teacher.Groups.RequestGroup');
+        return view('teacher.groups.RequestGroup');
     }
     public function request(Request $request)
     {

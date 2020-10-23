@@ -151,7 +151,7 @@
     <!-- /Header -->
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar" style="width:18%;">
+    <div class="sidebar" id="sidebar" style="width:16.5%;">
         <div class="sidebar-inner slimscroll">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>

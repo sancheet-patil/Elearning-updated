@@ -19,7 +19,7 @@ class test extends Model
         return $this->belongsTo(course::class,'course_id');
     }
 
-    public function subCourses()
+    public function subcourses()
     {
         return $this->belongTo(subcourses::class,'subCourse_id');
     }
