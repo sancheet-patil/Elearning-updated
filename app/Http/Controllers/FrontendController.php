@@ -45,6 +45,9 @@ class FrontendController extends Controller
         return view('frontend.subcoursesDetails', compact('subcoursedetails'));
     }
     
-  
+    public function privacyPolicy()
+    {
+        return view('frontend.privacyPolicy');
+    }
 
 }

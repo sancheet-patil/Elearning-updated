@@ -20,7 +20,7 @@ Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
 Route::get('/about', 'FrontendController@about')->name('front.about');
-
+Route::get('/privacy-policy','FrontendController@privacyPolicy');
 
 
 Auth::routes();
