@@ -75,7 +75,7 @@ class NotificationController extends Controller
    
         return redirect(route('teacher.subcourses.view'))->with('success','Request for subcourse is under review');
     }
-    public function BlogNotification() {
+      public function BlogNotification() {
         $userSchema = Admin::first('id');
   
         $offerData = 

@@ -24,11 +24,19 @@
     <div class="col-lg-6 col-md-8">	
     <div class="sign_form">
         <div class="card-header">
+<<<<<<< HEAD
+            Upload Question Papers 
+           
+            
+=======
           
             Upload Question Papers
             <a href="{{ route('teacher.export') }}"><button class="create_btn_dash " style="  float: right;" >Download Template</button></a>
 
+>>>>>>> 156392183df1b3e4fd37916776e07d9b6ab89f69
         </div>
+         <br>
+        <a  href="{{ route('teacher.export') }}"><button class="create_btn_dash">Download Template</button></a>
         <div class="card-body">
             <form action="{{ route('teacher.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -49,9 +57,14 @@
                 <br>
                 <button class="create_btn_dash">Upload Previous Papers</button>
                 
+<<<<<<< HEAD
+            </form><br>
+        </div><br><br></div><br><br>
+=======
             </form>
 
         </div>
+>>>>>>> 156392183df1b3e4fd37916776e07d9b6ab89f69
     </div>
     </div></center>
 @stop

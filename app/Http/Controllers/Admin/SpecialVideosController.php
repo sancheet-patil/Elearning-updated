@@ -11,7 +11,7 @@ class SpecialVideosController extends Controller
     public function view()
     {
         $special_videos = specialvideos::select('description','title')->distinct()->orderBy('id','DESC')->paginate(20);
-        return view('admin.videos.SpecialVideos',compact('special_videos'));
+        return view('admin.Videos.SpecialVideos',compact('special_videos'));
     }
     public function save(Request $request)
     {
@@ -37,8 +37,8 @@ class SpecialVideosController extends Controller
             $special_videos->title = $request->title;
             $special_videos->description = $request->description;
 
-            $special_videos->teachers =implode( ",", $request->All_Teachers);
-            $special_videos->students =implode( ",", $request->All_Teachers);
+            $special_videos->teachers =implode( ",", $request->get('All_Teachers'));
+            $special_videos->students =implode( ",", $request->get('All_students'));
 
             
             $special_videos->save();

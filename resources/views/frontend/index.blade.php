@@ -42,14 +42,15 @@
                             <li class="menu-item"><a href="#">Teacher&#8217;s Personal Page</a></li>
                         </ul>
                     </li>
-                     --><li class="menu-item menu-item-has-children"><a href="team-members.html">Classroom</a>
+                     --><!--<li class="menu-item menu-item-has-children"><a href="team-members.html">Classroom</a>
                         <ul class="sub-menu">
                             <li class="menu-item"><a href="#">External Teacher</a></li>
                             <li class="menu-item"><a href="{{route('teacher.login')}}">Register Teacher</a></li>
-                        </ul>
+                        </ul>-->
                     </li>
                     <li class="menu-item menu-item-has-children"><a href="{{route('blog')}}">Blog</a>             
                     </li>
+                    <li class="menu-item"><a href="{{route('teacher.login')}}">Become a Teacher</a></li>
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -365,7 +366,7 @@
                                                                         <img alt="" src="http://placehold.it/400x400">
                                                                     </a>
                                                                     <h4 class="post_title">
-                                                                        <a href="paid-course.html">{{$course->    course_name}}</a>
+                                                                        <a href="paid-course.html">{{$course->course_name}}</a>
                                                                     </h4>
                                                                     <div class="post_descr">
                                                                         <div class="post_price">

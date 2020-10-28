@@ -20,7 +20,7 @@ Route::get('/blog', 'blogcontroller@index')->name('blog');
 Route::get('/singleblog/{id}', 'blogcontroller@singleblog')->name('singleblog');
 Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
 Route::get('/about', 'FrontendController@about')->name('front.about');
-
+Route::get('/privacy-policy','FrontendController@privacyPolicy');
 
 
 Auth::routes();
@@ -202,9 +202,9 @@ Route::prefix('teacher')->group(function ()
     Route::post('/teacher-profile', 'Teacher\teacherProfileController@edit')->name('teacher.teacherProfile');
 
     //TestSeries
-    Route::get('/testSeries','Teacher\testSeriescontroller@view')->name('teacher.testSeries');
-    Route::post('/testSeries-upload','Teacher\testSeriescontroller@import')->name('import');
-    Route::get('/testSeries-export','Teacher\testSeriescontroller@export')->name('teacher.testexport');
+    Route::get('/testSeries','Teacher\testSeriesController@view')->name('teacher.testSeries');
+    Route::post('/testSeries-upload','Teacher\testSeriesController@import')->name('import');
+    Route::get('/testSeries-export','Teacher\testSeriesController@export')->name('teacher.testexport');
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
