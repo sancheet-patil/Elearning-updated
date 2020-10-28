@@ -438,7 +438,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- /Video training section -->                        
+                            <!-- /Video training section -->  
+                             <!-- tabs section -->         
+                             <div class="sc_line sc_line_style_solid margin_top_0 margin_bottom_0"></div>
+                             <div class = "tabinator">
+                           <h2>Teacher Profiles</h2>
+                           <?php $goals=\App\goals::all();?>
+                           @foreach($goals as $goal)
+                                       <input type = "radio" id = "tab1" name = "tabs" checked>
+                                          <label for = "tab1">{{$goal->goal_name}}</label>
+                                       
+                          @endforeach
+                           <div id = "content1">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat viverra velit sed sodales. Sed id lacinia quam. Maecenas felis ante, posuere sed rutrum iaculis, hendrerit a tellus. Ut sed tempus dolor, at convallis turpis. Vestibulum vestibulum molestie accumsan. In eu rhoncus massa. Nam eu aliquam mauris, at posuere orci. Nullam non consequat lectus. Suspendisse sed leo sapien. Phasellus et velit rutrum, blandit ante nec, tempus sapien.
+                                           </p>
+                           </div>
+                         
+                        </div>
+                            </div>
+                            <!-- /tabs section ends -->                        
                             <!-- Pricing section -->
                             <div class="sc_section accent_top bg_tint_light sc_bg1" data-animation="animated fadeInUp normal">
                                 <div class="sc_section_overlay">
