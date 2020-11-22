@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Excel;
+use Illuminate\Support\Facades\Auth;
 use App\Imports\testSeries;
 use App\Exports\testseriesExport;
 
@@ -24,8 +25,8 @@ class testSeriesController extends Controller
       'negative_marks'=> 'required', 
       'file'=>'required'
       ]);
-
-        Excel::import(new testSeries($request->goal_name,$request->course_name,$request->subcourse_name,$request->negative_marks,$request->time),$request->file);
+        $teacher_name = Auth::guard('teacher')->user()->id; 
+        Excel::import(new testSeries($request->goal_name,$request->course_name,$request->subcourse_name,$request->negative_marks,$request->time,$teacher_name),$request->file);
         return back()->with('success','Test-Series Successfully uploaded');
     }
     public function export() 

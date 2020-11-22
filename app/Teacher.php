@@ -15,6 +15,7 @@ class Teacher extends Authenticatable
      *
      * @var array
      */
+    protected $table='teachers';
 
     protected $guard = 'teacher';
 
@@ -43,5 +44,10 @@ class Teacher extends Authenticatable
     public function livestream()
     {
         return $this->hasMany(livestream::class,'id');
+    }
+
+    public function test()
+    {
+        return $this->hasMany(test::class);
     }
 }
