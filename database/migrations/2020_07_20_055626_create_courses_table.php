@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->foreignId('goal_id');
             $table->string('course_name')->nullable();
+            $table->text('image_file');
             $table->timestamps();
 
             $table->foreign('goal_id')

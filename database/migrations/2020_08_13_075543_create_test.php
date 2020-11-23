@@ -19,11 +19,17 @@ class CreateTest extends Migration
             $table->foreignId('Goal_id');
             $table->foreignId('course_id');
             $table->foreignId('subCourse_id');
+            $table->foreignId('teacher_id');
             $table->text('Questions');
             $table->text('Option1');
             $table->text('Option2');
             $table->text('Option3');
             $table->text('Option4');
+            $table->text('Marathi_Question')->nullable();
+            $table->text('Marathi_Option1')->nullable();
+            $table->text('Marathi_Option2')->nullable();
+            $table->text('Marathi_Option3')->nullable();
+            $table->text('Marathi_Option4')->nullable();
             $table->string('Correct_option');
             $table->Integer('time');
             $table->text('Negative_marks');
@@ -42,6 +48,11 @@ class CreateTest extends Migration
             $table->foreign('Goal_id')
             ->references('id')
             ->on('goals')
+            ->onDelete('cascade');
+
+            $table->foreign('teacher_id')
+            ->references('id')
+            ->on('teachers')
             ->onDelete('cascade');
         });
     }
