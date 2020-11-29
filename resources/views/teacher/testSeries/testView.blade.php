@@ -22,12 +22,20 @@
    </div>
 </div>
 @endif
+<div class="page-header">
+  <div class="row">
+      <div class="col-sm-12">
+          <h3 class="page-title">Test Series</h3>
+          <a href="{{route('teacher.UploadImageQuestion')}}"><button class="create_btn_dash pull-right" >Upload Image question</button></a>
+          <a href="{{ route('teacher.testexport') }}"><button class="create_btn_dash" style="  float: right;" >Download Template</button></a>
+      </div>
+  </div>
+</div>
     <div class="container"><center>
     <div class="col-lg-6 col-md-8">	
     <div class="sign_form">
         <div class="card-header">
             Upload Test Series 
-             <a href="{{ route('teacher.testexport') }}"><button class="create_btn_dash " style="  float: right;" >Download Template</button></a>
         </div>
         <div class="card-body">
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">

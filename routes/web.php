@@ -205,6 +205,8 @@ Route::prefix('teacher')->group(function ()
     Route::get('/testSeries','Teacher\testSeriesController@view')->name('teacher.testSeries');
     Route::post('/testSeries-upload','Teacher\testSeriesController@import')->name('import');
     Route::get('/testSeries-export','Teacher\testSeriesController@export')->name('teacher.testexport');
+    Route::get('/testSeries-Image-Question','Teacher\testSeriesController@ImageUpload')->name('teacher.UploadImageQuestion');
+    Route::post('/testSeries-Image-Question-save','Teacher\testSeriesController@ImageUploadSave')->name('teacher.ImageQuestion');
 
     //teacher groups
     Route::get('/Teacher-groups','Teacher\TeacherGroupController@group')->name('teacher.group');
