@@ -33,6 +33,7 @@ class CreateTest extends Migration
             $table->string('Correct_option');
             $table->Integer('time');
             $table->text('Negative_marks');
+            $table->text('Image_file')->nullable();
             $table->timestamps();
 
             $table->foreign('course_id')
