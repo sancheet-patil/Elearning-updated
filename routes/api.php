@@ -42,7 +42,7 @@ Route::get('test-Series','API\testSeriesController@data');
 
 Route::get('homeVideo','API\homescreenController@data');
 
-Route::post('test-series/sumbitReport','API\testSeriesController@submitReport');
+Route::post('test-series/submitReport','API\testSeriesController@submitReport');
 
 Route::group(['prefix'=>'courses'],function(){
         Route::get('all_courses','API\coursesController@courses');
