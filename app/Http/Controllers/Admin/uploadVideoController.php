@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin;
 
 use App\free_video;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,8 @@ class uploadVideoController extends Controller
             'goal_name' => 'required',
             'course_name' => 'required',
             'subcourse_name' => 'required',
-            'video_link' => 'required',
+            'video_name' => 'required',
+            'default_video_link' => 'required',
             'video_duration' => 'required|regex:/^[0-9]{1,2}+(\.[0-9]{1,2})?$/',
         ]);
 
@@ -35,12 +36,18 @@ class uploadVideoController extends Controller
         //$imgUrl1 = $video->getVideoId();
         //$teacher_videos->video_file = $imgUrl1;
 
-        $teacher_videos->teacher_id = Auth::guard('teacher')->user()->id;
+        $teacher_videos->teacher_id = Auth::guard('admin')->user()->id;
         $teacher_videos->goal_id = $request->goal_name;
         $teacher_videos->subcourse_id = $request->subcourse_name;
         $teacher_videos->course_id = $request->course_name;
-
-        $teacher_videos->video_link = $request->video_link;
+        if ($request->has('free')) {
+            $teacher_videos->free = 1;
+        }
+        $teacher_videos->name = $request->video_name;
+        $teacher_videos->default_video_link = $request->default_video_link;
+        $teacher_videos->english_video_link = $request->english_video_link;
+        $teacher_videos->hindi_video_link = $request->hindi_video_link;
+        $teacher_videos->marathi_video_link = $request->marathi_video_link;
         $teacher_videos->video_duration = $request->video_duration;
         $teacher_videos->video_description = $request->video_description;
 
@@ -64,5 +71,34 @@ class uploadVideoController extends Controller
         $delete = free_video::where('id', $request->delete_id)->first();
         Youtube::delete($delete->video_file);
         return back()->with('success', 'Video Deleted!!!');
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'video_name' => 'required',
+            'default_video_link' => 'required',
+            'video_duration' => 'required|regex:/^[0-9]{1,2}+(\.[0-9]{1,2})?$/',
+        ]);
+
+        $update_video = free_video::where('id', $request->video_edit_id)->first();
+        $update_video->name = $request->video_name;
+
+        if ($request->has('free')) {
+            $update_video->free = 1;
+        } else {
+            $update_video->free = 0;
+        }
+
+        $update_video->default_video_link = $request->default_video_link;
+        $update_video->english_video_link = $request->english_video_link;
+        $update_video->hindi_video_link = $request->hindi_video_link;
+        $update_video->marathi_video_link = $request->marathi_video_link;
+
+        $update_video->video_duration = $request->video_duration;
+        $update_video->video_description = $request->video_description;
+
+        $update_video->save();
+        return back()->with('success', 'Video Successfully Updated');
     }
 }

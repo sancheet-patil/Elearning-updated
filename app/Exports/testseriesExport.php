@@ -15,6 +15,7 @@ class testseriesExport implements WithHeadings
     //{
         //return test::all();
     //}
+
     public function headings(): array
     {
         return [
@@ -24,9 +25,14 @@ class testseriesExport implements WithHeadings
             'Option3',
             'Option4',
             'Correct_option',
-            
+            'Marathi_Question',
+            'Marathi_Option1',
+            'Marathi_Option2',
+            'Marathi_Option3',
+            'Marathi_Option4'
             ];
     }
+
     public function map($test): array
     {
         return [

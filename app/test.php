@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class test extends Model
 {
-   protected $table='test';
+    protected $table='test';
     protected  $fillable=['Goal_id','course_id','subCourse_id','teacher_id','time','Negative_marks','Questions','Option1','Option2','Option3','Option4','Marathi_Question','Marathi_Option1','Marathi_Option2','Marathi_Option3','Marathi_Option4','Correct_option'];
 
     public function goals()
@@ -28,6 +28,4 @@ class test extends Model
     {
         return $this->belongTo(subcourses::class,'subCourse_id');
     }
-
-    
 }

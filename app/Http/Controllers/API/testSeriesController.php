@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\test;
 use App\TestReportSubmit;
+use App\user_goal;
 
 class testSeriesController extends Controller
 {
@@ -25,6 +26,25 @@ class testSeriesController extends Controller
         return response()->json([
             'message' => 'Successfully log the report'
         ]);
-        
+    }
+
+    public function tests($test_id,$goal_id)
+    {
+        $tests = test::with('goals','course')->where('id', $test_id)->where('Goal_id', $goal_id)->get();
+        return response()->json($tests);
+    }
+
+    public function alltests($goal_id)
+    {
+        $tests = test::with('goals','course')->where('Goal_id', $goal_id)->get();
+        return response()->json($tests);
+    }
+
+    public function testsection($goal_id)
+    {
+        $tests = test::where('Goal_id', $goal_id)
+                ->select(['test.id as id','Goal_id as Goal-id','test.mode as mode','test.test_title as testname','test.total_questions as totalquestion','test.total_marks as total marks','test.time as time','test.status as status','test.general_instuctions as general instuctions'])
+                ->get();
+        return response()->json($tests);
     }
 }

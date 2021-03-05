@@ -1,21 +1,5 @@
-@extends('layouts.teacher')
-@section('css')
-    <link href="{{ asset('assets/Ntheme') }}vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
-    <link href="{{ asset('assets/Ntheme') }}/css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/css/style.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/css/responsive.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/css/night-mode.css" rel="stylesheet">
-
-    <!-- Vendor Stylesheets -->
-    <link href="{{ asset('assets/Ntheme') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/Ntheme') }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/Ntheme') }}/vendor/semantic/semantic.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-@stop
-@section('teacher')
+@extends('layouts.admin')
+@section('admin')
     @if (session('success'))
         <div class="card-body">
             <div class="alert alert-success">
@@ -27,13 +11,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Test Series</h3>
-                <a href="{{ route('teacher.UploadImageQuestion') }}">
-                    <button class="create_btn_dash pull-right">
+                {{-- <a href="{{ route('teacher.UploadImageQuestion') }}"> --}}
+                <a href="#">
+                    <button class="btn btn-primary">
                         Upload Image question
                     </button>
                 </a>
                 <a href="{{ route('teacher.testexport') }}">
-                    <button class="create_btn_dash" style="float: right;">
+                    <button class="btn btn-primary" style="float: right;">
                         Download Template
                     </button>
                 </a>
@@ -58,8 +43,16 @@
                         Upload Test Series
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-group">
+                                <label>Test Series Name</label>
+                                <input type="text" class="form-control @error('test_series_name') is-invalid @enderror"
+                                    name="test_series_name" value="{{ old('test_series_name') }}" required>
+                            </div>
+                            @error('test_series_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group row">
                                 <?php $goals = \App\goals::all(); ?>
                                 <select class="_dlor1" id="goal_id" name="goal_name" class="form-control"
@@ -115,9 +108,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Upload Your File</label>
-                                <input type="file" name="file" class="form-control" />
+                                <input type="file" name="file" class="form-control" required />
                             </div>
-                            <button class="create_btn_dash">Upload test Series</button>
+                            <button class="btn btn-primary">Upload test Series</button>
                         </form>
                     </div>
                 </div>
@@ -127,10 +120,6 @@
 @stop
 
 @section('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="https://malsup.github.com/jquery.form.js"></script>
-
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type='text/javascript'>
         // course Change
         function getCourse(course) {
@@ -144,18 +133,20 @@
                 type: 'get',
                 dataType: 'json',
                 success: function(response) {
-
                     var len = 0;
                     if (response['data'] != null) {
                         len = response['data'].length;
-                    }
 
+                    }
                     if (len > 0) {
                         // Read data and create <option >
                         for (var i = 0; i < len; i++) {
+
                             var id = response['data'][i].id;
                             var name = response['data'][i].course_name;
+
                             var option = "<option value='" + id + "'>" + name + "</option>";
+
                             $("#course_id").append(option);
                         }
                     }
@@ -179,7 +170,6 @@
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
-
                         var len = 0;
                         if (response['data'] != null) {
                             len = response['data'].length;
@@ -194,11 +184,33 @@
                                 $("#subCourse_id").append(option);
                             }
                         }
-
                     }
                 });
                 document.getElementById("subCourse_id").disabled = false;
             });
+        });
+
+        CKEDITOR.replace('ckeditor', {
+            // Define the toolbar groups as it is a more accessible solution.
+            toolbarGroups: [{
+                    "name": "basicstyles",
+                    "groups": ["basicstyles"]
+                },
+                {
+                    "name": "links",
+                    "groups": ["links"]
+                },
+                {
+                    "name": 'paragraph',
+                    "groups": ['list', 'indent', 'blocks', 'align', 'bidi']
+                },
+                {
+                    "name": "styles",
+                    "groups": ["styles"]
+                }
+            ],
+            // Remove the redundant buttons from toolbar groups defined above.
+            removeButtons: 'Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
         });
 
     </script>

@@ -16,7 +16,7 @@ class coursesController extends Controller
 
     public function course($id)
     {
-        $course['data']=course::where('goal_id',$id)->get();
+        $course['data'] = course::where('goal_id',$id)->get();
         return response()->json($course);
     }
 }

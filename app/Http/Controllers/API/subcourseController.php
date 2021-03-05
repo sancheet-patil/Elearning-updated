@@ -10,15 +10,17 @@ class subcourseController extends Controller
 {
     public function subcourses()
     {
-        $subcourses['data']=subcourses::with('goals','course')->get();
+        $subcourses = subcourses::with('goals','course')->get()
+            ->map(function ($subcourse) {
+                $subcourse->total_marks =  $subcourse->question_mark * $subcourse->total_questions;
+                return $subcourse;
+            });
         return response()->json($subcourses);
     }
 
     public function subcourse($id)
     {
-        $subcourse['data']=subcourses::where('subCourse_id',$id)->get();
-        return response()->json($course);
+        $subcourse = subcourses::where('course_id',$id)->get();
+        return response()->json($subcourse);
     }
-
-    
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin;
 
 use App\Exports\testseriesExport;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class testSeriesController extends Controller
 {
     public function view()
     {
-        return view('teacher.testSeries.testView');
+        return view('admin.testSeries.testView');
     }
 
     public function import(Request $request)
@@ -24,6 +24,7 @@ class testSeriesController extends Controller
             'course_name' => 'required',
             'subcourse_name' => 'required',
             'time' => 'required',
+            'test_series_name' => 'required',
             'negative_marks' => 'required',
             'file' => 'required',
             'time' => 'required|numeric|regex:/^[0-9]+(\.[0-9]{1,2})?$/',
@@ -31,8 +32,8 @@ class testSeriesController extends Controller
             'negative_marks' => 'required|numeric',
         ]);
 
-        $teacher_name = Auth::guard('teacher')->user()->id;
-        Excel::import(new testSeries($request->goal_name, $request->course_name, $request->subcourse_name, $request->negative_marks, $request->time, $request->question_marks, $request->general_instructions, $teacher_name), $request->file);
+        $user_name = Auth::guard('admin')->user()->id;
+        Excel::import(new testSeries($request->test_series_name, $request->goal_name, $request->course_name, $request->subcourse_name, $request->negative_marks, $request->time, $request->question_marks, $request->general_instructions, $user_name), $request->file);
         return back()->with('success', 'Test-Series Successfully uploaded');
     }
 

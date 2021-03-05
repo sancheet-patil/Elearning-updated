@@ -23,7 +23,7 @@ class subcourses extends Model
 
     public function previous_year()
     {
-        return $this->hasMany(previous_papers::class,'id');   
+        return $this->hasMany(previous_papers::class,'id');
     }
 
     public function test()
