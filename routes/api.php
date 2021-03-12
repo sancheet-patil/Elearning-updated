@@ -30,6 +30,9 @@ Route::group(['prefix' => 'student'], function () {
         Route::post('change-password', 'API\studentApicontroller@change_password');
 
         Route::get('all_course_videos', 'API\freevideosController@all_course_videos');
+        Route::get('course_videos/{course_id}', 'API\freevideosController@videos');
+
+        Route::get('course_videos/subcourses/{subcourse_id}', 'API\freevideosController@subcourse_videos');
 
     });
 });
@@ -41,8 +44,6 @@ Route::get('goals', 'API\goalsController@goals');
 Route::get('previous-year', 'API\previousPaper@data');
 
 Route::get('livestream', 'API\LivestreamController@view');
-
-Route::get('free_videos/{goal_id}', 'API\freevideosController@videos');
 
 Route::get('special-video', 'API\specialvideos@data');
 

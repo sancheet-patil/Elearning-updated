@@ -2,16 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
 use App\Role;
-use App\Enrollments;
-// use Illuminate\Foundation\Auth\User;
+use App\User;
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+// use Illuminate\Foundation\Auth\User;
 
 class UserController extends Controller
 {
+
+    public function send_email() {
+
+        $email = 'muhammadfoysal@yahoo.com';
+   
+        $offer = [
+            'title' => 'Deals of the Day',
+            'url' => 'https://www.remotestack.io'
+        ];
+  
+        Mail::to($email)->send(new OfferMail($offer));
+   
+        dd("Mail sent!");
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -95,7 +110,7 @@ class UserController extends Controller
     public function update(Request $request, $user)
     {
         $input = $request->all();
-        if(empty($request->password)) {
+        if (empty($request->password)) {
             $input = $request->except('password');
         }
         $user = User::find($user);
