@@ -115,8 +115,8 @@
    <!-- Copyright -->
    <div class="copyright_wrap">
        <div class="content_wrap">
-           <p>© 2020 All Rights Reserved. <a href="#">Terms of use</a> and <a href="/privacy-policy"
-                   target="_blank">Privacy Policy</a>
+           <p>© 2020 All Rights Reserved. <a href="/terms-condition" target="_blank">Terms of use</a> and <a
+                   href="/privacy-policy" target="_blank">Privacy Policy</a>
            </p>
        </div>
    </div>

@@ -26,14 +26,12 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('user', 'API\studentApicontroller@user');
         Route::get('tests/{test_id}/{goal_id}', 'API\testSeriesController@tests');
         Route::get('testsection/{goal_id}', 'API\testSeriesController@testsection');
-
         Route::post('change-password', 'API\studentApicontroller@change_password');
-
         Route::get('all_course_videos', 'API\freevideosController@all_course_videos');
         Route::get('course_videos/{course_id}', 'API\freevideosController@videos');
-
         Route::get('course_videos/subcourses/{subcourse_id}', 'API\freevideosController@subcourse_videos');
 
+        Route::post('reset_password', 'API\studentApicontroller@reset_password');
     });
 });
 

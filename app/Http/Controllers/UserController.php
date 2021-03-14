@@ -13,21 +13,6 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function send_email() {
-
-        $email = 'muhammadfoysal@yahoo.com';
-   
-        $offer = [
-            'title' => 'Deals of the Day',
-            'url' => 'https://www.remotestack.io'
-        ];
-  
-        Mail::to($email)->send(new OfferMail($offer));
-   
-        dd("Mail sent!");
-    }
-
-
     /**
      * Display a listing of the resource.
      *

@@ -84,45 +84,35 @@ class studentApicontroller extends Controller
             return response()->json(['message' => $validator->errors()], 422);
         }
 
-        $bytes = random_bytes(20);
 
         $user = new User([
             'name' => $request->first_name . ' ' . $request->last_name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'mobile_number' => $request->mobile_number,
-            'otp_code' => $bytes,
         ]);
 
-        $user->save();
+        $user->save();   
 
-        $offer = [
-            'title' => 'Deals of the Day',
-            'url' => 'https://www.remotestack.io'
-        ];
-  
-        Mail::to($email)->send(new OfferMail($offer));
-        
+        $credentials = request(['email', 'password']);
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
 
-        // $credentials = request(['email', 'password']);
-        // if (!Auth::attempt($credentials)) {
-        //     return response()->json(['message' => 'Unauthorized'], 401);
-        // }
+        $user = $request->user();
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->token;
+        if ($request->remember_me) {
+            $token->expires_at = Carbon::now()->addWeeks(1);
+        }
 
-        // $user = $request->user();
-        // $tokenResult = $user->createToken('Personal Access Token');
-        // $token = $tokenResult->token;
-        // if ($request->remember_me) {
-        //     $token->expires_at = Carbon::now()->addWeeks(1);
-        // }
-
-        // $token->save();
-        // return response()->json([
-        //     'access_token' => $tokenResult->accessToken,
-        //     'token_type' => 'Bearer',
-        //     'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
-        //     'message' => 'Sucessfully login In',
-        // ]);
+        $token->save();
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
+            'message' => 'Sucessfully login In',
+        ]);
     }
 
     /**
@@ -270,4 +260,19 @@ class studentApicontroller extends Controller
         }
     }
 
+    public function reset_password(Request $request)
+    { 
+        if($request->new_password == $request->confirm_new_password)
+        {
+            $user_id = $request->user_id;
+            $obj_user = User::find($user_id);
+            $obj_user->password = Hash::make($request->new_password);
+            $obj_user->save();
+            if ($obj_user->save()) {
+                return response()->json(['status' => 'success','message' => 'Password Successfully Reset']);
+            }
+        } else {
+                return response()->json(['status' => 'fail','message' => 'Please enter correct confirm password'], 400);
+        }
+    }
 }

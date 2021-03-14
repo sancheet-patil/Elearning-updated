@@ -50,4 +50,9 @@ class FrontendController extends Controller
         return view('frontend.privacyPolicy');
     }
 
+    public function termsCondition()
+    {
+        return view('frontend.termsCondition');
+    }
+
 }

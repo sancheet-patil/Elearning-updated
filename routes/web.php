@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
- 
-Route::get('/send_email', 'UserController@send_email')->name('send_email');
 
 Route::get('/', 'FrontendController@index')->name('front');
 Route::get('/frontgoal/{id}', 'FrontendController@course')->name('front.goal');
@@ -25,6 +23,8 @@ Route::get('/goal/{id}', 'blogcontroller@goal')->name('goal');
 Route::get('/about', 'FrontendController@about')->name('front.about');
 
 Route::get('/privacy-policy', 'FrontendController@privacyPolicy');
+
+Route::get('/terms-condition', 'FrontendController@termsCondition');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
