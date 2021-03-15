@@ -30,6 +30,7 @@ class studentApicontroller extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
+        
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
             return response()->json([
@@ -112,6 +113,15 @@ class studentApicontroller extends Controller
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
             'message' => 'Sucessfully login In',
+            'user' => [
+                'id' => $request->user()['id'],
+                'first_name' => explode(' ', $request->user()['name'])[0],
+                'last_name' => explode(' ', $request->user()['name'])[1],
+                'mobile_number' => $request->user()['mobile_number'],
+                'email' => $request->user()['email'],
+                'email_verified_at' => $request->user()['email_verified_at'],
+                'account_status' => 0,
+            ],
         ]);
     }
 
@@ -272,7 +282,7 @@ class studentApicontroller extends Controller
                 }
             } 
             else {
-                    return response()->json(['status' => 'fail','message' => 'Please enter correct confirm password'], 400);
+                return response()->json(['status' => 'fail','message' => 'Please enter correct confirm password'], 400);
             }
         } 
         else {
