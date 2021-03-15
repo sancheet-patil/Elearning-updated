@@ -238,6 +238,11 @@
                                 <span>Test Series</span>
                             </a>
                         </li>
+                        <li class=" {{ Request::segment(2) === 'subscription' ? 'active' : null }}">
+                            <a href="{{ route('admin.subscription') }}">
+                                <span>Subscriptions</span>
+                            </a>
+                        </li>
 
                         <li class="{{ Request::segment(2) === 'subscription_plans' ? 'active' : null }}">
                             <a href="{{ route('admin.subscription_plan.view') }}"><span>Subscription

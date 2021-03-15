@@ -40,7 +40,10 @@ Route::prefix('admin')->group(function () {
 Route::group(['middleware' => ['auth:admin']], function () {
     Route::prefix('admin')->group(function () {
 
+        Route::get('/subscription', 'Admin\SubscriptionController@subscriptions')->name('admin.subscription');
+
         Route::get('/testSeries', 'Admin\testSeriesController@view')->name('admin.testSeries');
+
 
         Route::post('/testSeries-upload', 'Admin\testSeriesController@import')->name('admin.import');
 
