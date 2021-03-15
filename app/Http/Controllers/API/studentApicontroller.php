@@ -262,17 +262,21 @@ class studentApicontroller extends Controller
 
     public function reset_password(Request $request)
     { 
-        if($request->new_password == $request->confirm_new_password)
-        {
-            $user_id = $request->user_id;
-            $obj_user = User::find($user_id);
-            $obj_user->password = Hash::make($request->new_password);
-            $obj_user->save();
-            if ($obj_user->save()) {
-                return response()->json(['status' => 'success','message' => 'Password Successfully Reset']);
+        $user = User::where('email', $request->email)->first();
+        if($user) {
+            if($request->new_password == $request->confirm_new_password)
+            {
+                $user->password = Hash::make($request->new_password);
+                if ($user->save()) {
+                    return response()->json(['status' => 'success','message' => 'Password Successfully Reset']);
+                }
+            } 
+            else {
+                    return response()->json(['status' => 'fail','message' => 'Please enter correct confirm password'], 400);
             }
-        } else {
-                return response()->json(['status' => 'fail','message' => 'Please enter correct confirm password'], 400);
-        }
+        } 
+        else {
+            return response()->json(['status' => 'fail','message' => 'Please enter correct email address'], 400);
+        }       
     }
 }
