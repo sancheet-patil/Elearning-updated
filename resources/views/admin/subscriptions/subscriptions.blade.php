@@ -17,10 +17,13 @@
                             <thead>
                                 <tr>
                                     <th>Sr.</th>
+                                    <th>Receipt ID</th>
+                                    <th>Order ID</th>
                                     <th>User</th>
                                     <th>Course</th>
                                     <th>Total Amount</th>
                                     <th>Course Fee</th>
+                                    <th>Status</th>
                                     <th>Order Date</th>
                                 </tr>
                             </thead>
@@ -28,12 +31,15 @@
                                 @foreach ($subscriptions as $key => $subscription)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+                                        <td>{{ $subscription->recp_id }}</td>
+                                        <td>{{ $subscription->razor_order_id }}</td>
                                         <td>{{ $subscription->user->name }}</td>
                                         <td>
                                             {{ $subscription->course ? $subscription->course->course_name : '' }}
                                         </td>
                                         <td>{{ $subscription->total_amount . ' ' . $subscription->currency }}</td>
                                         <td>{{ $subscription->course_fees }}</td>
+                                        <td>{{ $subscription->is_payment_done == 1 ? 'Not Done' : 'Done' }}</td>
                                         <td>{{ $subscription->order_create_date ? date('d M Y', strtotime($subscription->order_create_date)) : '' }}
                                         </td>
                                     </tr>
