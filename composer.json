@@ -19,7 +19,7 @@
         "laravel/ui": "^2.1",
         "maatwebsite/excel": "^3.1",
         "paragonie/random_compat": "2.*",
-        "razorpay/razorpay": "2.*"
+        "razorpay/razorpay": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

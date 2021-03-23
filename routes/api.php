@@ -24,6 +24,20 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('user-goal', 'API\user_goalController@data');
         Route::get('logout', 'API\studentApicontroller@logout');
         Route::get('user', 'API\studentApicontroller@user');
+
+
+
+  //place order
+        Route::post('user-razor-order', 'API\UserorderController@user_rezor_order');
+        Route::post('user-razor-order-submit', 'API\UserorderController@user_rezor_order_submit');
+
+        //user cources
+        Route::get('get-all-courses','API\UserCourcesController@get_all_cources');
+        Route::get('course-list/{id}','API\UserCourcesController@course_details');
+
+
+
+
         Route::get('tests/{test_id}/{goal_id}', 'API\testSeriesController@tests');
         Route::get('testsection/{goal_id}', 'API\testSeriesController@testsection');
         Route::post('change-password', 'API\studentApicontroller@change_password');

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Mail;
 use app\Mail\OfferMail;
+use App\Mail\UserforgotPasswordMail;
 
 class studentApicontroller extends Controller
 {
@@ -288,5 +289,48 @@ class studentApicontroller extends Controller
         else {
             return response()->json(['status' => 'fail','message' => 'Please enter correct email address'], 400);
         }       
+    }
+
+    public function send_forgot_password_mail(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|string|email',
+        ],[
+            'email.required' => 'Please Enter Your Email',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()
+            ]);
+        }
+
+        $user = User::where('email',$request->email)->first();
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Email Does Not Exists',
+            ]);
+        }else {
+
+            $code = rand(1,9).rand(1,9).rand(1,9).rand(1,9);
+            $user->ver_code = $code;
+            $user->account_status = 0;
+            $user->save();
+            $to = $user->email;
+            $msg = [
+                'name'=> $user->name,
+                'email'=> $user->email,
+                'code'=> $code,
+            ];
+            Mail::to($to)->send(new UserforgotPasswordMail($msg));
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Email Successfully Send',
+            ]);
+
+        }
     }
 }
