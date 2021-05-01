@@ -18,7 +18,7 @@ class testSeriesController extends Controller
     }
 
     public function import(Request $request)
-    {
+    {        
         $this->validate($request, [
             'goal_name' => 'required',
             'course_name' => 'required',
@@ -33,7 +33,24 @@ class testSeriesController extends Controller
         ]);
 
         $user_name = Auth::guard('admin')->user()->id;
-        Excel::import(new testSeries($request->test_series_name, $request->goal_name, $request->course_name, $request->subcourse_name, $request->negative_marks, $request->time, $request->question_marks, $request->general_instructions, $user_name), $request->file);
+
+        Excel::import(new testSeries(
+            $request->test_series_name, 
+            $request->goal_name, 
+            $request->course_name, 
+            $request->subcourse_name, 
+            $request->language, 
+            $request->total_questions,                        
+            $request->negative_marks, 
+            $request->total_marks, 
+            $request->question_marks, 
+            $request->free,  
+            $request->time,                 
+            $request->general_instructions, 
+            $user_name), 
+            $request->file);
+        
+        
         return back()->with('success', 'Test-Series Successfully uploaded');
     }
 
@@ -57,22 +74,25 @@ class testSeriesController extends Controller
             'negative_marks' => 'required',
             'file' => 'required',
         ]);
+
         $testSeriesImage = new test();
         $testSeriesImage->Goal_id = $request->goal_name;
         $testSeriesImage->course_id = $request->course_name;
         $testSeriesImage->subCourse_id = $request->subcourse_name;
         $testSeriesImage->teacher_id = Auth::guard('teacher')->user()->id;
-        $testSeriesImage->Questions = $request->Question;
-        $testSeriesImage->Option1 = $request->Option1;
-        $testSeriesImage->Option2 = $request->Option2;
-        $testSeriesImage->Option3 = $request->Option3;
-        $testSeriesImage->Option4 = $request->Option4;
+        $testSeriesImage->Eng_Question = $request->Eng_Question;
+        $testSeriesImage->Eng_Options_1 = $request->Eng_Options_1;
+        $testSeriesImage->Eng_Options_2 = $request->Eng_Options_2;
+        $testSeriesImage->Eng_Options_3 = $request->Eng_Options_3;
+        $testSeriesImage->Eng_Options_4 = $request->Eng_Options_4;
+        $testSeriesImage->Eng_Que_Url = $request->Eng_Que_Url;
+        $testSeriesImage->Correct_Ans = $request->Correct_Ans;
         $testSeriesImage->Marathi_Question = $request->Marathi_Question;
-        $testSeriesImage->Marathi_Option1 = $request->Marathi_Option1;
-        $testSeriesImage->Marathi_Option2 = $request->Marathi_Option2;
-        $testSeriesImage->Marathi_Option3 = $request->Marathi_Option3;
-        $testSeriesImage->Marathi_Option4 = $request->Marathi_Option4;
-        $testSeriesImage->Correct_option = $request->Correct;
+        $testSeriesImage->Mar_Options_1 = $request->Mar_Options_1;
+        $testSeriesImage->Mar_Options_2 = $request->Mar_Options_2;
+        $testSeriesImage->Mar_Options_3 = $request->Mar_Options_3;
+        $testSeriesImage->Mar_Options_4 = $request->Mar_Options_4;
+        $testSeriesImage->Mar_Que_Url = $request->Mar_Que_Url;        
         $testSeriesImage->time = $request->time;
         $testSeriesImage->Negative_marks = $request->negative_marks;
 

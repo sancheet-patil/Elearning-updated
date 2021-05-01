@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'student'], function () {
     Route::post('login', 'API\studentApicontroller@login');
     Route::post('signup', 'API\studentApicontroller@signup');
+    Route::post('reset_password', 'API\studentApicontroller@reset_password');
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('add-goal', 'API\user_goalController@add');
@@ -35,9 +36,6 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('get-all-courses','API\UserCourcesController@get_all_cources');
         Route::get('course-list/{id}','API\UserCourcesController@course_details');
 
-
-
-
         Route::get('tests/{test_id}/{goal_id}', 'API\testSeriesController@tests');
         Route::get('testsection/{goal_id}', 'API\testSeriesController@testsection');
         Route::post('change-password', 'API\studentApicontroller@change_password');
@@ -45,9 +43,10 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('course_videos/{course_id}', 'API\freevideosController@videos');
         Route::get('course_videos/subcourses/{subcourse_id}', 'API\freevideosController@subcourse_videos');
 
-        Route::post('reset_password', 'API\studentApicontroller@reset_password');
+        
     });
 });
+
 
 Route::get('all-tests/{goal_id}', 'API\testSeriesController@alltests');
 

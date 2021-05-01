@@ -13,6 +13,7 @@ use Mail;
 use app\Mail\OfferMail;
 use App\Mail\UserforgotPasswordMail;
 
+
 class studentApicontroller extends Controller
 {
     /**
@@ -47,19 +48,16 @@ class studentApicontroller extends Controller
         }
 
         $token->save();
+
+        $loggedin_user = User::find(Auth::User()->id);
+
+
         return response()->json([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
             'message' => 'Sucessfully login In',
-            'user' => [
-                'id' => $request->user()['id'],
-                'first_name' => explode(' ', $request->user()['name'])[0],
-                'last_name' => explode(' ', $request->user()['name'])[1],
-                'mobile_number' => $request->user()['mobile_number'],
-                'email' => $request->user()['email'],
-                'email_verified_at' => $request->user()['email_verified_at'],
-            ],
+            'user' => $loggedin_user,
         ]);
     }
 
@@ -83,18 +81,20 @@ class studentApicontroller extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['message' => $validator->errors()], 422);
+            return response()->json(["status" => "error",'message' => $validator->errors()->first()], 422);
         }
 
 
         $user = new User([
-            'name' => $request->first_name . ' ' . $request->last_name,
+            'first_name' => $request->first_name ,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'mobile_number' => $request->mobile_number,
         ]);
 
-        $user->save();   
+        
+        $user_saved = $user->save();   
 
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
@@ -114,15 +114,7 @@ class studentApicontroller extends Controller
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
             'message' => 'Sucessfully login In',
-            'user' => [
-                'id' => $request->user()['id'],
-                'first_name' => explode(' ', $request->user()['name'])[0],
-                'last_name' => explode(' ', $request->user()['name'])[1],
-                'mobile_number' => $request->user()['mobile_number'],
-                'email' => $request->user()['email'],
-                'email_verified_at' => $request->user()['email_verified_at'],
-                'account_status' => 0,
-            ],
+            'user' => $user_saved,
         ]);
     }
 
@@ -179,15 +171,15 @@ class studentApicontroller extends Controller
                     $obj_user->password = Hash::make($request->new_password);
                     $obj_user->save();
                     if ($obj_user->save()) {
-                        return response()->json(['message' => 'Password Changed Successfully']);
+                        return response()->json(["status" => "sucess",'message' => 'Password Changed Successfully']);
                     }
                 } else {
-                    $error = array('password' => 'Please enter correct current password');
-                    return response()->json(array('error' => $error), 400);
+                    $error = array("status" => "error",'message' => 'Please enter correct current password');
+                    return response()->json(array($error), 400);
                 }
             }
         } else {
-            return response()->json(['message' => 'Please login']);
+            return response()->json(["status" => "error",'message' => 'Please login']);
         }
     }
 

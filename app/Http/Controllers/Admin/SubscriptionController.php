@@ -10,7 +10,7 @@ class SubscriptionController extends Controller
 {
     public function subscriptions()
     {
-        $subscriptions = Subscription::with('course','User')->paginate(20);
+        $subscriptions = Subscription::with('User','course')->paginate(20);   
         return view('admin.subscriptions.subscriptions', compact('subscriptions'));
     }
 }

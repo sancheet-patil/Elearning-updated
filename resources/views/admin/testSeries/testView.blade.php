@@ -53,6 +53,7 @@
                             @error('test_series_name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+
                             <div class="form-group row">
                                 <?php $goals = \App\goals::all(); ?>
                                 <select class="_dlor1" id="goal_id" name="goal_name" class="form-control"
@@ -65,6 +66,7 @@
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group row">
                                 <select class="_dlor1" id="course_id" name="course_name" onchange="getSubcourse(this)"
                                     class="form-control" disabled>
@@ -77,22 +79,48 @@
                                     <option value="-1">Select SubCourse</option>
                                 </select>
                             </div>
+
+
                             <div class="form-group">
-                                <label>Time For each Question(in Min)</label>
+                                <label>Language</label><br/>
+                                <input type="radio" name="language" value="English">
+                                <label for="english">English</label>
+                                <input type="radio" name="language" value="Marathi">
+                                <label for="marathi">Marathi</label>                            
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Total Question</label>
+                                <input type="text" class="form-control" name="total_questions" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Total Time</label>
                                 <input type="text" class="form-control @error('time') is-invalid @enderror" name="time"
                                     value="{{ old('time') }}" required>
                             </div>
                             @error('time')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+
+
                             <div class="form-group">
-                                <label>Question Mark</label>
+                                <label>Total Marks</label>
+                                <input type="text" class="form-control" name="total_marks">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Correct Mark for Each Question</label>
                                 <input type="text" class="form-control @error('question_marks') is-invalid @enderror"
                                     value="{{ old('question_marks') }}" name="question_marks">
                             </div>
                             @error('question_marks')
                                 <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            @enderror         
+                            
+                            
                             <div class="form-group">
                                 <label>Negative marks for each question</label>
                                 <input type="text" class="form-control @error('negative_marks') is-invalid @enderror"
@@ -101,6 +129,13 @@
                             @error('negative_marks')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+
+                            <div class="form-group">
+                                <label>Free</label>
+                                <input type="checkbox" name="free" />
+                            </div>
+
+                            
                             <div class="form-group">
                                 <label>General Instuctions</label>
                                 <textarea id="ckeditor" name="general_instructions" class="form-control" rows="4"

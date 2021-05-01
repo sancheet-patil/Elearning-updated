@@ -19,18 +19,20 @@ class testseriesExport implements WithHeadings
     public function headings(): array
     {
         return [
-            'Questions',
-            'Option1',
-            'Option2',
-            'Option3',
-            'Option4',
-            'Correct_option',
-            'Marathi_Question',
-            'Marathi_Option1',
-            'Marathi_Option2',
-            'Marathi_Option3',
-            'Marathi_Option4'
-            ];
+            'Eng Question',	
+            'Eng Options_1',	
+            'Eng Options_2',	
+            'Eng Options_3',	
+            'Eng Options_4',	
+            'Eng Que Url',	
+            'Correct Ans',	
+            'Mar Question',	
+            'Mar Options_1',	
+            'Mar Options_2',	
+            'Mar Options_3',	
+            'Mar Options_4',	
+            'Mar Que Url'
+        ];
     }
 
     public function map($test): array
